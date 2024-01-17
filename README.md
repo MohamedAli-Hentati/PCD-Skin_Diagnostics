@@ -1,2 +1,2 @@
 # PCD-Skin_Diagnostics
-A mobile app with the capability of Detecting skin Decease and suggest simple cures.
+A mobile app with the capability of detecting skin decease and suggest simple cures.
