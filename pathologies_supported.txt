@@ -1,0 +1,41 @@
+acne
+acne vulgaris
+eczema
+psoriasis
+pustular psoriasis
+rosacea
+allergic contact dermatitis
+seborrheic dermatitis
+perioral dermatitis
+urticaria
+urticaria pigmentosa
+vitiligo
+pityriasis rosea
+pityriasis rubra pilaris
+pityriasis lichenoides chronica
+seborrheic keratosis
+keratosis pilaris
+dermatofibroma
+lichen amyloidosis
+lichen planus
+lichen simplex
+actinic keratosis
+seborrheic keratosis
+lupus erythematosus
+hidradenitis
+ichthyosis vulgaris
+folliculitis
+prurigo nodularis
+erythema multiforme
+necrobiosis lipoidica
+granuloma annulare
+
+support or not?
+basal cell carcinoma
+erythema annulare centrifigum
+hailey hailey disease
+malignant melanoma
+melanoma
+porokeratosis actinic
+squamous cell carcinoma
+superficial spreading melanoma ssm
