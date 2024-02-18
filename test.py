@@ -14,7 +14,6 @@ from torch.utils.data import DataLoader, Dataset
 from torchvision import models, transforms
 from torchvision.transforms.functional import equalize
 
-
 # sklearn libraries
 from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import train_test_split
@@ -56,7 +55,7 @@ class AverageMeter(object):
         self.count += n
         self.avg = self.sum / self.count
 
-# computing the mean and standard deviation of three channel on the whole dataset, first we should normalize the image from 0-255 to 0-1
+# computing the mean and standard deviation of the three channels on the whole dataset, first we should normalize the image from 0-255 to 0-1
 def compute_img_mean_std(image_paths):
 
     img_h, img_w = 224, 224
@@ -193,27 +192,26 @@ norm_mean, norm_std = compute_img_mean_std(all_image_path)
 
 num_classes = 6
 
-# Initialize the model for this run
+# initialize the model for this run
 model_ft, input_size = initialize_model(num_classes, feature_extract=False, use_pretrained=True)
-# Define the device:
+# define the device:
 device = torch.device('cuda')
-# Put the model on the device:
+# put the model on the device:
 model = model_ft.to(device)
-
+# training transformations
 train_transform = transforms.Compose([transforms.Resize((256, 256)),
                                       transforms.CenterCrop(224),
                                       transforms.RandomHorizontalFlip(),
                                       transforms.RandomVerticalFlip(),transforms.RandomRotation(20),
                                       transforms.functional.equalize,
                                       transforms.ToTensor(), transforms.Normalize(norm_mean, norm_std)])
-
+# validation transformations
 val_transform = transforms.Compose([transforms.Resize((input_size,input_size)), transforms.ToTensor(),
                                     transforms.Normalize(norm_mean, norm_std)])
-
-# Define the training set using the table train_df and using our defined transitions (train_transform)
+# define the training set using the table train_df and using our defined transitions (train_transform)
 training_set = dataset(df_train, transform=train_transform)
 train_loader = DataLoader(training_set, batch_size=32, shuffle=True, num_workers=0)
-# Same for the validation set:
+# same for the validation set:
 validation_set = dataset(df_val, transform=train_transform)
 val_loader = DataLoader(validation_set, batch_size=32, shuffle=False, num_workers=0)
 # we use Adam optimizer, use cross entropy loss as our loss function
