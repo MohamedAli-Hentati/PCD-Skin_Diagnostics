@@ -220,7 +220,7 @@ val_loader = DataLoader(validation_set, batch_size=32, shuffle=False, num_worker
 optimizer = optim.Adam(model.parameters(), lr=1e-3)
 criterion = nn.CrossEntropyLoss().to(device)
 
-epoch_num = 100
+epoch_num = 10
 best_val_acc = 0
 total_loss_train, total_acc_train = [], []
 total_loss_val, total_acc_val = [], []
