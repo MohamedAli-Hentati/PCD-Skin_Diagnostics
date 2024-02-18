@@ -220,24 +220,28 @@ val_loader = DataLoader(validation_set, batch_size=32, shuffle=False, num_worker
 optimizer = optim.Adam(model.parameters(), lr=1e-3)
 criterion = nn.CrossEntropyLoss().to(device)
 
-epoch_num = 50
+epoch_num = 100
 best_val_acc = 0
-total_loss_train, total_acc_train = [],[]
-total_loss_val, total_acc_val = [],[]
+total_loss_train, total_acc_train = [], []
+total_loss_val, total_acc_val = [], []
+
 for epoch in range(1, epoch_num+1):
     loss_train, acc_train = train(train_loader, model, criterion, optimizer, epoch)
     loss_val, acc_val = validate(val_loader, model, criterion, optimizer, epoch)
+    total_loss_train.append(loss_train)
+    total_acc_train.append(acc_train)
     total_loss_val.append(loss_val)
     total_acc_val.append(acc_val)
     if acc_val > best_val_acc:
         best_val_acc = acc_val
+        torch.save(model, './models/mobilenet_v2_test.pth')
         print('*****************************************************')
         print('best record: [epoch %d], [val loss %.5f], [val acc %.5f]' % (epoch, loss_val, acc_val))
         print('*****************************************************')
 
 fig = plt.figure(num = 2)
-fig1 = fig.add_subplot(2,1,1)
-fig2 = fig.add_subplot(2,1,2)
+fig1 = fig.add_subplot(2, 1, 1)
+fig2 = fig.add_subplot(2, 1, 2)
 fig1.plot(total_loss_train, label = 'training loss')
 fig1.plot(total_acc_train, label = 'training accuracy')
 fig2.plot(total_loss_val, label = 'validation loss')
@@ -245,6 +249,8 @@ fig2.plot(total_acc_val, label = 'validation accuracy')
 plt.legend()
 plt.show()
 
+# best model evaluation
+model = torch.load('./models/mobilenet_v2_test.pth')
 model.eval()
 y_label = []
 y_predict = []
