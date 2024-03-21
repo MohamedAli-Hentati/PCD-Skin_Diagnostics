@@ -45,7 +45,7 @@ android {
         applicationId "com.example.app"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion "21"
+        minSdkVersion 21
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
@@ -65,6 +65,6 @@ flutter {
 }
 
 dependencies {
-    implementation 'org.pytorch:pytorch_android_lite:2.1.0'
-    implementation 'org.pytorch:pytorch_android_torchvision_lite:2.1.0'
+    implementation 'org.pytorch:pytorch_android:2.1.0'
+    implementation 'org.pytorch:pytorch_android_torchvision:2.1.0'
 }

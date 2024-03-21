@@ -1,19 +1,23 @@
+import 'dart:io';
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:camera/camera.dart';
 import 'package:image_picker/image_picker.dart';
-import 'dart:io';
+
+late MethodChannel channel;
+late CameraDescription firstCamera;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  final cameras = await availableCameras();
-  final firstCamera = cameras.first;
-  runApp(Application(camera: firstCamera));
+  var cameras = await availableCameras();
+  channel = const MethodChannel('channel');
+  firstCamera = cameras.first;
+  runApp(const Application());
 }
 
 class Application extends StatelessWidget {
-  final CameraDescription camera;
-  const Application({super.key, required this.camera});
+  const Application({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -22,19 +26,60 @@ class Application extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: TakePictureScreen(camera: camera),
+      home: const Navigation(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
+class Navigation extends StatefulWidget {
+  const Navigation({super.key});
+
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<Navigation> createState() => NavigationState();
+}
+class NavigationState extends State<Navigation> {
+  int currentPageIndex = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    return Scaffold(
+      bottomNavigationBar: NavigationBar(
+        onDestinationSelected: (int index) {
+          setState(() {
+            currentPageIndex = index;
+          });
+        },
+        indicatorColor: Colors.amber,
+        selectedIndex: currentPageIndex,
+        destinations: const <Widget>[
+          NavigationDestination(
+            selectedIcon: Icon(Icons.home),
+            icon: Icon(Icons.home_outlined),
+            label: 'Home',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.question_mark),
+            label: 'Detect',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.account_circle),
+            label: 'Profile',
+          ),
+        ],
+      ),
+      body: <Widget>[const HomeScreen(title: 'Hello'), const TakePictureScreen(), const GalleryScreen()][currentPageIndex],
+    );
+  }
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key, required this.title});
+  final String title;
+  @override
+  State<HomeScreen> createState() => HomeScreenState();
+}
+class HomeScreenState extends State<HomeScreen> {
   static const platform = MethodChannel('channel');
   String _pytorchVersion = 'Unknown version number';
 
@@ -82,101 +127,93 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class TakePictureScreen extends StatefulWidget {
-  final CameraDescription camera;
-  const TakePictureScreen({Key? key, required this.camera}) : super(key: key);
+  const TakePictureScreen({super.key});
   @override
-  _TakePictureScreenState createState() => _TakePictureScreenState();
+  TakePictureScreenState createState() => TakePictureScreenState();
 }
-
-class _TakePictureScreenState extends State<TakePictureScreen> {
-  static const platform = MethodChannel('channel');
-  late CameraController _controller;
-  late Future<void> _initializeControllerFuture;
-  String _classification = 'Unknown';
+class TakePictureScreenState extends State<TakePictureScreen> {
+  late CameraController controller;
+  late Future<void> initializeControllerFuture;
+  String classification = 'Unknown';
   Future<void> classifyImage() async {
-    String classification = 'Unknown';
     try {
-      await _initializeControllerFuture;
-      final image = await _controller.takePicture();
-      final result = await platform.invokeMethod<String>('classifyImage', image.path);
-      classification = '$result';
+      await initializeControllerFuture;
+      final image = await controller.takePicture();
+      final result = await channel.invokeMethod<String>('classifyImage', image.path);
+      setState(() {
+        classification = '$result';
+      });
     } on PlatformException catch (exception) {
       print(exception.message);
     }
-    setState(() {
-      _classification = classification;
-    });
   }
 
   @override
   void initState() {
     super.initState();
-    _controller = CameraController(widget.camera, ResolutionPreset.medium);
-    _initializeControllerFuture = _controller.initialize();
+    controller = CameraController(firstCamera, ResolutionPreset.medium);
+    initializeControllerFuture = controller.initialize();
   }
 
   @override
   void dispose() {
-    _controller.dispose();
+    controller.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Take a picture')),
+      appBar: AppBar(title: const Text('Take a picture')),
       body: Column(children: [
         FutureBuilder<void>(
-          future: _initializeControllerFuture,
+          future: initializeControllerFuture,
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.done) {
-              return CameraPreview(_controller);
+              return CameraPreview(controller);
             } else {
-              return Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator());
             }
           },
         ),
         ElevatedButton(
-          child: Text('Open an existing image'),
-          onPressed: ()
-          async {
-            String? selectedImagePath = await Navigator.push<String>(context, MaterialPageRoute(builder: (context) => GalleryScreen()));
-            String classification = 'Unknown';
+          child: const Text('Open an existing image'),
+          onPressed: () async {
+            String? selectedImagePath = await Navigator.push<String>(context, MaterialPageRoute(builder: (context) => const GalleryScreen()));
             try {
-              final result = await platform.invokeMethod<String>('classifyImage', selectedImagePath);
-              classification = '$result';
+              final result = await channel.invokeMethod<String>('classifyImage', selectedImagePath);
+              setState(() {
+                classification = '$result';
+              });
             } on PlatformException catch (exception) {
               print(exception.message);
             }
-            setState(() {
-              _classification = classification;
-            });
           },
         ),
-        Text(_classification),
+        Text(classification),
       ]),
       floatingActionButton: FloatingActionButton(
         onPressed: classifyImage,
-        child: Icon(Icons.camera),
+        child: const Icon(Icons.camera),
       ),
     );
   }
 }
 
 class GalleryScreen extends StatefulWidget {
+  const GalleryScreen({super.key});
+
   @override
-  _GalleryScreenState createState() => _GalleryScreenState();
+  GalleryScreenState createState() => GalleryScreenState();
 }
+class GalleryScreenState extends State<GalleryScreen> {
+  File? selectedImage;
 
-class _GalleryScreenState extends State<GalleryScreen> {
-  File? _selectedImage;
-
-  Future<void> _pickImage() async {
-    final pickedImage =
-        await ImagePicker().getImage(source: ImageSource.gallery);
+  Future<void> pickImage() async {
+    final pickedImage = await ImagePicker().getImage(source: ImageSource.gallery);
     if (pickedImage != null) {
       setState(() {
-        _selectedImage = File(pickedImage.path);
+        selectedImage = File(pickedImage.path);
       });
     }
   }
@@ -185,19 +222,19 @@ class _GalleryScreenState extends State<GalleryScreen> {
   Widget build(BuildContext context) {
     return WillPopScope(
         onWillPop: () async {
-          Navigator.pop(context, _selectedImage!.path);
+          Navigator.pop(context, selectedImage?.path);
           return true;
         },
         child: Scaffold(
-          appBar: AppBar(title: Text('Select an Image')),
+          appBar: AppBar(title: const Text('Select an Image')),
           body: Center(
-            child: _selectedImage != null
-                ? Image.file(_selectedImage!)
-                : Text('No image selected'),
+            child: selectedImage != null
+                ? Image.file(selectedImage!)
+                : const Text('No image selected'),
           ),
           floatingActionButton: FloatingActionButton(
-            onPressed: _pickImage,
-            child: Icon(Icons.photo_library),
+            onPressed: pickImage,
+            child: const Icon(Icons.photo_library),
           ),
         ));
   }
