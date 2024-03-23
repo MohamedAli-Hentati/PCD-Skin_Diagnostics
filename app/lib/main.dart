@@ -1,14 +1,22 @@
 import 'dart:io';
-import 'package:camera/camera.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+import 'package:camera/camera.dart';
 import 'package:image_picker/image_picker.dart';
+
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
+import 'package:app/src/widgets/profile_screen.dart';
 
 late MethodChannel channel;
 late CameraDescription firstCamera;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   var cameras = await availableCameras();
   channel = const MethodChannel('channel');
   firstCamera = cameras.first;
@@ -21,6 +29,7 @@ class Application extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Skin diagnostics application',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
@@ -37,8 +46,9 @@ class Navigation extends StatefulWidget {
   @override
   State<Navigation> createState() => NavigationState();
 }
+
 class NavigationState extends State<Navigation> {
-  int currentPageIndex = 0;
+  int currentPageIndex = 2;
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +78,11 @@ class NavigationState extends State<Navigation> {
           ),
         ],
       ),
-      body: <Widget>[const HomeScreen(title: 'Hello'), const TakePictureScreen(), const GalleryScreen()][currentPageIndex],
+      body: <Widget>[
+        const HomeScreen(title: 'Hello'),
+        const TakePictureScreen(),
+        const ProfileScreen()
+      ][currentPageIndex],
     );
   }
 }
@@ -79,6 +93,7 @@ class HomeScreen extends StatefulWidget {
   @override
   State<HomeScreen> createState() => HomeScreenState();
 }
+
 class HomeScreenState extends State<HomeScreen> {
   static const platform = MethodChannel('channel');
   String _pytorchVersion = 'Unknown version number';
@@ -131,6 +146,7 @@ class TakePictureScreen extends StatefulWidget {
   @override
   TakePictureScreenState createState() => TakePictureScreenState();
 }
+
 class TakePictureScreenState extends State<TakePictureScreen> {
   late CameraController controller;
   late Future<void> initializeControllerFuture;
@@ -139,7 +155,8 @@ class TakePictureScreenState extends State<TakePictureScreen> {
     try {
       await initializeControllerFuture;
       final image = await controller.takePicture();
-      final result = await channel.invokeMethod<String>('classifyImage', image.path);
+      final result =
+          await channel.invokeMethod<String>('classifyImage', image.path);
       setState(() {
         classification = '$result';
       });
@@ -179,9 +196,11 @@ class TakePictureScreenState extends State<TakePictureScreen> {
         ElevatedButton(
           child: const Text('Open an existing image'),
           onPressed: () async {
-            String? selectedImagePath = await Navigator.push<String>(context, MaterialPageRoute(builder: (context) => const GalleryScreen()));
+            String? selectedImagePath = await Navigator.push<String>(context,
+                MaterialPageRoute(builder: (context) => const GalleryScreen()));
             try {
-              final result = await channel.invokeMethod<String>('classifyImage', selectedImagePath);
+              final result = await channel.invokeMethod<String>(
+                  'classifyImage', selectedImagePath);
               setState(() {
                 classification = '$result';
               });
@@ -206,11 +225,13 @@ class GalleryScreen extends StatefulWidget {
   @override
   GalleryScreenState createState() => GalleryScreenState();
 }
+
 class GalleryScreenState extends State<GalleryScreen> {
   File? selectedImage;
 
   Future<void> pickImage() async {
-    final pickedImage = await ImagePicker().getImage(source: ImageSource.gallery);
+    final pickedImage =
+        await ImagePicker().getImage(source: ImageSource.gallery);
     if (pickedImage != null) {
       setState(() {
         selectedImage = File(pickedImage.path);
