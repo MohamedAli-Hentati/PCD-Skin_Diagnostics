@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:app/src/widgets/sign_screen.dart';
+import 'package:app/src/widgets/sign_page.dart';
 
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+class ProfilePage extends StatelessWidget {
+  const ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,9 +12,9 @@ class ProfileScreen extends StatelessWidget {
       stream: FirebaseAuth.instance.authStateChanges(),
       builder: (context, snapshot) {
         if (FirebaseAuth.instance.currentUser == null) {
-          return SignScreen();
+          return SignPage();
         } else if (!FirebaseAuth.instance.currentUser!.emailVerified) {
-          return SignScreen();
+          return SignPage();
         } else {
           return SafeArea(
               child: Center(

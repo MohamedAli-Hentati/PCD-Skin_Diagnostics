@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-class SignUpScreen extends StatefulWidget {
+class SignUpPage extends StatefulWidget {
   final Function()? onSignInTap;
-  const SignUpScreen(
+  const SignUpPage(
       {super.key, required this.onSignInTap});
 
   @override
-  State<SignUpScreen> createState() => SignUpScreenState();
+  State<SignUpPage> createState() => SignUpPageState();
 }
 
-class SignUpScreenState extends State<SignUpScreen> {
+class SignUpPageState extends State<SignUpPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController =
@@ -69,7 +69,7 @@ class SignUpScreenState extends State<SignUpScreen> {
           case 'too-many-requests':
             showDialogMessage('A problem occurred, Please try again later.');
           default:
-            showDialogMessage(exception.message!);
+            showDialogMessage('Sorry, an error has occurred.');
         }
       }
     }

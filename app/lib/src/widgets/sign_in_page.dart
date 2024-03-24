@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
-class SignInScreen extends StatefulWidget {
+class SignInPage extends StatefulWidget {
   final Function()? onSignUpTap;
   final Function()? onForgotPasswordTap;
-  const SignInScreen(
+  const SignInPage(
       {super.key, required this.onSignUpTap, this.onForgotPasswordTap});
   @override
-  State<SignInScreen> createState() => SignInScreenState();
+  State<SignInPage> createState() => SignInPageState();
 }
 
-class SignInScreenState extends State<SignInScreen> {
+class SignInPageState extends State<SignInPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   void showDialogMessage(String message) {
@@ -19,20 +21,20 @@ class SignInScreenState extends State<SignInScreen> {
         builder: (context) {
           return Center(
               child: AlertDialog(
-                actionsAlignment: MainAxisAlignment.end,
-                actions: [
-                  TextButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: Text('Close')),
-                ],
-                title: Text(message),
-              ));
+            actionsAlignment: MainAxisAlignment.end,
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text('Close')),
+            ],
+            title: Text(message),
+          ));
         });
   }
 
-  Future<void> signIn() async {
+  Future<void> signInWithPassword() async {
     showDialog(
         context: context,
         builder: (context) {
@@ -85,9 +87,34 @@ class SignInScreenState extends State<SignInScreen> {
         case 'too-many-requests':
           showDialogMessage('A problem occurred, please try again later.');
         default:
-          showDialogMessage(exception.code);
+          showDialogMessage('Sorry, an error has occurred.');
       }
     }
+  }
+
+  Future<void> signInWithGoogle() async {
+    try {
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      final GoogleSignInAuthentication? googleAuth =
+          await googleUser?.authentication;
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth?.accessToken,
+        idToken: googleAuth?.idToken,
+      );
+      await FirebaseAuth.instance.signInWithCredential(credential);
+    } on Exception catch (exception) {
+      showDialogMessage('Sorry, an error has occurred.');
+    }
+  }
+
+  Future<void> signInWithFacebook() async {
+    //try {
+      final LoginResult loginResult = await FacebookAuth.instance.login();
+      final OAuthCredential facebookAuthCredential = FacebookAuthProvider.credential(loginResult.accessToken!.token);
+      await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
+    //} on Exception catch (exception) {
+    //  showDialogMessage('Sorry, an error has occurred.');
+    //}
   }
 
   @override
@@ -100,7 +127,6 @@ class SignInScreenState extends State<SignInScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(height: 75),
                   FlutterLogo(size: 100),
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 50),
@@ -142,11 +168,11 @@ class SignInScreenState extends State<SignInScreen> {
                     child: TextButton(
                       child: Text('Sign in'),
                       style: ButtonStyle(),
-                      onPressed: signIn,
+                      onPressed: signInWithPassword,
                     ),
                   )),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                     child: Row(
                       children: [
                         Expanded(child: Divider(thickness: 2)),
@@ -161,30 +187,40 @@ class SignInScreenState extends State<SignInScreen> {
                   Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                     Padding(
                       padding: EdgeInsets.all(10),
-                      child: Container(
-                        padding: EdgeInsets.all(15),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5)),
-                        child: Image.asset(
-                          'lib/assets/images/google.png',
-                          height: 40,
-                          width: 40,
+                      child: GestureDetector(
+                        onTap: signInWithGoogle,
+                        child: Container(
+                          padding: EdgeInsets.all(15),
+                          decoration: BoxDecoration(
+                              color: Colors.grey[200],
+                              boxShadow: [BoxShadow(blurRadius: 5)],
+                              borderRadius: BorderRadius.circular(5)),
+                          child: Image.asset(
+                            'lib/assets/images/google.png',
+                            height: 40,
+                            width: 40,
+                          ),
                         ),
                       ),
                     ),
                     Padding(
                       padding: EdgeInsets.all(10),
-                      child: Container(
-                        padding: EdgeInsets.all(15),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5)),
-                        child: Image.asset(
-                          'lib/assets/images/facebook.png',
-                          height: 40,
-                          width: 40,
+                      child: GestureDetector(
+                        onTap: signInWithFacebook,
+                        child: Container(
+                          padding: EdgeInsets.all(15),
+                          decoration: BoxDecoration(
+                              color: Colors.grey[200],
+                              boxShadow: [BoxShadow(blurRadius: 5)],
+                              borderRadius: BorderRadius.circular(5)),
+                          child: Image.asset(
+                            'lib/assets/images/facebook.png',
+                            height: 40,
+                            width: 40,
+                          ),
                         ),
                       ),
-                    )
+                    ),
                   ]),
                   SizedBox(height: 20),
                   Row(

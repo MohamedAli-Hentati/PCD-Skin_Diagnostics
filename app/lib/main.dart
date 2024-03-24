@@ -9,7 +9,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
-import 'package:app/src/widgets/profile_screen.dart';
+import 'package:app/src/widgets/profile_page.dart';
 
 late MethodChannel channel;
 late CameraDescription firstCamera;
@@ -35,7 +35,7 @@ class Application extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const Navigation(),
+      home: const Navigation()
     );
   }
 }
@@ -60,7 +60,7 @@ class NavigationState extends State<Navigation> {
             currentPageIndex = index;
           });
         },
-        indicatorColor: Colors.amber,
+        indicatorColor: Colors.blueAccent,
         selectedIndex: currentPageIndex,
         destinations: const <Widget>[
           NavigationDestination(
@@ -81,7 +81,7 @@ class NavigationState extends State<Navigation> {
       body: <Widget>[
         const HomeScreen(title: 'Hello'),
         const TakePictureScreen(),
-        const ProfileScreen()
+        const ProfilePage()
       ][currentPageIndex],
     );
   }
