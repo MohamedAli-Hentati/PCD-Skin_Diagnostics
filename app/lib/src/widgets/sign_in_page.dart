@@ -41,7 +41,7 @@ class SignInPageState extends State<SignInPage> {
           return const Center(child: CircularProgressIndicator());
         });
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
+      FirebaseAuth.instance.signInWithEmailAndPassword(
           email: emailController.text, password: passwordController.text);
       Navigator.pop(context);
       if (!FirebaseAuth.instance.currentUser!.emailVerified) {
@@ -108,13 +108,20 @@ class SignInPageState extends State<SignInPage> {
   }
 
   Future<void> signInWithFacebook() async {
-    //try {
+    try {
       final LoginResult loginResult = await FacebookAuth.instance.login();
-      final OAuthCredential facebookAuthCredential = FacebookAuthProvider.credential(loginResult.accessToken!.token);
+      final OAuthCredential facebookAuthCredential =
+          FacebookAuthProvider.credential(loginResult.accessToken!.token);
       await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
-    //} on Exception catch (exception) {
-    //  showDialogMessage('Sorry, an error has occurred.');
-    //}
+      if (!FirebaseAuth.instance.currentUser!.emailVerified) {
+        await FirebaseAuth.instance.currentUser?.sendEmailVerification();
+        showDialogMessage(
+            'A verification email has been sent to: ${FirebaseAuth.instance.currentUser?.email}');
+        await FirebaseAuth.instance.signOut();
+      }
+    } on Exception catch (exception) {
+      showDialogMessage('Sorry, an error has occurred.');
+    }
   }
 
   @override
@@ -131,7 +138,7 @@ class SignInPageState extends State<SignInPage> {
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 50),
                     child: Text(
-                        'It appears that you are signed off, Please sign in:'),
+                        'It appears that you are signed off'),
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),

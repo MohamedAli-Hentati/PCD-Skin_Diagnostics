@@ -34,7 +34,7 @@ class SignUpPageState extends State<SignUpPage> {
         });
   }
 
-  Future<void> signUp() async {
+  Future<void> signUpWithPassword() async {
     if (passwordController.text != confirmPasswordController.text) {
       showDialogMessage('Passwords do not match.');
     } else {
@@ -118,7 +118,7 @@ class SignUpPageState extends State<SignUpPage> {
                     child: TextButton(
                       child: Text('Sign up'),
                       style: ButtonStyle(),
-                      onPressed: signUp,
+                      onPressed: signUpWithPassword,
                     ),
                   )),
                   SizedBox(height: 20),

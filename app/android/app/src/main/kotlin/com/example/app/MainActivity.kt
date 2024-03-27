@@ -14,7 +14,7 @@ import java.io.*
 
 
 class MainActivity: FlutterActivity() {
-    private val CHANNEL = "channel";
+    private val CHANNEL = "app.android/channel";
     @Throws(IOException::class)
     fun assetFilePath(context: Context, assetName: String?): String? {
         val file = File(context.filesDir, assetName)
@@ -33,17 +33,12 @@ class MainActivity: FlutterActivity() {
             return file.absolutePath
         }
     }
-    fun getPytorchVersion() : String {
-        return "2.1.0";
-    }
+
     override fun configureFlutterEngine(@NonNull flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
         MethodChannel(flutterEngine.dartExecutor.binaryMessenger, CHANNEL).setMethodCallHandler {
             call, result ->
-            if (call.method == "getPytorchVersion") {
-                result.success(getPytorchVersion())
-            }
-            if (call.method == "classifyImage") {
+            if (call.method == "scanPhoto") {
                 try {
                     val classesNames: Array<String> = arrayOf<String>("Acne", "Basal cell carcinoma", "Folliculitis", "Lupus erythematosus", "Pityriasis rubra pilaris", "Squamous cell carcinoma")
                     val filepath = call.arguments as String
