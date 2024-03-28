@@ -1,10 +1,9 @@
+import 'package:app/src/widgets/sign_in_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class SignUpPage extends StatefulWidget {
-  final Function()? onSignInTap;
-  const SignUpPage(
-      {super.key, required this.onSignInTap});
+  const SignUpPage({super.key});
 
   @override
   State<SignUpPage> createState() => SignUpPageState();
@@ -13,24 +12,23 @@ class SignUpPage extends StatefulWidget {
 class SignUpPageState extends State<SignUpPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmPasswordController =
-      TextEditingController();
+  final TextEditingController confirmPasswordController = TextEditingController();
   void showDialogMessage(String message) {
     showDialog(
         context: context,
         builder: (context) {
           return Center(
               child: AlertDialog(
-                actionsAlignment: MainAxisAlignment.end,
-                actions: [
-                  TextButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: Text('Close')),
-                ],
-                title: Text(message),
-              ));
+            actionsAlignment: MainAxisAlignment.end,
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    Navigator.of(context, rootNavigator: true).pop();
+                  },
+                  child: const Text('Close')),
+            ],
+            title: Text(message),
+          ));
         });
   }
 
@@ -44,28 +42,24 @@ class SignUpPageState extends State<SignUpPage> {
             return const Center(child: CircularProgressIndicator());
           });
       try {
-        await FirebaseAuth.instance.createUserWithEmailAndPassword(
-            email: emailController.text, password: passwordController.text);
-        Navigator.pop(context);
+        await FirebaseAuth.instance
+            .createUserWithEmailAndPassword(email: emailController.text, password: passwordController.text);
+        Navigator.of(context, rootNavigator: true).pop();
         await FirebaseAuth.instance.currentUser?.sendEmailVerification();
-        showDialogMessage(
-            'A verification email has been sent to: ${emailController.text}');
+        showDialogMessage('A verification email has been sent to: ${emailController.text}');
         await FirebaseAuth.instance.signOut();
-        widget.onSignInTap!();
+        Navigator.of(context, rootNavigator: true).pop();
       } on FirebaseAuthException catch (exception) {
-        Navigator.pop(context);
+        Navigator.of(context, rootNavigator: true).pop();
         switch (exception.code) {
           case 'weak-password':
             showDialogMessage('Please choose a stronger password.');
           case 'channel-error':
-            showDialogMessage(
-                'Missing credentials, please provide both email and password.');
+            showDialogMessage('Missing credentials, please provide both email and password.');
           case 'email-already-in-use':
-            showDialogMessage(
-                'An account already exists with this email address.');
+            showDialogMessage('An account already exists with this email address.');
           case 'invalid-email':
-            showDialogMessage(
-                'Invalid email, please check your email and try again.');
+            showDialogMessage('Invalid email, please check your email and try again.');
           case 'too-many-requests':
             showDialogMessage('A problem occurred, Please try again later.');
           default:
@@ -78,60 +72,60 @@ class SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('Sign Up')),
+        appBar: AppBar(title: const Text('Sign Up')),
         body: SafeArea(
           child: Center(
             child: SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(height: 75),
-                  FlutterLogo(size: 100),
-                  SizedBox(height: 50),
+                  const SizedBox(height: 75),
+                  const FlutterLogo(size: 100),
+                  const SizedBox(height: 50),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                     child: TextField(
                       controller: emailController,
-                      decoration: InputDecoration(hintText: 'Email'),
+                      decoration: const InputDecoration(hintText: 'Email'),
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                     child: TextField(
                       controller: passwordController,
-                      decoration: InputDecoration(hintText: 'Password'),
+                      decoration: const InputDecoration(hintText: 'Password'),
                       obscureText: true,
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                     child: TextField(
                       controller: confirmPasswordController,
-                      decoration: InputDecoration(hintText: 'Confirm password'),
+                      decoration: const InputDecoration(hintText: 'Confirm password'),
                       obscureText: true,
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Center(
                       child: Padding(
-                    padding: EdgeInsets.symmetric(vertical: 10),
+                    padding: const EdgeInsets.symmetric(vertical: 10),
                     child: TextButton(
-                      child: Text('Sign up'),
-                      style: ButtonStyle(),
+                      style: const ButtonStyle(),
                       onPressed: signUpWithPassword,
+                      child: const Text('Sign up'),
                     ),
                   )),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('Have an existing account?'),
-                      SizedBox(width: 5),
+                      const Text('Have an existing account?'),
+                      const SizedBox(width: 5),
                       GestureDetector(
-                          onTap: widget.onSignInTap,
-                          child: Text('Sign in',
-                              style: TextStyle(
-                                  decoration: TextDecoration.underline)))
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => const SignInPage()));
+                          },
+                          child: const Text('Sign in', style: TextStyle(decoration: TextDecoration.underline)))
                     ],
                   )
                 ],

@@ -1,11 +1,9 @@
+import 'package:app/src/widgets/sign_up_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
-  final Function()? onSignInTap;
-  final Function()? onSignUpTap;
-  const ForgotPasswordPage(
-      {super.key, required this.onSignInTap, this.onSignUpTap});
+  const ForgotPasswordPage({super.key});
   @override
   State<ForgotPasswordPage> createState() => ForgotPasswordPageState();
 }
@@ -23,9 +21,9 @@ class ForgotPasswordPageState extends State<ForgotPasswordPage> {
             actions: [
               TextButton(
                   onPressed: () {
-                    Navigator.pop(context);
+                    Navigator.of(context, rootNavigator: true).pop();
                   },
-                  child: Text('Close')),
+                  child: const Text('Close')),
             ],
             title: Text(message),
           ));
@@ -39,20 +37,16 @@ class ForgotPasswordPageState extends State<ForgotPasswordPage> {
           return const Center(child: CircularProgressIndicator());
         });
     try {
-      await FirebaseAuth.instance
-          .sendPasswordResetEmail(email: emailController.text);
-      Navigator.pop(context);
-      showDialogMessage(
-          'A verification code has been sent to: ${emailController.text}');
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: emailController.text);
+      Navigator.of(context, rootNavigator: true).pop();
+      showDialogMessage('A verification code has been sent to: ${emailController.text}');
     } on FirebaseAuthException catch (exception) {
-      Navigator.pop(context);
+      Navigator.of(context, rootNavigator: true).pop();
       switch (exception.code) {
         case 'channel-error':
-          showDialogMessage(
-              'Missing email, please type the email in the text field.');
+          showDialogMessage('Missing email, please type the email in the text field.');
         case 'invalid-email':
-          showDialogMessage(
-              'Invalid email, please check your email and try again.');
+          showDialogMessage('Invalid email, please check your email and try again.');
         case 'too-many-requests':
           showDialogMessage('A problem occurred, Please try again later.');
         default:
@@ -64,47 +58,47 @@ class ForgotPasswordPageState extends State<ForgotPasswordPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('Change password')),
+        appBar: AppBar(title: const Text('Reset password')),
         body: SafeArea(
           child: Center(
             child: SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(height: 75),
-                  FlutterLogo(size: 100),
-                  Padding(
+                  const SizedBox(height: 75),
+                  const FlutterLogo(size: 100),
+                  const Padding(
                     padding: EdgeInsets.symmetric(vertical: 50),
                     child: Text('Send a password reset email:'),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                     child: TextField(
                       controller: emailController,
-                      decoration: InputDecoration(hintText: 'Email'),
+                      decoration: const InputDecoration(hintText: 'Email'),
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Center(
                       child: Padding(
-                    padding: EdgeInsets.symmetric(vertical: 10),
+                    padding: const EdgeInsets.symmetric(vertical: 10),
                     child: TextButton(
-                      child: Text('Send'),
-                      style: ButtonStyle(),
+                      style: const ButtonStyle(),
                       onPressed: confirm,
+                      child: const Text('Send'),
                     ),
                   )),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("Don't have an account?"),
-                      SizedBox(width: 5),
+                      const Text("Don't have an account?"),
+                      const SizedBox(width: 5),
                       GestureDetector(
-                          onTap: widget.onSignUpTap,
-                          child: Text('Sign Up',
-                              style: TextStyle(
-                                  decoration: TextDecoration.underline)))
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => const SignUpPage()));
+                          },
+                          child: const Text('Sign Up', style: TextStyle(decoration: TextDecoration.underline)))
                     ],
                   )
                 ],

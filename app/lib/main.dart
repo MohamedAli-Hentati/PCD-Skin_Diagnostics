@@ -25,7 +25,7 @@ class Application extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Skin diagnostics application',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
         useMaterial3: true,
       ),
       home: const Navigation(),
@@ -41,7 +41,17 @@ class Navigation extends StatefulWidget {
 }
 
 class NavigationState extends State<Navigation> {
-  int currentPageIndex = 0;
+  int currentPageIndex = 2;
+  Map<int, GlobalKey<NavigatorState>> navigatorKeys = {
+    0: GlobalKey<NavigatorState>(),
+    1: GlobalKey<NavigatorState>(),
+    2: GlobalKey<NavigatorState>(),
+  };
+  final pages = [
+    const HomePage(),
+    ScanPage(camera: camera),
+    const ProfileWrapperPage()
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -70,11 +80,12 @@ class NavigationState extends State<Navigation> {
           ),
         ],
       ),
-      body: <Widget>[
-        const HomePage(),
-        ScanPage(camera: camera),
-        const ProfileWrapperPage()
-      ][currentPageIndex],
+      body: Navigator(
+        key: navigatorKeys[currentPageIndex],
+        onGenerateRoute: (settings) {
+          return MaterialPageRoute(builder: (_) => pages.elementAt(currentPageIndex));
+        },
+      ),
     );
   }
 }

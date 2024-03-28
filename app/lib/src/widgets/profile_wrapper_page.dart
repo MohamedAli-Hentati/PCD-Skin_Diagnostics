@@ -1,7 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:app/src/widgets/profile_page.dart';
-import 'package:app/src/widgets/sign_page.dart';
+import 'package:app/src/widgets/sign_in_page.dart';
 
 class ProfileWrapperPage extends StatefulWidget {
   const ProfileWrapperPage({super.key});
@@ -17,9 +17,8 @@ class ProfileWrapperPageState extends State<ProfileWrapperPage> {
         body: StreamBuilder<User?>(
             stream: FirebaseAuth.instance.authStateChanges(),
             builder: (context, snapshot) {
-              if (FirebaseAuth.instance.currentUser == null ||
-                  !FirebaseAuth.instance.currentUser!.emailVerified) {
-                return const SignPage();
+              if (FirebaseAuth.instance.currentUser == null || !FirebaseAuth.instance.currentUser!.emailVerified) {
+                return const SignInPage();
               } else {
                 return const ProfilePage();
               }
