@@ -1,3 +1,4 @@
+import 'package:app/src/components/dialog_components.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -11,24 +12,9 @@ class ScanPage extends StatefulWidget {
 }
 
 class ScanPageState extends State<ScanPage> {
-  var classification = 'Unknown';
-  late CameraController controller;
-  late Future<void> initializeControllerFuture;
   final channel = const MethodChannel('app.android/channel');
-
-  Future<void> scanPhoto() async {
-    try {
-      await initializeControllerFuture;
-      final image = await controller.takePicture();
-      final result =
-          await channel.invokeMethod<String>('scanPhoto', image.path);
-      setState(() {
-        classification = '$result';
-      });
-    } on PlatformException catch (exception) {
-      print(exception.message);
-    }
-  }
+  late Future<void> initializeControllerFuture;
+  late CameraController controller;
 
   @override
   void initState() {
@@ -62,10 +48,14 @@ class ScanPageState extends State<ScanPage> {
                         width: 224,
                         height: 224,
                         color: Colors.transparent,
-                        child: Center(
-                            child: Text(
-                          classification,
-                          style: TextStyle(fontSize: 15, color: Colors.white70),
+                        child: const Center(
+                            child: SizedBox(
+                          width: 125,
+                          child: Text(
+                            textAlign: TextAlign.center,
+                            'Position affected skin area here',
+                            style: TextStyle(fontSize: 17, color: Colors.white54),
+                          ),
                         )),
                       ),
                     ),
@@ -77,7 +67,7 @@ class ScanPageState extends State<ScanPage> {
             },
           ),
         ),
-        Divider(
+        const Divider(
           height: 0,
           thickness: 2.5,
           color: Colors.white54,
@@ -88,44 +78,52 @@ class ScanPageState extends State<ScanPage> {
               padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 30),
               child: Column(
                 children: [
-                  Column(
+                  const Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('LOREM IPSUM DOLOR', style: TextStyle(fontSize: 20)),
+                      Text('Important notice:', style: TextStyle(fontWeight: FontWeight.w500, fontSize: 22)),
                       Text(
                           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac semper nunc. Mauris est justo, aliquet et ultrices eu, vulputate vel urna. Cras scelerisque semper felis eget mollis.',
                           style: TextStyle(fontSize: 14)),
                     ],
                   ),
-                  SizedBox(height: 25),
+                  const SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       TextButton(
                           onPressed: () async {
-                            String? selectedImagePath =
-                                await Navigator.push<String?>(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const GalleryPage()));
                             try {
-                              final result = await channel.invokeMethod<String>(
-                                  'scanPhoto', selectedImagePath);
-                              setState(() {
-                                classification = '$result';
-                              });
-                            } on PlatformException catch (exception) {
-                              print(exception.message);
+                              final imagePath = await Navigator.push<String?>(
+                                  context, MaterialPageRoute(builder: (context) => const GalleryPage()));
+                              if (imagePath != null) {
+                                showProgressionDialog(context: context);
+                                final result = await channel.invokeMethod<String>('scanImage', imagePath);
+                                Navigator.of(context, rootNavigator: true).pop();
+                                showMessageDialog(context: context, message: result);
+                              }
+                            } on Exception {
+                              Navigator.of(context, rootNavigator: true).pop();
+                              showMessageDialog(context: context, message: 'Sorry, something went wrong.');
                             }
                           },
-                          child: Text('Open')),
+                          child: const Text('Open')),
                       TextButton(
                           onPressed: () async {
-                            scanPhoto();
+                            try {
+                              showProgressionDialog(context: context);
+                              await initializeControllerFuture;
+                              final image = await controller.takePicture();
+                              final result = await channel.invokeMethod<String>('scanImage', image.path);
+                              Navigator.of(context, rootNavigator: true).pop();
+                              showMessageDialog(context: context, message: result);
+                            } on Exception {
+                              Navigator.of(context, rootNavigator: true).pop();
+                              showMessageDialog(context: context, message: 'Sorry, something went wrong.');
+                            }
                           },
-                          child: Text('Scan'))
+                          child: const Text('Scan'))
                     ],
                   )
                 ],
@@ -139,9 +137,9 @@ class ScanPageState extends State<ScanPage> {
 class BorderPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    double sh = size.height; // for convenient shortage
-    double sw = size.width; // for convenient shortage
-    double cornerSide = sh * 0.1; // desirable value for corners side
+    double sh = size.height;
+    double sw = size.width;
+    double cornerSide = sh * 0.1;
 
     Paint paint = Paint()
       ..color = Colors.white54

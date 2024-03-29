@@ -38,7 +38,7 @@ class MainActivity: FlutterActivity() {
         super.configureFlutterEngine(flutterEngine)
         MethodChannel(flutterEngine.dartExecutor.binaryMessenger, CHANNEL).setMethodCallHandler {
             call, result ->
-            if (call.method == "scanPhoto") {
+            if (call.method == "scanImage") {
                 try {
                     val classesNames: Array<String> = arrayOf<String>("Acne", "Basal cell carcinoma", "Folliculitis", "Lupus erythematosus", "Pityriasis rubra pilaris", "Squamous cell carcinoma")
                     val filepath = call.arguments as String

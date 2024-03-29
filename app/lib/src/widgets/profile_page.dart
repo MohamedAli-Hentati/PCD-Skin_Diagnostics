@@ -1,5 +1,7 @@
-import 'package:app/src/widgets/history_page.dart';
 import 'package:flutter/material.dart';
+import 'package:app/src/widgets/history_page.dart';
+import 'package:app/src/widgets/privacy_page.dart';
+import 'package:app/src/widgets/settings_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:app/src/utils/color_utils.dart';
 
@@ -27,8 +29,8 @@ class ProfilePage extends StatelessWidget {
                 Container(
                   height: 100,
                   width: 100,
-                  decoration: const BoxDecoration(
-                      boxShadow: [BoxShadow(blurRadius: 25, color: Colors.grey)],
+                  decoration: BoxDecoration(
+                      boxShadow: [BoxShadow(blurRadius: 25, color: Colors.grey.shade600)],
                       color: Colors.white,
                       shape: BoxShape.circle),
                   margin: const EdgeInsets.only(top: 30),
@@ -37,21 +39,20 @@ class ProfilePage extends StatelessWidget {
                       CircleAvatar(radius: 50, backgroundImage: profileImage),
                       Align(
                         alignment: Alignment.bottomRight,
-                        child: Container(
-                          height: 27.5,
+                        child: SizedBox(
                           width: 27.5,
-                          decoration: const BoxDecoration(
-                            boxShadow: [BoxShadow(blurRadius: 10, color: Colors.grey)],
-                            color: Colors.white,
-                            shape: BoxShape.circle,
-                          ),
-                          child: const Center(
-                            widthFactor: 17.5,
-                            heightFactor: 17.5,
-                            child: Icon(
-                              Icons.edit_outlined,
-                              size: 17.5,
+                          height: 27.5,
+                          child: IconButton(
+                            padding: const EdgeInsets.all(0.0),
+                            style: IconButton.styleFrom(
+                              elevation: 5,
+                              shadowColor: Colors.grey,
+                              backgroundColor: Colors.white,
                             ),
+                            iconSize: 17.5,
+                            icon: const Icon(Icons.edit_outlined),
+                            onPressed: () {
+                            },
                           ),
                         ),
                       ),
@@ -107,10 +108,13 @@ class ProfilePage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(50),
                     ),
                     child: ListTile(
-                        tileColor: darken(Theme.of(context).colorScheme.surface, percentage: 0.045),
+                        tileColor: darken(Theme.of(context).colorScheme.surface, percentage: 0.010),
                         leading: const Icon(Icons.shield_outlined),
                         trailing: const Icon(Icons.keyboard_arrow_right_outlined),
                         title: const Text('Privacy'),
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const PrivacyPage()));
+                        },
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50),
                         )),
@@ -124,7 +128,7 @@ class ProfilePage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(50),
                     ),
                     child: ListTile(
-                        tileColor: darken(Theme.of(context).colorScheme.surface, percentage: 0.045),
+                        tileColor: darken(Theme.of(context).colorScheme.surface, percentage: 0.010),
                         leading: const Icon(Icons.history),
                         trailing: const Icon(Icons.keyboard_arrow_right_outlined),
                         title: const Text('History'),
@@ -144,10 +148,13 @@ class ProfilePage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(50),
                     ),
                     child: ListTile(
-                        tileColor: darken(Theme.of(context).colorScheme.surface, percentage: 0.045),
+                        tileColor: darken(Theme.of(context).colorScheme.surface, percentage: 0.010),
                         leading: const Icon(Icons.settings),
                         trailing: const Icon(Icons.keyboard_arrow_right_outlined),
                         title: const Text('Settings'),
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const SettingsPage()));
+                        },
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50),
                         )),
@@ -161,7 +168,7 @@ class ProfilePage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(50),
                     ),
                     child: ListTile(
-                        tileColor: darken(Theme.of(context).colorScheme.surface, percentage: 0.045),
+                        tileColor: darken(Theme.of(context).colorScheme.surface, percentage: 0.010),
                         leading: const Icon(Icons.logout),
                         trailing: const Icon(Icons.keyboard_arrow_right_outlined),
                         title: const Text('Logout'),
@@ -179,7 +186,7 @@ class ProfilePage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(50),
                     ),
                     child: ListTile(
-                        tileColor: darken(Theme.of(context).colorScheme.surface, percentage: 0.045),
+                        tileColor: darken(Theme.of(context).colorScheme.surface, percentage: 0.010),
                         leading: const Icon(Icons.remove_circle_outline),
                         trailing: const Icon(Icons.keyboard_arrow_right_outlined),
                         title: const Text('Delete account'),

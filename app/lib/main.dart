@@ -62,7 +62,7 @@ class NavigationState extends State<Navigation> {
             currentPageIndex = index;
           });
         },
-        indicatorColor: Colors.blueAccent,
+        indicatorColor: Theme.of(context).primaryColor,
         selectedIndex: currentPageIndex,
         destinations: const <Widget>[
           NavigationDestination(
