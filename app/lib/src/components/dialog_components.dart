@@ -21,6 +21,7 @@ void showMessageDialog({required BuildContext context, required String? message}
 
 void showProgressionDialog({required BuildContext context}) {
   showDialog(
+      barrierDismissible: false,
       context: context,
       builder: (context) {
         return const Center(child: CircularProgressIndicator());

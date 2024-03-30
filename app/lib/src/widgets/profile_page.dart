@@ -1,16 +1,25 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:app/src/widgets/history_page.dart';
 import 'package:app/src/widgets/privacy_page.dart';
 import 'package:app/src/widgets/settings_page.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:app/src/utils/color_utils.dart';
+import 'package:app/src/components/dialog_components.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
 
   @override
+  State<ProfilePage> createState() => ProfilePageState();
+}
+
+class ProfilePageState extends State<ProfilePage> {
+  dynamic profileImage;
+  @override
   Widget build(BuildContext context) {
-    dynamic profileImage;
     if (FirebaseAuth.instance.currentUser!.photoURL == null) {
       profileImage = const AssetImage('lib/assets/images/profile.png');
     } else {
@@ -29,10 +38,8 @@ class ProfilePage extends StatelessWidget {
                 Container(
                   height: 100,
                   width: 100,
-                  decoration: BoxDecoration(
-                      boxShadow: [BoxShadow(blurRadius: 25, color: Colors.grey.shade600)],
-                      color: Colors.white,
-                      shape: BoxShape.circle),
+                  decoration:
+                      BoxDecoration(boxShadow: [BoxShadow(blurRadius: 25, color: Colors.grey.shade600)], color: Colors.white, shape: BoxShape.circle),
                   margin: const EdgeInsets.only(top: 30),
                   child: Stack(
                     children: [
@@ -51,7 +58,19 @@ class ProfilePage extends StatelessWidget {
                             ),
                             iconSize: 17.5,
                             icon: const Icon(Icons.edit_outlined),
-                            onPressed: () {
+                            onPressed: () async {
+                              try {
+                                final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+                                final imageStorageRef =
+                                    FirebaseStorage.instance.ref().child('users/${FirebaseAuth.instance.currentUser!.uid}/profile.png');
+                                await imageStorageRef.putFile(File(image!.path));
+                                await FirebaseAuth.instance.currentUser!.updatePhotoURL(await imageStorageRef.getDownloadURL());
+                                setState(() {
+                                  profileImage = NetworkImage(FirebaseAuth.instance.currentUser!.photoURL!);
+                                });
+                              } on Exception {
+                                showMessageDialog(context: context, message: 'Sorry, something went wrong.');
+                              }
                             },
                           ),
                         ),
@@ -203,7 +222,12 @@ class ProfilePage extends StatelessWidget {
                                         },
                                         child: const Text('No')),
                                     TextButton(
-                                        onPressed: () {
+                                        onPressed: () async {
+                                          final reference = FirebaseStorage.instance.ref();
+                                          final listResult = await reference.child('users/${FirebaseAuth.instance.currentUser!.uid}').listAll();
+                                          for (var item in listResult.items) {
+                                            item.delete();
+                                          }
                                           FirebaseAuth.instance.currentUser?.delete();
                                           Navigator.pop(context);
                                         },

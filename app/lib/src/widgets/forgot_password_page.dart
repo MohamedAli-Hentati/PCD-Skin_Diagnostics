@@ -1,4 +1,3 @@
-import 'package:app/src/widgets/sign_up_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -65,7 +64,6 @@ class ForgotPasswordPageState extends State<ForgotPasswordPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const SizedBox(height: 75),
                   const FlutterLogo(size: 100),
                   const Padding(
                     padding: EdgeInsets.symmetric(vertical: 50),
@@ -88,19 +86,6 @@ class ForgotPasswordPageState extends State<ForgotPasswordPage> {
                       child: const Text('Send'),
                     ),
                   )),
-                  const SizedBox(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text("Don't have an account?"),
-                      const SizedBox(width: 5),
-                      GestureDetector(
-                          onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => const SignUpPage()));
-                          },
-                          child: const Text('Sign Up', style: TextStyle(decoration: TextDecoration.underline)))
-                    ],
-                  )
                 ],
               ),
             ),

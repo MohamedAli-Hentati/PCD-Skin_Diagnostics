@@ -157,8 +157,11 @@ class SignInPageState extends State<SignInPage> {
                               Navigator.of(context)
                                   .push(MaterialPageRoute(builder: (context) => const ForgotPasswordPage()));
                             },
-                            child:
-                                const Text('Forgot password?', style: TextStyle(decoration: TextDecoration.underline))),
+                            child: Text('Forgot password?',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  color: Theme.of(context).colorScheme.primary,
+                                ))),
                       ],
                     ),
                   ),
@@ -232,7 +235,11 @@ class SignInPageState extends State<SignInPage> {
                           onTap: () {
                             Navigator.of(context).push(MaterialPageRoute(builder: (context) => const SignUpPage()));
                           },
-                          child: const Text('Sign up!', style: TextStyle(decoration: TextDecoration.underline)))
+                          child: Text('Sign up!',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                color: Theme.of(context).colorScheme.primary,
+                              )))
                     ],
                   )
                 ],

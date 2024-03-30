@@ -1,5 +1,6 @@
-import 'package:app/src/widgets/sign_in_page.dart';
 import 'package:flutter/material.dart';
+import 'package:app/src/widgets/sign_in_page.dart';
+import 'package:app/src/components/dialog_components.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -10,60 +11,43 @@ class SignUpPage extends StatefulWidget {
 }
 
 class SignUpPageState extends State<SignUpPage> {
+  final TextEditingController usernameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController = TextEditingController();
-  void showDialogMessage(String message) {
-    showDialog(
-        context: context,
-        builder: (context) {
-          return Center(
-              child: AlertDialog(
-            actionsAlignment: MainAxisAlignment.end,
-            actions: [
-              TextButton(
-                  onPressed: () {
-                    Navigator.of(context, rootNavigator: true).pop();
-                  },
-                  child: const Text('Close')),
-            ],
-            title: Text(message),
-          ));
-        });
-  }
 
   Future<void> signUpWithPassword() async {
-    if (passwordController.text != confirmPasswordController.text) {
-      showDialogMessage('Passwords do not match.');
+    if (usernameController.text == '' ||
+        emailController.text == '' ||
+        passwordController.text == '' ||
+        confirmPasswordController.text == '') {
+      showMessageDialog(context: context, message: 'Missing fields, please fill out all of the text fields.');
+    } else if (passwordController.text != confirmPasswordController.text) {
+      showMessageDialog(context: context, message: 'Passwords do not match.');
     } else {
-      showDialog(
-          context: context,
-          builder: (context) {
-            return const Center(child: CircularProgressIndicator());
-          });
+      showProgressionDialog(context: context);
       try {
         await FirebaseAuth.instance
             .createUserWithEmailAndPassword(email: emailController.text, password: passwordController.text);
-        Navigator.of(context, rootNavigator: true).pop();
+        await FirebaseAuth.instance.currentUser!.updateDisplayName(usernameController.text);
         await FirebaseAuth.instance.currentUser?.sendEmailVerification();
-        showDialogMessage('A verification email has been sent to: ${emailController.text}');
         await FirebaseAuth.instance.signOut();
         Navigator.of(context, rootNavigator: true).pop();
+        Navigator.pop(context);
+        showMessageDialog(context: context, message: 'A verification email has been sent to: ${emailController.text}');
       } on FirebaseAuthException catch (exception) {
         Navigator.of(context, rootNavigator: true).pop();
         switch (exception.code) {
           case 'weak-password':
-            showDialogMessage('Please choose a stronger password.');
-          case 'channel-error':
-            showDialogMessage('Missing credentials, please provide both email and password.');
+            showMessageDialog(context: context, message: 'Please choose a stronger password.');
           case 'email-already-in-use':
-            showDialogMessage('An account already exists with this email address.');
+            showMessageDialog(context: context, message: 'An account already exists with this email address.');
           case 'invalid-email':
-            showDialogMessage('Invalid email, please check your email and try again.');
+            showMessageDialog(context: context, message: 'Invalid email, please check your email and try again.');
           case 'too-many-requests':
-            showDialogMessage('A problem occurred, Please try again later.');
+            showMessageDialog(context: context, message: 'A problem occurred, Please try again later.');
           default:
-            showDialogMessage('Sorry, an error has occurred.');
+            showMessageDialog(context: context, message: 'Sorry, something went wrong.');
         }
       }
     }
@@ -79,9 +63,15 @@ class SignUpPageState extends State<SignUpPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const SizedBox(height: 75),
                   const FlutterLogo(size: 100),
                   const SizedBox(height: 50),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                    child: TextField(
+                      controller: usernameController,
+                      decoration: const InputDecoration(hintText: 'Username'),
+                    ),
+                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                     child: TextField(
@@ -123,9 +113,13 @@ class SignUpPageState extends State<SignUpPage> {
                       const SizedBox(width: 5),
                       GestureDetector(
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => const SignInPage()));
+                            Navigator.pop(context);
                           },
-                          child: const Text('Sign in', style: TextStyle(decoration: TextDecoration.underline)))
+                          child: Text('Sign in',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                color: Theme.of(context).colorScheme.primary,
+                              )))
                     ],
                   )
                 ],
