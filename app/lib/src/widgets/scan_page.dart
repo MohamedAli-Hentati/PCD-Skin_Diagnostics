@@ -1,8 +1,13 @@
-import 'package:app/src/components/dialog_components.dart';
-import 'package:camera/camera.dart';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:app/src/widgets/result_page.dart';
 import 'package:app/src/widgets/gallery_page.dart';
+import 'package:app/src/components/dialog_components.dart';
+import 'package:camera/camera.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 
 class ScanPage extends StatefulWidget {
   final CameraDescription camera;
@@ -15,6 +20,26 @@ class ScanPageState extends State<ScanPage> {
   final channel = const MethodChannel('app.android/channel');
   late Future<void> initializeControllerFuture;
   late CameraController controller;
+
+  Future<String?> scanImage(String imagePath) async {
+    try {
+      final result = channel.invokeMethod<String>('scanImage', imagePath);
+      if (FirebaseAuth.instance.currentUser != null) {
+        final date = DateTime.now();
+        final reference = FirebaseStorage.instance.ref('users/${FirebaseAuth.instance.currentUser!.uid}/$date.png');
+        await reference .putFile(File(imagePath));
+        FirebaseFirestore.instance.collection('history').add({
+          'uid': FirebaseAuth.instance.currentUser!.uid,
+          'image_url': await reference.getDownloadURL(),
+          'result': await result,
+          'date': date
+        });
+      }
+      return result;
+    } on Exception {
+      return null;
+    }
+  }
 
   @override
   void initState() {
@@ -99,9 +124,9 @@ class ScanPageState extends State<ScanPage> {
                                   context, MaterialPageRoute(builder: (context) => const GalleryPage()));
                               if (imagePath != null) {
                                 showProgressionDialog(context: context);
-                                final result = await channel.invokeMethod<String>('scanImage', imagePath);
+                                final result = await scanImage(imagePath);
                                 Navigator.of(context, rootNavigator: true).pop();
-                                showMessageDialog(context: context, message: result);
+                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => ResultPage(result: result!)));
                               }
                             } on Exception {
                               Navigator.of(context, rootNavigator: true).pop();
@@ -115,9 +140,9 @@ class ScanPageState extends State<ScanPage> {
                               showProgressionDialog(context: context);
                               await initializeControllerFuture;
                               final image = await controller.takePicture();
-                              final result = await channel.invokeMethod<String>('scanImage', image.path);
+                              final result = await scanImage(image.path);
                               Navigator.of(context, rootNavigator: true).pop();
-                              showMessageDialog(context: context, message: result);
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => ResultPage(result: result!)));
                             } on Exception {
                               Navigator.of(context, rootNavigator: true).pop();
                               showMessageDialog(context: context, message: 'Sorry, something went wrong.');

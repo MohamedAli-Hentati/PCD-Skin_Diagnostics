@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:app/src/widgets/sign_in_page.dart';
 import 'package:app/src/components/dialog_components.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 

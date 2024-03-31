@@ -40,8 +40,7 @@ class SignInPageState extends State<SignInPage> {
           return const Center(child: CircularProgressIndicator());
         });
     try {
-      await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: emailController.text, password: passwordController.text);
+      await FirebaseAuth.instance.signInWithEmailAndPassword(email: emailController.text, password: passwordController.text);
       Navigator.of(context, rootNavigator: true).pop();
       if (!FirebaseAuth.instance.currentUser!.emailVerified) {
         User? user = FirebaseAuth.instance.currentUser;
@@ -154,8 +153,7 @@ class SignInPageState extends State<SignInPage> {
                       children: [
                         GestureDetector(
                             onTap: () {
-                              Navigator.of(context)
-                                  .push(MaterialPageRoute(builder: (context) => const ForgotPasswordPage()));
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ForgotPasswordPage()));
                             },
                             child: Text('Forgot password?',
                                 style: TextStyle(
@@ -195,9 +193,7 @@ class SignInPageState extends State<SignInPage> {
                         child: Container(
                           padding: const EdgeInsets.all(15),
                           decoration: BoxDecoration(
-                              color: Colors.grey[200],
-                              boxShadow: const [BoxShadow(blurRadius: 5)],
-                              borderRadius: BorderRadius.circular(5)),
+                              color: Colors.grey[200], boxShadow: const [BoxShadow(blurRadius: 5)], borderRadius: BorderRadius.circular(5)),
                           child: Image.asset(
                             'lib/assets/images/google.png',
                             height: 40,
@@ -213,9 +209,7 @@ class SignInPageState extends State<SignInPage> {
                         child: Container(
                           padding: const EdgeInsets.all(15),
                           decoration: BoxDecoration(
-                              color: Colors.grey[200],
-                              boxShadow: const [BoxShadow(blurRadius: 5)],
-                              borderRadius: BorderRadius.circular(5)),
+                              color: Colors.grey[200], boxShadow: const [BoxShadow(blurRadius: 5)], borderRadius: BorderRadius.circular(5)),
                           child: Image.asset(
                             'lib/assets/images/facebook.png',
                             height: 40,

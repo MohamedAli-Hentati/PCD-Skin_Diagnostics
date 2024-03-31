@@ -7,7 +7,10 @@ import 'package:app/src/utils/color_utils.dart';
 import 'package:app/src/components/dialog_components.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -18,6 +21,107 @@ class ProfilePage extends StatefulWidget {
 
 class ProfilePageState extends State<ProfilePage> {
   dynamic profileImage;
+
+  void deleteAccount() {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: const Text('Are you sure you want to delete your account?'),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text('No')),
+              TextButton(
+                  onPressed: () async {
+                    switch (FirebaseAuth.instance.currentUser!.providerData[0].providerId) {
+                      case 'password':
+                        Navigator.pop(context);
+                        showDialog(
+                            barrierDismissible: false,
+                            context: context,
+                            builder: (context) {
+                              final passwordController = TextEditingController();
+                              return AlertDialog(
+                                title: const Text('Enter your password:'),
+                                content: TextField(
+                                  controller: passwordController,
+                                ),
+                                actions: [
+                                  TextButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: const Text('Cancel')),
+                                  TextButton(
+                                      onPressed: () async {
+                                        try {
+                                          await FirebaseAuth.instance.currentUser!.reauthenticateWithCredential(EmailAuthProvider.credential(
+                                              email: FirebaseAuth.instance.currentUser!.email!, password: passwordController.text));
+                                          await deleteUserData();
+                                          await FirebaseAuth.instance.currentUser?.delete();
+                                          Navigator.pop(context);
+                                          showMessageDialog(context: context, message: 'Your account has been deleted.');
+                                        } on Exception {
+                                          Navigator.pop(context);
+                                          showMessageDialog(context: context, message: 'Wrong password.');
+                                        }
+                                      },
+                                      child: const Text('Confirm'))
+                                ],
+                              );
+                            });
+                      case 'google.com':
+                        try {
+                          final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+                          final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+                          final credential = GoogleAuthProvider.credential(
+                            accessToken: googleAuth?.accessToken,
+                            idToken: googleAuth?.idToken,
+                          );
+                          await FirebaseAuth.instance.currentUser!.reauthenticateWithCredential(credential);
+                          await deleteUserData();
+                          await FirebaseAuth.instance.currentUser?.delete();
+                          Navigator.pop(context);
+                          showMessageDialog(context: context, message: 'Your account has been deleted.');
+                        } on Exception {
+                          Navigator.pop(context);
+                          showMessageDialog(context: context, message: 'Sorry, something went wrong.');
+                        }
+                      case 'facebook.com':
+                        try {
+                          final LoginResult loginResult = await FacebookAuth.instance.login();
+                          final OAuthCredential credential = FacebookAuthProvider.credential(loginResult.accessToken!.token);
+                          await FirebaseAuth.instance.currentUser!.reauthenticateWithCredential(credential);
+                          await deleteUserData();
+                          await FirebaseAuth.instance.currentUser?.delete();
+                          Navigator.pop(context);
+                          showMessageDialog(context: context, message: 'Your account has been deleted.');
+                        } on Exception {
+                          Navigator.pop(context);
+                          showMessageDialog(context: context, message: 'Sorry, something went wrong.');
+                        }
+                    }
+                  },
+                  child: const Text('Yes'))
+            ],
+          );
+        });
+  }
+
+  Future<void> deleteUserData() async {
+    final query = await FirebaseFirestore.instance.collection('history').where('uid', isEqualTo: FirebaseAuth.instance.currentUser!.uid).get();
+    final listResult = await FirebaseStorage.instance.ref('users/${FirebaseAuth.instance.currentUser!.uid}').listAll();
+    for (var item in listResult.items) {
+      item.delete();
+    }
+    for (var document in query.docs) {
+      document.reference.delete();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     if (FirebaseAuth.instance.currentUser!.photoURL == null) {
@@ -209,33 +313,7 @@ class ProfilePageState extends State<ProfilePage> {
                         leading: const Icon(Icons.remove_circle_outline),
                         trailing: const Icon(Icons.keyboard_arrow_right_outlined),
                         title: const Text('Delete account'),
-                        onTap: () {
-                          showDialog(
-                              context: context,
-                              builder: (context) {
-                                return AlertDialog(
-                                  title: const Text('Are you sure you want to delete your account?'),
-                                  actions: [
-                                    TextButton(
-                                        onPressed: () {
-                                          Navigator.pop(context);
-                                        },
-                                        child: const Text('No')),
-                                    TextButton(
-                                        onPressed: () async {
-                                          final reference = FirebaseStorage.instance.ref();
-                                          final listResult = await reference.child('users/${FirebaseAuth.instance.currentUser!.uid}').listAll();
-                                          for (var item in listResult.items) {
-                                            item.delete();
-                                          }
-                                          FirebaseAuth.instance.currentUser?.delete();
-                                          Navigator.pop(context);
-                                        },
-                                        child: const Text('Yes'))
-                                  ],
-                                );
-                              });
-                        },
+                        onTap: deleteAccount,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50),
                         )),
