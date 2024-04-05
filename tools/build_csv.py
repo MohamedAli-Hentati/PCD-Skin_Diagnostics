@@ -2,30 +2,42 @@ import os
 import random as r
 import pandas as pd
 
-min_picture_number = 200
+MAX_LABELS = 12
+
 os.chdir('../dataset/')
 
-pathology_id = 0
-train_csv_dict = {'md5': [], 'pathology': [], 'pathology_id': [], 'path': []}
-val_csv_dict = {'md5': [], 'pathology': [], 'pathology_id': [], 'path': []}
-for pathology in os.listdir():
-    path = os.path.curdir + '/' + pathology
-    if len(os.listdir(path)) > min_picture_number:
-        for md5 in os.listdir(path):
-            if r.randint(0, 4) == 2:
-                val_csv_dict['md5'].append(md5)
-                val_csv_dict['pathology'].append(pathology)
-                val_csv_dict['pathology_id'].append(pathology_id)
-                val_csv_dict['path'].append('./dataset/' + pathology + '/' + md5)
-            else:
-                train_csv_dict['md5'].append(md5)
-                train_csv_dict['pathology'].append(pathology)
-                train_csv_dict['pathology_id'].append(pathology_id)
-                train_csv_dict['path'].append('./dataset/' + pathology + '/' + md5)
-        pathology_id += 1
+train_csv_dict = {'filename': [], 'label': [], 'label_id': [], 'path': []}
+validation_csv_dict = {'filename': [], 'label': [], 'label_id': [], 'path': []}
+
+label_size = []
+for label in os.listdir(os.curdir):
+    label_size.append((len(os.listdir(label)), label))
+labels = [data[1] for data in sorted(label_size, reverse=True)]
+labels = labels[:MAX_LABELS]
+
+label_id = 0
+for label in labels:
+    path = f'{os.path.curdir}/{label}'
+    files = os.listdir(path)
+    r.shuffle(files)
+    split_point = int(len(files) * 0.75)
+    train_files = files[:split_point]
+    validation_files = files[split_point:]
+    for filename in train_files:
+        train_csv_dict['filename'].append(filename)
+        train_csv_dict['label'].append(label)
+        train_csv_dict['label_id'].append(label_id)
+        train_csv_dict['path'].append(f'./dataset/{label}/{filename}')
+    for filename in validation_files:
+        validation_csv_dict['filename'].append(filename)
+        validation_csv_dict['label'].append(label)
+        validation_csv_dict['label_id'].append(label_id)
+        validation_csv_dict['path'].append(f'./dataset/{label}/{filename}')
+    label_id += 1
 
 os.chdir('..')
+
 train_df = pd.DataFrame.from_dict(train_csv_dict)
-val_df = pd.DataFrame.from_dict(val_csv_dict)
+validation_df = pd.DataFrame.from_dict(validation_csv_dict)
 train_df.to_csv("train.csv")
-val_df.to_csv("val.csv")
+validation_df.to_csv("validation.csv")

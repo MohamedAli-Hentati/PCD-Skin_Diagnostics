@@ -1,47 +1,59 @@
 import os
+import csv
 import requests
-import threading
+from concurrent.futures import ThreadPoolExecutor
 
-def download(name, label, url):
-    connection = requests.get(url, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0'})
-    if connection.status_code != 200:
-        file = open('bad_urls.txt', 'w+')
-        file.writeline(url)
-    else:
-        if not os.path.exists('dataset/{}'.format(label)):
-            os.makedirs('dataset/{}'.format(label))
-        file = open('dataset/{}/{}.png'.format(label, name), 'wb')
-        file.write(connection.content)
-    file.close()
-    connection.close()
+# Define the number of threads (max 12)
+NUM_THREADS = 12
 
-file = open('fitzpatrick17k.csv')
-lines = file.readlines()
-file.close()
+# Define the output directory
+OUTPUT_DIR = '../dataset'
 
-threads = []
-max_threads = 12
-line_number = 1
-images_downloaded = 0
-for line in lines[1:]:
-    data = line[:-1].split(',')
-    name = data[0]
-    label = data[3]
-    url = data[7]
-    if url == '' or name == '' or label == '':
-        file = open('bad_lines.txt', 'w+')
-        file.writeline(line_number)
-        file.close()
-    else:
-        if len(threads) == max_threads:
-            threads.pop(0).join()
-            images_downloaded += 1
-            print('Images downloaded: {}/{}'.format(images_downloaded, len(lines) - 1))
-        thread = threading.Thread(target=download, args=(name, label, url, ))
-        threads.append(thread)
-        thread.start()
-        
-while len(threads) != 0:
-    threads.pop(0).join()
-    images_downloaded += 1
-    print('Images downloaded: {}/{}'.format(images_downloaded, len(lines) - 1))
+# Create the output directory if it doesn't exist
+if not os.path.exists(OUTPUT_DIR):
+    os.makedirs(OUTPUT_DIR)
+
+def download_image(label, url, filename, extension):
+    try:
+        # Create a folder for the label if it doesn't exist
+        label_dir = os.path.join(OUTPUT_DIR, label)
+        if not os.path.exists(label_dir):
+            os.makedirs(label_dir)
+
+        # Check if the url is empty
+        if url == '':
+            print('Error downloading: URL is null')
+            return
+
+        # Get the image's full path
+        image_path = os.path.join(label_dir, filename + extension)
+
+        # Check if the file already exists
+        if os.path.exists(image_path):
+            return
+
+        # Get the image content
+        response = requests.get(url, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0'})
+        if response.status_code == 200:
+            # Save the image
+            with open(image_path, 'wb') as f:
+                f.write(response.content)
+        else:
+            print(f'Error downloading {url}: (Status code: {response.status_code})')
+    except Exception as e:
+        print(f'Error downloading {url}: {e}')
+
+def download_dataset(csv_file):
+    with open(csv_file, 'r') as csvfile:
+        reader = csv.DictReader(csvfile)
+        rows = list(reader)
+
+    with ThreadPoolExecutor(max_workers=NUM_THREADS) as executor:
+        for row in rows:
+            label = row['label']
+            url = row['url']
+            filename = row['md5hash']
+            extension = '.jpg'
+            executor.submit(download_image, label, url, filename, extension)
+   
+download_dataset('../fitzpatrick17k.csv')
