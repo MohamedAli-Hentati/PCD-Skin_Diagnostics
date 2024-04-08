@@ -23,7 +23,7 @@ class ScanPageState extends State<ScanPage> {
 
   Future<String?> scanImage(String imagePath) async {
     try {
-      final result = channel.invokeMethod<String>('scanImage', imagePath);
+      final result = channel.invokeMethod<String?>('scanImage', imagePath);
       if (FirebaseAuth.instance.currentUser != null) {
         final date = DateTime.now();
         final reference = FirebaseStorage.instance.ref('users/${FirebaseAuth.instance.currentUser!.uid}/$date.png');

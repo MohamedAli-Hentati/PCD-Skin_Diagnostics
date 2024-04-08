@@ -1,9 +1,9 @@
 # python libraries
+import datetime
 import itertools
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from PIL import Image
 from tqdm import tqdm
 
 # pytorch libraries
@@ -20,6 +20,9 @@ from sklearn.metrics import confusion_matrix
 
 # define the device
 device = torch.device('cuda')
+
+# get the current time
+startup_time = datetime.datetime.now().strftime('%Y-%m-%d-%H-%M')
 
 # define a pytorch dataloader for our dataset
 class CustomDataset(Dataset):
@@ -73,12 +76,12 @@ def compute_images_std_mean(paths):
     return torch.std_mean(images, dim=(1, 2, 3))
 
 def initialize_model(num_classes, feature_extract=False):
-    model = models.mobilenet_v2(weights=torchvision.models.MobileNet_V2_Weights.DEFAULT)
+    model = models.mobilenet_v3_large(weights=torchvision.models.MobileNet_V3_Large_Weights.IMAGENET1K_V2)
     if feature_extract:
         for param in model.parameters():
             param.requires_grad = False
-    num_ftrs = model.classifier[1].in_features
-    model.classifier[1] = nn.Linear(num_ftrs, num_classes)
+    num_ftrs = model.classifier[3].in_features
+    model.classifier[3] = nn.Linear(num_ftrs, num_classes)
     input_size = 224
     return model, input_size
 
@@ -164,7 +167,7 @@ if __name__ == "__main__":
                                                       transforms.Normalize(norm_mean, norm_std)])
     validation_transform = None
     # define the training set
-    multiplier = 0.25
+    multiplier = 0.125
     training_set = CustomDataset(train_dataframe, static_transform=train_static_transform, transform=train_transform)
     train_loader = DataLoader(training_set, batch_size=int(32 * multiplier), shuffle=True, num_workers=0)
     # same for the validation set:
@@ -174,7 +177,7 @@ if __name__ == "__main__":
     optimizer = optim.Adam(model.parameters(), lr=1e-3 * multiplier)
     criterion = nn.CrossEntropyLoss().to(device)
 
-    epoch_num = 250
+    epoch_num = 350
     best_val_acc = 0
     total_loss_train, total_acc_train = [], []
     total_loss_val, total_acc_val = [], []
@@ -188,7 +191,8 @@ if __name__ == "__main__":
         total_acc_val.append(acc_val)
         if acc_val > best_val_acc:
             best_val_acc = acc_val
-            torch.save(model, 'models/mobilenet_v2.pth')
+            if best_val_acc > 0.8:
+                torch.save(model, f'models/model_{startup_time}_{int(best_val_acc * 100)}.pth')
             print('******************************************************************************************************************')
             print(f'best record: [epoch {epoch}], [val loss {loss_val}], [val acc {acc_val}]')
             print('******************************************************************************************************************')
@@ -204,36 +208,37 @@ if __name__ == "__main__":
     plt.show()
 
     # best model evaluation
-    model = torch.load('models/mobilenet_v2.pth')
-    model.eval()
-    y_label = []
-    y_predict = []
-    with torch.no_grad():
-        for i, data in enumerate(val_loader):
-            images, labels = data
-            N = images.size(0)
-            images = Variable(images).to(device)
-            outputs = model(images)
-            prediction = outputs.max(1, keepdim=True)[1]
-            y_label.extend(labels.cpu().numpy())
-            y_predict.extend(np.squeeze(prediction.cpu().numpy().T))
+    if best_val_acc > 0.8:
+        model = torch.load(f'models/model-{startup_time}-{int(best_val_acc * 100)}.pth')
+        model.eval()
+        y_label = []
+        y_predict = []
+        with torch.no_grad():
+            for i, data in enumerate(val_loader):
+                images, labels = data
+                N = images.size(0)
+                images = Variable(images).to(device)
+                outputs = model(images)
+                prediction = outputs.max(1, keepdim=True)[1]
+                y_label.extend(labels.cpu().numpy())
+                y_predict.extend(np.squeeze(prediction.cpu().numpy().T))
 
-    # compute the confusion matrix
-    confusion_mtx = confusion_matrix(y_label, y_predict)
-    # plot the confusion matrix
-    label_counts = validation_dataframe['label'].value_counts()
-    labels = label_counts.index.tolist()
-    plot_labels = []
-    for name in labels:
-        abbreviation = ''
-        words = name.split()
-        for word in words:
-            abbreviation += word[0]
-        if abbreviation in plot_labels:
-            abbreviation.capitalize()
-        if abbreviation in plot_labels:
-            abbreviation = words[0][0:2] + abbreviation[1:]
-        if abbreviation in plot_labels:
-            abbreviation.capitalize()
-        plot_labels.append(abbreviation)
-    plot_confusion_matrix(confusion_mtx, plot_labels)
+        # compute the confusion matrix
+        confusion_mtx = confusion_matrix(y_label, y_predict)
+        # plot the confusion matrix
+        label_counts = validation_dataframe['label'].value_counts()
+        labels = label_counts.index.tolist()
+        plot_labels = []
+        for name in labels:
+            abbreviation = ''
+            words = name.split()
+            for word in words:
+                abbreviation += word[0]
+            if abbreviation in plot_labels:
+                abbreviation.capitalize()
+            if abbreviation in plot_labels:
+                abbreviation = words[0][0:2] + abbreviation[1:]
+            if abbreviation in plot_labels:
+                abbreviation.capitalize()
+            plot_labels.append(abbreviation)
+        plot_confusion_matrix(confusion_mtx, plot_labels)

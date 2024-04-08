@@ -3,53 +3,53 @@ package com.example.app
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import androidx.annotation.NonNull
 import androidx.core.graphics.scale
+import io.flutter.Log
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
+import java.io.*
 import org.pytorch.*
 import org.pytorch.torchvision.*
-import java.io.*
-
-
 class MainActivity: FlutterActivity() {
-    private val CHANNEL = "app.android/channel";
-    @Throws(IOException::class)
-    fun assetFilePath(context: Context, assetName: String?): String? {
+    private val channel = "app.android/channel";
+    fun assetFilePath(context: Context, assetName: String): String? {
         val file = File(context.filesDir, assetName)
         if (file.exists() && file.length() > 0) {
             return file.absolutePath
         }
-        context.assets.open(assetName!!).use { `is` ->
-            FileOutputStream(file).use { os ->
-                val buffer = ByteArray(4 * 1024)
-                var read: Int
-                while (`is`.read(buffer).also { read = it } != -1) {
-                    os.write(buffer, 0, read)
+        try {
+            context.assets.open(assetName).use { `is` ->
+                FileOutputStream(file).use { os ->
+                    val buffer = ByteArray(4 * 1024)
+                    var read: Int
+                    while (`is`.read(buffer).also { read = it } != -1) {
+                        os.write(buffer, 0, read)
+                    }
+                    os.flush()
                 }
-                os.flush()
+                return file.absolutePath
             }
-            return file.absolutePath
+        } catch (e: IOException) {
+            Log.e("N", "Error process asset $assetName to file path")
         }
+        return null
     }
-
-    override fun configureFlutterEngine(@NonNull flutterEngine: FlutterEngine) {
+    override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
-        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, CHANNEL).setMethodCallHandler {
-            call, result ->
+        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, channel).setMethodCallHandler { call, result ->
             if (call.method == "scanImage") {
                 try {
-                    val classesNames: Array<String> = arrayOf<String>("Acne", "Basal cell carcinoma", "Folliculitis", "Lupus erythematosus", "Pityriasis rubra pilaris", "Squamous cell carcinoma")
-                    val filepath = call.arguments as String
-                    val bitmap: Bitmap = BitmapFactory.decodeFile(filepath).scale(224, 224)
-                    val module: Module = Module.load(assetFilePath(this, "model.pt"));
-                    val normMean: FloatArray = floatArrayOf(0.6286657F, 0.46822867F, 0.41442943F)
-                    val normStd: FloatArray = floatArrayOf(0.21822813F, 0.19549523F, 0.20002359F)
-                    val inputTensor: Tensor = TensorImageUtils.bitmapToFloat32Tensor(bitmap, normMean, normStd, MemoryFormat.CHANNELS_LAST);
-                    val outputTensor: Tensor = module.forward(IValue.from(inputTensor)).toTensor();
-                    val scores: FloatArray = outputTensor.getDataAsFloatArray();
-                    var maxScore = 0F;
+                    val labels: Array<String> = arrayOf("Basal Cell Carcinoma", "Melanoma", "Acne", "Folliculitis", "Pityriasis Rubra Pilaris", "Erythema", "Squamous Cell Carcinoma", "Porokeratosis Actinic", "Pityriasis Rosea", "Hailey Hailey Disease", "Granuloma Annulare", "Prurigo Nodularis")
+                    val imagePath = call.arguments as String
+                    val image: Bitmap = BitmapFactory.decodeFile(imagePath).scale(224, 224)
+                    val model: Module = LiteModuleLoader.load(MainActivity().assetFilePath(getApplicationContext(), "model.ptl"))
+                    val normMean: FloatArray = floatArrayOf(0.66386014F, 0.4962325F, 0.42691633F)
+                    val normStd: FloatArray = floatArrayOf(0.18904826F, 0.1738958F, 0.17939915F)
+                    var inputTensor: Tensor = TensorImageUtils.bitmapToFloat32Tensor(image, normMean, normStd, MemoryFormat.CHANNELS_LAST)
+                    val outputTensor: Tensor = model.forward(IValue.from(inputTensor)).toTensor()
+                    val scores: FloatArray = outputTensor.dataAsFloatArray
+                    var maxScore = -Float.MAX_VALUE
                     var maxScoreIdx: Int = -1;
                     for (i in 0 until scores.count()) {
                         if (scores[i] > maxScore) {
@@ -57,8 +57,15 @@ class MainActivity: FlutterActivity() {
                             maxScoreIdx = i
                         }
                     }
-                    val className: String = classesNames[maxScoreIdx]
-                    result.success(className);
+                    var sumExp = 0.0f
+                    for (score in scores) {
+                        sumExp += Math.exp(score.toDouble()).toFloat()
+                    }
+                    val probabilities = FloatArray(scores.size)
+                    for (i in scores.indices) {
+                        probabilities[i] = Math.exp(scores[i].toDouble()).toFloat() / sumExp
+                    }
+                    result.success(labels[maxScoreIdx] + " " + (probabilities[maxScoreIdx] * 100).toString() + "%")
                 } catch (exception: Exception) {
                     result.error(exception.toString(), null, null)
                 }
