@@ -6,11 +6,10 @@ class ResultPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Scaffold(
+    return Scaffold(
             appBar: AppBar(
               title: const Text('Result'),
             ),
-            body: Center(child: Text('Result: $result'))));
+            body: Center(child: Text('Result: $result')));
   }
 }

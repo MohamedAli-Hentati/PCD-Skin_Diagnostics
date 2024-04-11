@@ -5,6 +5,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
+import '../utils/color_utils.dart';
+
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
   @override
@@ -40,7 +42,8 @@ class SignInPageState extends State<SignInPage> {
           return const Center(child: CircularProgressIndicator());
         });
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(email: emailController.text, password: passwordController.text);
+      await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: emailController.text, password: passwordController.text);
       Navigator.of(context, rootNavigator: true).pop();
       if (!FirebaseAuth.instance.currentUser!.emailVerified) {
         User? user = FirebaseAuth.instance.currentUser;
@@ -118,128 +121,132 @@ class SignInPageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text('Sign In')),
-        body: SafeArea(
-          child: Center(
-            child: SingleChildScrollView(
-              child: Column(
+      appBar: AppBar(title: const Text('Sign In')),
+      body: Center(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const FlutterLogo(size: 100),
+              const Padding(
+                padding: EdgeInsets.symmetric(vertical: 50),
+                child: Text('It appears that you are signed off'),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                child: TextField(
+                  controller: emailController,
+                  decoration: const InputDecoration(hintText: 'Email'),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                child: TextField(
+                  controller: passwordController,
+                  decoration: const InputDecoration(hintText: 'Password'),
+                  obscureText: true,
+                ),
+              ),
+              const SizedBox(height: 10),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    GestureDetector(
+                        onTap: () {
+                          Navigator.of(context)
+                              .push(MaterialPageRoute(builder: (context) => const ForgotPasswordPage()));
+                        },
+                        child: Text('Forgot password?',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Theme.of(context).colorScheme.primary,
+                            ))),
+                  ],
+                ),
+              ),
+              Center(
+                  child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                child: TextButton(
+                  style: const ButtonStyle(),
+                  onPressed: signInWithPassword,
+                  child: const Text('Sign in'),
+                ),
+              )),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                child: Row(
+                  children: [
+                    Expanded(child: Divider(thickness: 2)),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      child: Text('Or continue with'),
+                    ),
+                    Expanded(child: Divider(thickness: 2)),
+                  ],
+                ),
+              ),
+              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: GestureDetector(
+                    onTap: signInWithGoogle,
+                    child: Container(
+                      padding: const EdgeInsets.all(15),
+                      decoration: BoxDecoration(
+                          color: darken(Theme.of(context).colorScheme.surface, percentage: 0.010),
+                          boxShadow: [BoxShadow(color: Colors.black54, blurRadius: 10)],
+                          borderRadius: BorderRadius.circular(5)),
+                      child: Image.asset(
+                        'lib/assets/images/google.png',
+                        height: 40,
+                        width: 40,
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: GestureDetector(
+                    onTap: signInWithFacebook,
+                    child: Container(
+                      padding: const EdgeInsets.all(15),
+                      decoration: BoxDecoration(
+                          color: darken(Theme.of(context).colorScheme.surface, percentage: 0.010),
+                          boxShadow: [BoxShadow(color: Colors.black54, blurRadius: 10)],
+                          borderRadius: BorderRadius.circular(5)),
+                      child: Image.asset(
+                        'lib/assets/images/facebook.png',
+                        height: 40,
+                        width: 40,
+                      ),
+                    ),
+                  ),
+                ),
+              ]),
+              const SizedBox(height: 20),
+              Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const FlutterLogo(size: 100),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 50),
-                    child: Text('It appears that you are signed off'),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-                    child: TextField(
-                      controller: emailController,
-                      decoration: const InputDecoration(hintText: 'Email'),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-                    child: TextField(
-                      controller: passwordController,
-                      decoration: const InputDecoration(hintText: 'Password'),
-                      obscureText: true,
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        GestureDetector(
-                            onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ForgotPasswordPage()));
-                            },
-                            child: Text('Forgot password?',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  color: Theme.of(context).colorScheme.primary,
-                                ))),
-                      ],
-                    ),
-                  ),
-                  Center(
-                      child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    child: TextButton(
-                      style: const ButtonStyle(),
-                      onPressed: signInWithPassword,
-                      child: const Text('Sign in'),
-                    ),
-                  )),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-                    child: Row(
-                      children: [
-                        Expanded(child: Divider(thickness: 2)),
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 10),
-                          child: Text('Or continue with'),
-                        ),
-                        Expanded(child: Divider(thickness: 2)),
-                      ],
-                    ),
-                  ),
-                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                    Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: GestureDetector(
-                        onTap: signInWithGoogle,
-                        child: Container(
-                          padding: const EdgeInsets.all(15),
-                          decoration: BoxDecoration(
-                              color: Colors.grey[200], boxShadow: const [BoxShadow(blurRadius: 5)], borderRadius: BorderRadius.circular(5)),
-                          child: Image.asset(
-                            'lib/assets/images/google.png',
-                            height: 40,
-                            width: 40,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: GestureDetector(
-                        onTap: signInWithFacebook,
-                        child: Container(
-                          padding: const EdgeInsets.all(15),
-                          decoration: BoxDecoration(
-                              color: Colors.grey[200], boxShadow: const [BoxShadow(blurRadius: 5)], borderRadius: BorderRadius.circular(5)),
-                          child: Image.asset(
-                            'lib/assets/images/facebook.png',
-                            height: 40,
-                            width: 40,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ]),
-                  const SizedBox(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text("Don't have an account?"),
-                      const SizedBox(width: 5),
-                      GestureDetector(
-                          onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => const SignUpPage()));
-                          },
-                          child: Text('Sign up!',
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                color: Theme.of(context).colorScheme.primary,
-                              )))
-                    ],
-                  )
+                  const Text("Don't have an account?"),
+                  const SizedBox(width: 5),
+                  GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => const SignUpPage()));
+                      },
+                      child: Text('Sign up!',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            color: Theme.of(context).colorScheme.primary,
+                          )))
                 ],
-              ),
-            ),
+              )
+            ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }

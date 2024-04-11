@@ -25,7 +25,14 @@ class Application extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Skin diagnostics application',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFF00B4D8),
+          primary: const Color(0xFF00B4D8),
+          secondary: const Color(0xFF90E0EF),
+          tertiary: const Color(0xFF0077B6),
+          background: Colors.white,
+          surface: Colors.white,
+        ),
         useMaterial3: true,
       ),
       home: const Navigation(),
@@ -41,17 +48,13 @@ class Navigation extends StatefulWidget {
 }
 
 class NavigationState extends State<Navigation> {
-  int currentPageIndex = 2;
+  int currentPageIndex = 0;
   Map<int, GlobalKey<NavigatorState>> navigatorKeys = {
     0: GlobalKey<NavigatorState>(),
     1: GlobalKey<NavigatorState>(),
     2: GlobalKey<NavigatorState>(),
   };
-  final pages = [
-    const HomePage(),
-    ScanPage(camera: camera),
-    const ProfileWrapperPage()
-  ];
+  final pages = [const HomePage(), ScanPage(camera: camera), const ProfileWrapperPage()];
 
   @override
   Widget build(BuildContext context) {
@@ -64,18 +67,20 @@ class NavigationState extends State<Navigation> {
         },
         indicatorColor: Theme.of(context).primaryColor,
         selectedIndex: currentPageIndex,
-        destinations: const <Widget>[
+        destinations: const [
           NavigationDestination(
             selectedIcon: Icon(Icons.home),
             icon: Icon(Icons.home_outlined),
             label: 'Home',
           ),
           NavigationDestination(
-            icon: Icon(Icons.search),
+            selectedIcon: Icon(Icons.search),
+            icon: Icon(Icons.search_outlined),
             label: 'Scan',
           ),
           NavigationDestination(
-            icon: Icon(Icons.account_circle),
+            selectedIcon: Icon(Icons.account_circle),
+            icon: Icon(Icons.account_circle_outlined),
             label: 'Profile',
           ),
         ],

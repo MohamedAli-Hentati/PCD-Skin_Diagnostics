@@ -56,8 +56,7 @@ class SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: const Text('Sign Up')),
-        body: SafeArea(
-          child: Center(
+        body: Center(
             child: SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -125,6 +124,6 @@ class SignUpPageState extends State<SignUpPage> {
               ),
             ),
           ),
-        ));
+        );
   }
 }

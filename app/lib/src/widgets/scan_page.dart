@@ -9,6 +9,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
+import '../utils/color_utils.dart';
+
 class ScanPage extends StatefulWidget {
   final CameraDescription camera;
   const ScanPage({super.key, required this.camera});
@@ -21,24 +23,22 @@ class ScanPageState extends State<ScanPage> {
   late Future<void> initializeControllerFuture;
   late CameraController controller;
 
-  Future<String?> scanImage(String imagePath) async {
-    try {
-      final result = channel.invokeMethod<String?>('scanImage', imagePath);
-      if (FirebaseAuth.instance.currentUser != null) {
-        final date = DateTime.now();
-        final reference = FirebaseStorage.instance.ref('users/${FirebaseAuth.instance.currentUser!.uid}/$date.png');
-        await reference .putFile(File(imagePath));
-        FirebaseFirestore.instance.collection('history').add({
-          'uid': FirebaseAuth.instance.currentUser!.uid,
-          'image_url': await reference.getDownloadURL(),
-          'result': await result,
-          'date': date
-        });
-      }
-      return result;
-    } on Exception {
-      return null;
+  Future<(String, double)> scanImage(String imagePath) async {
+    final result = await channel.invokeMethod('scanImage', imagePath);
+    final label = result['label'] as String;
+    final confidence = result['confidence'] as double;
+    if (FirebaseAuth.instance.currentUser != null) {
+      final date = DateTime.now();
+      final reference = FirebaseStorage.instance.ref('users/${FirebaseAuth.instance.currentUser!.uid}/$date.png');
+      await reference.putFile(File(imagePath));
+      FirebaseFirestore.instance.collection('history').add({
+        'uid': FirebaseAuth.instance.currentUser!.uid,
+        'image_url': await reference.getDownloadURL(),
+        'result': result!['label'],
+        'date': date
+      });
     }
+    return (label, confidence);
   }
 
   @override
@@ -102,6 +102,7 @@ class ScanPageState extends State<ScanPage> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 30),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -113,42 +114,71 @@ class ScanPageState extends State<ScanPage> {
                           style: TextStyle(fontSize: 14)),
                     ],
                   ),
-                  const SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      TextButton(
-                          onPressed: () async {
-                            try {
-                              final imagePath = await Navigator.push<String?>(
-                                  context, MaterialPageRoute(builder: (context) => const GalleryPage()));
-                              if (imagePath != null) {
-                                showProgressionDialog(context: context);
-                                final result = await scanImage(imagePath);
-                                Navigator.of(context, rootNavigator: true).pop();
-                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => ResultPage(result: result!)));
-                              }
-                            } on Exception {
+                      ElevatedButton(
+                        style: ButtonStyle(overlayColor: MaterialStateProperty.resolveWith((states) {
+                          return darken(Theme.of(context).colorScheme.primary);
+                        }), backgroundColor: MaterialStateProperty.resolveWith((states) {
+                          return Theme.of(context).colorScheme.primary;
+                        }), elevation: MaterialStateProperty.resolveWith((states) {
+                          return 10;
+                        })),
+                        onPressed: () async {
+                          try {
+                            final imagePath = await Navigator.push<String?>(
+                                context, MaterialPageRoute(builder: (context) => const GalleryPage()));
+                            if (imagePath != null) {
+                              showProgressionDialog(context: context);
+                              final (label, confidence) = await scanImage(imagePath);
                               Navigator.of(context, rootNavigator: true).pop();
-                              showMessageDialog(context: context, message: 'Sorry, something went wrong.');
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => ResultPage(
+                                      result: '$label wth ${(confidence * 100).toStringAsFixed(2)}% certainty')));
                             }
-                          },
-                          child: const Text('Open')),
-                      TextButton(
+                          } on Exception {
+                            Navigator.of(context, rootNavigator: true).pop();
+                            showMessageDialog(context: context, message: 'Sorry, something went wrong.');
+                          }
+                        },
+                        child: const Text('Open',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600,
+                            )),
+                      ),
+                      const SizedBox(width: 25),
+                      ElevatedButton(
+                          style: ButtonStyle(overlayColor: MaterialStateProperty.resolveWith((states) {
+                            return darken(Theme.of(context).colorScheme.primary);
+                          }), backgroundColor: MaterialStateProperty.resolveWith((states) {
+                            return Theme.of(context).colorScheme.primary;
+                          }), elevation: MaterialStateProperty.resolveWith((states) {
+                            return 10;
+                          })),
                           onPressed: () async {
                             try {
                               showProgressionDialog(context: context);
                               await initializeControllerFuture;
                               final image = await controller.takePicture();
-                              final result = await scanImage(image.path);
+                              final (label, confidence) = await scanImage(image.path);
                               Navigator.of(context, rootNavigator: true).pop();
-                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => ResultPage(result: result!)));
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => ResultPage(
+                                      result: '$label wth ${(confidence * 100).toStringAsFixed(2)}% certainty')));
                             } on Exception {
                               Navigator.of(context, rootNavigator: true).pop();
                               showMessageDialog(context: context, message: 'Sorry, something went wrong.');
                             }
                           },
-                          child: const Text('Scan'))
+                          child: const Text('Scan',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 15,
+                                fontWeight: FontWeight.w600,
+                              )))
                     ],
                   )
                 ],

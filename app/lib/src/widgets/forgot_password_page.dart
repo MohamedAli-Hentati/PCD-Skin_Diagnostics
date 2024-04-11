@@ -57,39 +57,38 @@ class ForgotPasswordPageState extends State<ForgotPasswordPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text('Reset Password')),
-        body: SafeArea(
-          child: Center(
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const FlutterLogo(size: 100),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 50),
-                    child: Text('Send a password reset email:'),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-                    child: TextField(
-                      controller: emailController,
-                      decoration: const InputDecoration(hintText: 'Email'),
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  Center(
-                      child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    child: TextButton(
-                      style: const ButtonStyle(),
-                      onPressed: confirm,
-                      child: const Text('Send'),
-                    ),
-                  )),
-                ],
+      appBar: AppBar(title: const Text('Reset Password')),
+      body: Center(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const FlutterLogo(size: 100),
+              const Padding(
+                padding: EdgeInsets.symmetric(vertical: 50),
+                child: Text('Send a password reset email:'),
               ),
-            ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                child: TextField(
+                  controller: emailController,
+                  decoration: const InputDecoration(hintText: 'Email'),
+                ),
+              ),
+              const SizedBox(height: 10),
+              Center(
+                  child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                child: TextButton(
+                  style: const ButtonStyle(),
+                  onPressed: confirm,
+                  child: const Text('Send'),
+                ),
+              )),
+            ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
