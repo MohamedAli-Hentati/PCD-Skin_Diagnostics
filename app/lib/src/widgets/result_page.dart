@@ -48,8 +48,7 @@ class ResultPage extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Result'),
         ),
-        body: Column(children: [
-          const SizedBox(height: 50),
+        body: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly,children: [
           Center(
               child: Container(
             padding: const EdgeInsets.all(4),
@@ -68,7 +67,6 @@ class ResultPage extends StatelessWidget {
               ),
             ),
           )),
-          const SizedBox(height: 75),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 50),
             child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -107,21 +105,23 @@ class ResultPage extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(height: 35),
-              Card(
-                elevation: 2,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
+              Padding(
+                padding: const EdgeInsets.only(top: 15),
+                child: Card(
+                  elevation: 2,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: ListTile(
+                      tileColor: darken(Theme.of(context).colorScheme.surface, percentage: 0.010),
+                      leading: const Icon(Icons.feedback_outlined),
+                      trailing: const Icon(Icons.keyboard_arrow_right_outlined),
+                      title: const Text('Feedback'),
+                      onTap: feedback,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      )),
                 ),
-                child: ListTile(
-                    tileColor: darken(Theme.of(context).colorScheme.surface, percentage: 0.010),
-                    leading: const Icon(Icons.feedback_outlined),
-                    trailing: const Icon(Icons.keyboard_arrow_right_outlined),
-                    title: const Text('Feedback'),
-                    onTap: feedback,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    )),
               )
             ]),
           ),

@@ -129,7 +129,7 @@ class SignInPageState extends State<SignInPage> {
             children: [
               const FlutterLogo(size: 100),
               const Padding(
-                padding: EdgeInsets.symmetric(vertical: 50),
+                padding: EdgeInsets.symmetric(vertical: 25),
                 child: Text('It appears that you are signed off'),
               ),
               Padding(
@@ -197,7 +197,7 @@ class SignInPageState extends State<SignInPage> {
                       padding: const EdgeInsets.all(15),
                       decoration: BoxDecoration(
                           color: darken(Theme.of(context).colorScheme.surface, percentage: 0.010),
-                          boxShadow: [BoxShadow(color: Colors.black54, blurRadius: 10)],
+                          boxShadow: [BoxShadow(color: Colors.grey.shade600, blurRadius: 5)],
                           borderRadius: BorderRadius.circular(5)),
                       child: Image.asset(
                         'lib/assets/images/google.png',
@@ -215,7 +215,7 @@ class SignInPageState extends State<SignInPage> {
                       padding: const EdgeInsets.all(15),
                       decoration: BoxDecoration(
                           color: darken(Theme.of(context).colorScheme.surface, percentage: 0.010),
-                          boxShadow: [BoxShadow(color: Colors.black54, blurRadius: 10)],
+                          boxShadow: [BoxShadow(color: Colors.grey.shade600, blurRadius: 5)],
                           borderRadius: BorderRadius.circular(5)),
                       child: Image.asset(
                         'lib/assets/images/facebook.png',
