@@ -58,12 +58,15 @@ class ProfilePageState extends State<ProfilePage> {
                                   TextButton(
                                       onPressed: () async {
                                         try {
-                                          await FirebaseAuth.instance.currentUser!.reauthenticateWithCredential(EmailAuthProvider.credential(
-                                              email: FirebaseAuth.instance.currentUser!.email!, password: passwordController.text));
+                                          await FirebaseAuth.instance.currentUser!.reauthenticateWithCredential(
+                                              EmailAuthProvider.credential(
+                                                  email: FirebaseAuth.instance.currentUser!.email!,
+                                                  password: passwordController.text));
                                           await deleteUserData();
                                           await FirebaseAuth.instance.currentUser?.delete();
                                           Navigator.pop(context);
-                                          showMessageDialog(context: context, message: 'Your account has been deleted.');
+                                          showMessageDialog(
+                                              context: context, message: 'Your account has been deleted.');
                                         } on Exception {
                                           Navigator.pop(context);
                                           showMessageDialog(context: context, message: 'Wrong password.');
@@ -93,7 +96,8 @@ class ProfilePageState extends State<ProfilePage> {
                       case 'facebook.com':
                         try {
                           final LoginResult loginResult = await FacebookAuth.instance.login();
-                          final OAuthCredential credential = FacebookAuthProvider.credential(loginResult.accessToken!.token);
+                          final OAuthCredential credential =
+                              FacebookAuthProvider.credential(loginResult.accessToken!.token);
                           await FirebaseAuth.instance.currentUser!.reauthenticateWithCredential(credential);
                           await deleteUserData();
                           await FirebaseAuth.instance.currentUser?.delete();
@@ -112,7 +116,10 @@ class ProfilePageState extends State<ProfilePage> {
   }
 
   Future<void> deleteUserData() async {
-    final query = await FirebaseFirestore.instance.collection('history').where('uid', isEqualTo: FirebaseAuth.instance.currentUser!.uid).get();
+    final query = await FirebaseFirestore.instance
+        .collection('history')
+        .where('uid', isEqualTo: FirebaseAuth.instance.currentUser!.uid)
+        .get();
     final listResult = await FirebaseStorage.instance.ref('users/${FirebaseAuth.instance.currentUser!.uid}').listAll();
     for (var item in listResult.items) {
       item.delete();
@@ -143,9 +150,11 @@ class ProfilePageState extends State<ProfilePage> {
                 Container(
                   height: 100,
                   width: 100,
-                  decoration:
-                      BoxDecoration(boxShadow: [BoxShadow(blurRadius: 25, color: Colors.grey.shade600)], color: Colors.white, shape: BoxShape.circle),
-                  margin: const EdgeInsets.only(top: 25),
+                  decoration: BoxDecoration(
+                      boxShadow: [BoxShadow(blurRadius: 20, color: Colors.grey.shade600)],
+                      color: Colors.white,
+                      shape: BoxShape.circle),
+                  margin: const EdgeInsets.only(top: 20),
                   child: Stack(
                     children: [
                       CircleAvatar(radius: 50, backgroundImage: profileImage),
@@ -166,10 +175,12 @@ class ProfilePageState extends State<ProfilePage> {
                             onPressed: () async {
                               try {
                                 final image = await ImagePicker().pickImage(source: ImageSource.gallery);
-                                final imageStorageRef =
-                                    FirebaseStorage.instance.ref().child('users/${FirebaseAuth.instance.currentUser!.uid}/profile.png');
+                                final imageStorageRef = FirebaseStorage.instance
+                                    .ref()
+                                    .child('users/${FirebaseAuth.instance.currentUser!.uid}/profile.png');
                                 await imageStorageRef.putFile(File(image!.path));
-                                await FirebaseAuth.instance.currentUser!.updatePhotoURL(await imageStorageRef.getDownloadURL());
+                                await FirebaseAuth.instance.currentUser!
+                                    .updatePhotoURL(await imageStorageRef.getDownloadURL());
                                 setState(() {
                                   profileImage = NetworkImage(FirebaseAuth.instance.currentUser!.photoURL!);
                                 });

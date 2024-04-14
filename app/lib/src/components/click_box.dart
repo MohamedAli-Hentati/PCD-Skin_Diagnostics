@@ -5,37 +5,39 @@ class ClickBox extends StatelessWidget {
   final Widget page;
   final IconData icon;
   final String text;
-  const ClickBox({required this.page, required this.icon, required this.text});
+  const ClickBox({super.key, required this.page, required this.icon, required this.text});
 
   @override
   Widget build(BuildContext context) {
-    var theme = Theme.of(context);
-    return InkWell(
+    final theme = Theme.of(context);
+    return GestureDetector(
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (_) => page));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => page));
       },
       child: Container(
         decoration: BoxDecoration(
-            boxShadow: [BoxShadow(color: Colors.grey.shade600, blurRadius: 5.0, blurStyle: BlurStyle.outer, offset: Offset(0, 0))],
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.grey.shade600, blurRadius: 2.5, blurStyle: BlurStyle.outer)
+            ],
             color: Colors.white,
-            borderRadius: BorderRadius.all(Radius.elliptical(7.0, 5.0)),
+            borderRadius: const BorderRadius.all(Radius.elliptical(7.0, 5.0)),
             border: Border(
                 bottom: BorderSide(
-              color: Color(colors.secondaryColor),
-              width: 7.0,
+              color: theme.colorScheme.primary,
+              width: 5,
             ))),
-        width: 180,
-        height: 180,
+        width: 120,
+        height: 120,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Padding(child: Text(style: theme.textTheme.titleSmall, text), padding: const EdgeInsets.only(top: 20)),
-            Padding(
-              child: Icon(
-                icon,
-                size: 60,
-              ),
-              padding: const EdgeInsets.only(top: 10),
+            Text(style: theme.textTheme.titleSmall, text),
+            Icon(
+              icon,
+              size: 35,
             ),
+            const SizedBox(height: 0)
           ],
         ),
       ),

@@ -18,41 +18,18 @@ class HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: const Text('Home', style: TextStyle(color: Color(0xFF03045E), fontWeight: FontWeight.w600)),
       ),
-      body: Container(
-        decoration: BoxDecoration(color: Colors.grey.shade100),
-        child: ListView(
-          scrollDirection: Axis.vertical,
+      body: Padding(
+        padding: const EdgeInsets.all(50),
+        child: GridView.count(
+          physics: const NeverScrollableScrollPhysics(),
+          mainAxisSpacing: 50,
+          crossAxisSpacing: 50,
+          crossAxisCount: 2,
           children: const [
-            Padding(
-              padding: EdgeInsets.only(top: 30.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Column(
-                    children: [
-                      Padding(
-                          padding: EdgeInsets.only(bottom: 15.0),
-                          child: ClickBox(page: Objectives(), icon: Icons.person_search, text: 'Objective')),
-                      ClickBox(
-                        page: Utility(),
-                        icon: Icons.handyman,
-                        text: 'Utility',
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(bottom: 15.0),
-                        child: ClickBox(page: Plans(), icon: Icons.map, text: 'Plans'),
-                      ),
-                      ClickBox(page: Warning(), icon: Icons.warning, text: 'Warning'),
-                    ],
-                  )
-                ],
-              ),
-            )
+            ClickBox(page: Objectives(), icon: Icons.list_alt_outlined, text: 'Objective'),
+            ClickBox(page: Utility(), icon: Icons.help_outline, text: 'FAQ'),
+            ClickBox(page: Plans(), icon: Icons.map_outlined, text: 'Roadmap'),
+            ClickBox(page: Warning(), icon: Icons.warning_amber_rounded, text: 'Warning')
           ],
         ),
       ),

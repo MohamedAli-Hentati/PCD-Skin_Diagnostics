@@ -5,11 +5,13 @@ import 'package:app/src/widgets/result_page.dart';
 import 'package:app/src/widgets/gallery_page.dart';
 import 'package:app/src/components/dialog_components.dart';
 import 'package:app/src/utils/color_utils.dart';
-import 'package:image/image.dart' as ImageUtils;
+import 'package:image/image.dart' as image_utils;
 import 'package:camera/camera.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+
+const double confidenceThreshold = 0.85;
 
 class ScanPage extends StatefulWidget {
   final CameraDescription camera;
@@ -23,10 +25,14 @@ class ScanPageState extends State<ScanPage> {
   late Future<void> initializeControllerFuture;
   late CameraController controller;
 
-  Future<(String, double)> scanImage(String imagePath) async {
+  Future<(int, double)> scanImage(String imagePath) async {
     final result = await channel.invokeMethod('scanImage', imagePath);
-    final label = result['label'] as String;
+    final labelId = result['label_id'] as int;
     final confidence = result['confidence'] as double;
+    return (labelId, confidence);
+  }
+
+  Future<void> uploadHistory(int labelId, double confidence, String imagePath) async {
     if (FirebaseAuth.instance.currentUser != null) {
       final date = DateTime.now();
       final reference = FirebaseStorage.instance.ref('users/${FirebaseAuth.instance.currentUser!.uid}/$date.png');
@@ -34,11 +40,64 @@ class ScanPageState extends State<ScanPage> {
       FirebaseFirestore.instance.collection('history').add({
         'uid': FirebaseAuth.instance.currentUser!.uid,
         'image_url': await reference.getDownloadURL(),
-        'result': result!['label'],
+        'label_id': labelId,
+        'confidence': confidence,
         'date': date
       });
     }
-    return (label, confidence);
+  }
+
+  Future<void> open() async {
+    try {
+      final imagePath =
+          await Navigator.push<String?>(context, MaterialPageRoute(builder: (context) => const GalleryPage()));
+      if (imagePath != null) {
+        showProgressionDialog(context: context);
+        final (labelId, confidence) = await scanImage(imagePath);
+        Navigator.of(context, rootNavigator: true).pop();
+        if (confidence > confidenceThreshold) {
+          uploadHistory(labelId, confidence, imagePath);
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => ResultPage(labelId: labelId, confidence: confidence, imagePath: imagePath)));
+        } else {
+          showMessageDialog(context: context, message: "The scan wasn't able to detect any of the supported diseases.");
+        }
+      }
+    } on Exception {
+      Navigator.of(context, rootNavigator: true).pop();
+      showMessageDialog(context: context, message: 'Sorry, something went wrong.');
+    }
+  }
+
+  Future<void> scan() async {
+    try {
+      showProgressionDialog(context: context);
+      await initializeControllerFuture;
+      await controller.setFlashMode(FlashMode.off);
+      final image = await controller.takePicture();
+      final imagePath = image.path;
+      final imageFile = File(imagePath);
+      image_utils.Image? decodedImage = image_utils.decodeImage(await imageFile.readAsBytes());
+      int cropSize = (decodedImage!.width * 0.75).round();
+      cropSize = cropSize < 224 ? 224 : cropSize;
+      int startX = ((decodedImage.width - cropSize) / 2).round();
+      int startY = ((decodedImage.height - cropSize) / 2).round();
+      image_utils.Image croppedImage =
+          image_utils.copyCrop(decodedImage, x: startX, y: startY, width: cropSize, height: cropSize);
+      imageFile.writeAsBytesSync(image_utils.encodePng(croppedImage));
+      final (labelId, confidence) = await scanImage(imagePath);
+      Navigator.of(context, rootNavigator: true).pop();
+      if (confidence > confidenceThreshold) {
+        uploadHistory(labelId, confidence, imagePath);
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => ResultPage(labelId: labelId, confidence: confidence, imagePath: imagePath)));
+      } else {
+        showMessageDialog(context: context, message: "The scan wasn't able to detect any of the supported diseases.");
+      }
+    } on Exception {
+      Navigator.of(context, rootNavigator: true).pop();
+      showMessageDialog(context: context, message: 'Sorry, something went wrong.');
+    }
   }
 
   @override
@@ -66,7 +125,7 @@ class ScanPageState extends State<ScanPage> {
               if (snapshot.connectionState == ConnectionState.done) {
                 return LayoutBuilder(
                   builder: (BuildContext context, BoxConstraints constraints) {
-                    return Container(
+                    return SizedBox(
                       width: constraints.maxWidth,
                       height: constraints.maxWidth / controller.value.aspectRatio,
                       child: CameraPreview(controller,
@@ -132,23 +191,7 @@ class ScanPageState extends State<ScanPage> {
                         }), elevation: MaterialStateProperty.resolveWith((states) {
                           return 5;
                         })),
-                        onPressed: () async {
-                          try {
-                            final imagePath = await Navigator.push<String?>(
-                                context, MaterialPageRoute(builder: (context) => const GalleryPage()));
-                            if (imagePath != null) {
-                              showProgressionDialog(context: context);
-                              final (label, confidence) = await scanImage(imagePath);
-                              Navigator.of(context, rootNavigator: true).pop();
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => ResultPage(
-                                      result: '$label wth ${(confidence * 100).toStringAsFixed(2)}% certainty')));
-                            }
-                          } on Exception {
-                            Navigator.of(context, rootNavigator: true).pop();
-                            showMessageDialog(context: context, message: 'Sorry, something went wrong.');
-                          }
-                        },
+                        onPressed: open,
                         child: const Text('Open',
                             style: TextStyle(
                               color: Colors.white,
@@ -165,36 +208,7 @@ class ScanPageState extends State<ScanPage> {
                           }), elevation: MaterialStateProperty.resolveWith((states) {
                             return 5;
                           })),
-                          onPressed: () async {
-                            try {
-                              await initializeControllerFuture;
-                              await controller.setFlashMode(FlashMode.off);
-                              final image = await controller.takePicture();
-                              showProgressionDialog(context: context);
-                              final imageFile = File(image.path);
-                              ImageUtils.Image? decodedImage = ImageUtils.decodeImage(await imageFile.readAsBytes());
-                              int cropSize = (decodedImage!.width * 0.75).round();
-                              cropSize = cropSize < 224 ? 224 : cropSize;
-                              int startX = ((decodedImage.width - cropSize) / 2).round();
-                              int startY = ((decodedImage.height - cropSize) / 2).round();
-                              ImageUtils.Image croppedImage = ImageUtils.copyCrop(decodedImage,
-                                  x: startX, y: startY, width: cropSize, height: cropSize);
-                              imageFile.writeAsBytesSync(ImageUtils.encodePng(croppedImage));
-                              final (label, confidence) = await scanImage(image.path);
-                              Navigator.of(context, rootNavigator: true).pop();
-                              if (confidence > 0.85) {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => ResultPage(
-                                        result: '$label wth ${(confidence * 100).toStringAsFixed(2)}% certainty')));
-                              }
-                              else {
-                                showMessageDialog(context: context, message: "The scan wasn't able to detect any of the supported diseases.");
-                              }
-                            } on Exception {
-                              Navigator.of(context, rootNavigator: true).pop();
-                              showMessageDialog(context: context, message: 'Sorry, something went wrong.');
-                            }
-                          },
+                          onPressed: scan,
                           child: const Text('Scan',
                               style: TextStyle(
                                 color: Colors.white,

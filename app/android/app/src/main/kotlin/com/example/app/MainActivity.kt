@@ -14,6 +14,7 @@ import kotlin.math.exp
 
 class MainActivity: FlutterActivity() {
     private val channel = "app.android/channel"
+
     private fun assetFilePath(context: Context, asset: String): String {
         val file = File(context.filesDir, asset)
         try {
@@ -46,7 +47,6 @@ class MainActivity: FlutterActivity() {
         MethodChannel(flutterEngine.dartExecutor.binaryMessenger, channel).setMethodCallHandler { call, result ->
             if (call.method == "scanImage") {
                 try {
-                    val labels: Array<String> = arrayOf("Basal Cell Carcinoma", "Melanoma", "Acne", "Folliculitis", "Pityriasis Rubra Pilaris", "Erythema", "Squamous Cell Carcinoma", "Porokeratosis Actinic", "Pityriasis Rosea", "Hailey Hailey Disease", "Granuloma Annulare", "Prurigo Nodularis")
                     val imagePath = call.arguments as String
                     val image: Bitmap = BitmapFactory.decodeFile(imagePath).scale(224, 224)
                     val model: Module = LiteModuleLoader.load(assetFilePath(this, "model.ptl"))
@@ -56,11 +56,11 @@ class MainActivity: FlutterActivity() {
                     val outputTensor: Tensor = model.forward(IValue.from(inputTensor)).toTensor()
                     val scores: FloatArray = outputTensor.dataAsFloatArray
                     var maxScore = -Float.MAX_VALUE
-                    var maxScoreIdx: Int = -1
+                    var maxScoreIndex: Int = -1
                     for (i in 0 until scores.count()) {
                         if (scores[i] > maxScore) {
                             maxScore = scores[i]
-                            maxScoreIdx = i
+                            maxScoreIndex = i
                         }
                     }
                     var sumExp = 0.0f
@@ -72,8 +72,8 @@ class MainActivity: FlutterActivity() {
                         probabilities[i] = exp(scores[i].toDouble()).toFloat() / sumExp
                     }
                     val map = HashMap<String, Any>()
-                    map["label"] = labels[maxScoreIdx]
-                    map["confidence"] = probabilities[maxScoreIdx]
+                    map["label_id"] = maxScoreIndex
+                    map["confidence"] = probabilities[maxScoreIndex]
                     result.success(map)
                 } catch (exception: Exception) {
                     result.error(exception.toString(), null, null)

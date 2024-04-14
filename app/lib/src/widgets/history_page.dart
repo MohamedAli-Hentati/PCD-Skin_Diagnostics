@@ -2,6 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+const labels = [
+  'Basal Cell Carcinoma',
+  'Melanoma',
+  'Acne',
+  'Folliculitis',
+  'Pityriasis Rubra Pilaris',
+  'Erythema',
+  'Squamous Cell Carcinoma',
+  'Porokeratosis Actinic',
+  'Pityriasis Rosea',
+  'Hailey Hailey Disease',
+  'Granuloma Annulare',
+  'Prurigo Nodularis'
+];
+
 class HistoryPage extends StatelessWidget {
   const HistoryPage({super.key});
 
@@ -30,7 +45,8 @@ class HistoryPage extends StatelessWidget {
                 final document = snapshot.data!.docs[index];
                 final date = document['date'] as Timestamp;
                 final imageUrl = document['image_url'] as String;
-                final result = document['result'] as String;
+                final labelId = document['label_id'] as int;
+                final confidence = document['confidence'] as double;
                 return ListTile(
                   leading: Image.network(imageUrl),
                   onTap: () {
@@ -42,7 +58,7 @@ class HistoryPage extends StatelessWidget {
                       ),
                     );
                   },
-                  title: Text('Result: $result'),
+                  title: Text('Result: ${labels[labelId]} with ${(confidence * 100).toStringAsFixed(2)}% certainty'),
                   subtitle: Text('Date: ${date.toDate()}'),
                 );
               },

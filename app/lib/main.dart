@@ -94,7 +94,7 @@ class NavigationState extends State<Navigation> {
       body: Navigator(
         key: navigatorKeys[currentPageIndex],
         onGenerateRoute: (settings) {
-          return MaterialPageRoute(builder: (_) => pages.elementAt(currentPageIndex));
+          return MaterialPageRoute(builder: (context) => pages.elementAt(currentPageIndex));
         },
       ),
     );
