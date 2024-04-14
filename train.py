@@ -21,6 +21,9 @@ from sklearn.metrics import confusion_matrix
 # define the device
 device = torch.device('cuda')
 
+# this is a multiplier for various variables
+multiplier = 0.125
+
 # get the current time
 startup_time = datetime.datetime.now().strftime('%Y-%m-%d-%H-%M')
 
@@ -167,17 +170,16 @@ if __name__ == "__main__":
                                                       transforms.Normalize(norm_mean, norm_std)])
     validation_transform = None
     # define the training set
-    multiplier = 0.125
     training_set = CustomDataset(train_dataframe, static_transform=train_static_transform, transform=train_transform)
     train_loader = DataLoader(training_set, batch_size=int(32 * multiplier), shuffle=True, num_workers=0)
     # same for the validation set:
     validation_set = CustomDataset(validation_dataframe, static_transform=validation_static_transform, transform=validation_transform)
     val_loader = DataLoader(validation_set, batch_size=int(32 * multiplier), shuffle=False, num_workers=0)
     # we use Adam optimizer, use cross entropy loss as our loss function
-    optimizer = optim.Adam(model.parameters(), lr=1e-3 * multiplier)
+    optimizer = optim.Adam(model.parameters(), lr=1e-4 * multiplier, weight_decay=1e-5 * multiplier)
     criterion = nn.CrossEntropyLoss().to(device)
 
-    epoch_num = 350
+    epoch_num = 250
     best_val_acc = 0
     total_loss_train, total_acc_train = [], []
     total_loss_val, total_acc_val = [], []
@@ -191,7 +193,7 @@ if __name__ == "__main__":
         total_acc_val.append(acc_val)
         if acc_val > best_val_acc:
             best_val_acc = acc_val
-            if best_val_acc > 0.8:
+            if best_val_acc > 0.87:
                 torch.save(model, f'models/model_{startup_time}_{int(best_val_acc * 100)}.pth')
             print('******************************************************************************************************************')
             print(f'best record: [epoch {epoch}], [val loss {loss_val}], [val acc {acc_val}]')
@@ -208,8 +210,8 @@ if __name__ == "__main__":
     plt.show()
 
     # best model evaluation
-    if best_val_acc > 0.8:
-        model = torch.load(f'models/model-{startup_time}-{int(best_val_acc * 100)}.pth')
+    if best_val_acc > 0.87:
+        model = torch.load(f'models/model-{startup_time}_{int(best_val_acc * 100)}.pth')
         model.eval()
         y_label = []
         y_predict = []

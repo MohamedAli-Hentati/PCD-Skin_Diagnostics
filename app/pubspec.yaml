@@ -33,6 +33,7 @@ dependencies:
 
   path: ^1.9.0
   path_provider: ^2.0.5
+  image: ^4.1.7
   camera: ^0.10.0
   image_picker: ^1.0.7
   google_sign_in: ^6.2.1

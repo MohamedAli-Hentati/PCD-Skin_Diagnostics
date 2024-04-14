@@ -15,77 +15,53 @@ class GalleryPageState extends State<GalleryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text('Select an Image'), actions: [
-          IconButton(
-              padding: const EdgeInsets.only(right: 5),
-              style: IconButton.styleFrom(shape: const RoundedRectangleBorder()),
-              onPressed: () async {
-                final selectedImage = await ImagePicker().pickImage(source: ImageSource.gallery);
-                if (selectedImage != null) {
-                  setState(() {
-                    selectedImagePath = selectedImage.path;
-                  });
-                }
-              },
-              icon: const Icon(Icons.photo_library))
-        ]),
-        body: Center(
-          child: selectedImagePath == null
-              ? const Text('No image selected')
-              : SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height * 0.5625,
-                  child: Stack(alignment: AlignmentDirectional.center, children: [
-                    Image.file(
-                      File(selectedImagePath!),
-                      width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height * 0.5625,
-                      fit: BoxFit.fill,
-                    ),
-                    Center(child: CustomPaint(
-                      foregroundPainter: BorderPainter(),
-                      child: Container(
-                        width: 224,
-                        height: 224,
-                        color: Colors.transparent,
-                        child: const Center(
-                            child: SizedBox(
-                              width: 125,
-                              child: Text(
-                                textAlign: TextAlign.center,
-                                'Affected skin area here',
-                                style: TextStyle(fontSize: 17, color: Colors.white54),
-                              ),
-                            )),
-                      ),
-                    )),
-                    Align(
-                      alignment: Alignment.bottomRight,
-                      child: Padding(
-                        padding: const EdgeInsets.all(20),
-                        child: SizedBox(
-                          width: 35,
-                          height: 35,
-                          child: IconButton(
-                            padding: const EdgeInsets.all(0.0),
-                            style: IconButton.styleFrom(
-                                elevation: 5,
-                                shadowColor: Colors.grey,
-                                backgroundColor: Colors.white,
-                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15))),
-                            iconSize: 17.5,
-                            icon: const Icon(Icons.check),
-                            onPressed: () {
-                              Navigator.pop(context, selectedImagePath);
-                            },
-                          ),
-                        ),
-                      ),
-                    )
-                  ]),
+      appBar: AppBar(title: const Text('Select a photo'), actions: [
+        IconButton(
+            padding: const EdgeInsets.only(right: 5),
+            style: IconButton.styleFrom(shape: const RoundedRectangleBorder()),
+            onPressed: () async {
+              final selectedImage = await ImagePicker().pickImage(source: ImageSource.gallery);
+              if (selectedImage != null) {
+                setState(() {
+                  selectedImagePath = selectedImage.path;
+                });
+              }
+            },
+            icon: const Icon(Icons.photo_library))
+      ]),
+      body: Center(
+        child: selectedImagePath == null
+            ? const Text('No image selected.')
+            : Stack(alignment: AlignmentDirectional.center, children: [
+                Image.file(
+                  File(selectedImagePath!),
                 ),
-        ),
-      );
+                Align(
+                  alignment: Alignment.bottomRight,
+                  child: Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: SizedBox(
+                      width: 35,
+                      height: 35,
+                      child: IconButton(
+                        padding: const EdgeInsets.all(0.0),
+                        style: IconButton.styleFrom(
+                            elevation: 5,
+                            shadowColor: Colors.grey,
+                            backgroundColor: Colors.white,
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15))),
+                        iconSize: 17.5,
+                        icon: const Icon(Icons.check),
+                        onPressed: () {
+                          Navigator.pop(context, selectedImagePath);
+                        },
+                      ),
+                    ),
+                  ),
+                )
+              ]),
+      ),
+    );
   }
 }
 

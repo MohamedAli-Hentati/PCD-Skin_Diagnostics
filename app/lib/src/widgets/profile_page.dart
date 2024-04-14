@@ -138,13 +138,14 @@ class ProfilePageState extends State<ProfilePage> {
           Expanded(
             flex: 4,
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Container(
                   height: 100,
                   width: 100,
                   decoration:
                       BoxDecoration(boxShadow: [BoxShadow(blurRadius: 25, color: Colors.grey.shade600)], color: Colors.white, shape: BoxShape.circle),
-                  margin: const EdgeInsets.only(top: 30),
+                  margin: const EdgeInsets.only(top: 25),
                   child: Stack(
                     children: [
                       CircleAvatar(radius: 50, backgroundImage: profileImage),
@@ -182,7 +183,6 @@ class ProfilePageState extends State<ProfilePage> {
                     ],
                   ),
                 ),
-                const SizedBox(height: 20),
                 Text(
                   FirebaseAuth.instance.currentUser!.displayName ?? 'User',
                   style: const TextStyle(
@@ -190,13 +190,11 @@ class ProfilePageState extends State<ProfilePage> {
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                const SizedBox(height: 5),
                 Text(FirebaseAuth.instance.currentUser!.email!,
                     style: const TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
                     )),
-                const SizedBox(height: 20),
                 ElevatedButton(
                     onPressed: () {},
                     style: ButtonStyle(overlayColor: MaterialStateProperty.resolveWith((states) {
@@ -222,9 +220,10 @@ class ProfilePageState extends State<ProfilePage> {
           Expanded(
             flex: 6,
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 40),
+                  padding: const EdgeInsets.symmetric(horizontal: 40),
                   child: Card(
                     elevation: 2,
                     shape: RoundedRectangleBorder(
@@ -244,7 +243,7 @@ class ProfilePageState extends State<ProfilePage> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 40),
+                  padding: const EdgeInsets.symmetric(horizontal: 40),
                   child: Card(
                     elevation: 2,
                     shape: RoundedRectangleBorder(
@@ -264,7 +263,7 @@ class ProfilePageState extends State<ProfilePage> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 40),
+                  padding: const EdgeInsets.symmetric(horizontal: 40),
                   child: Card(
                     elevation: 2,
                     shape: RoundedRectangleBorder(
@@ -284,7 +283,7 @@ class ProfilePageState extends State<ProfilePage> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 40),
+                  padding: const EdgeInsets.symmetric(horizontal: 40),
                   child: Card(
                     elevation: 2,
                     shape: RoundedRectangleBorder(
@@ -302,7 +301,7 @@ class ProfilePageState extends State<ProfilePage> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 40),
+                  padding: const EdgeInsets.symmetric(horizontal: 40),
                   child: Card(
                     elevation: 2,
                     shape: RoundedRectangleBorder(
@@ -319,6 +318,7 @@ class ProfilePageState extends State<ProfilePage> {
                         )),
                   ),
                 ),
+                const SizedBox(height: 5)
               ],
             ),
           )

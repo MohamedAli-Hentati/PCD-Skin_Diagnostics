@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:app/src/widgets/scan_page.dart';
 import 'package:app/src/widgets/home_page.dart';
 import 'package:app/src/widgets/profile_wrapper_page.dart';
@@ -12,7 +13,9 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   var cameras = await availableCameras();
-  camera = cameras[1];
+  camera = cameras.firstWhere(
+    (camera) => camera.lensDirection == CameraLensDirection.back,
+  );
   runApp(const Application());
 }
 
@@ -21,6 +24,9 @@ class Application extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Skin diagnostics application',
@@ -35,7 +41,7 @@ class Application extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: const Navigation(),
+      home: const SafeArea(top: false, child: Navigation()),
     );
   }
 }

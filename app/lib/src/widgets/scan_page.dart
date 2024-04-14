@@ -4,12 +4,12 @@ import 'package:flutter/services.dart';
 import 'package:app/src/widgets/result_page.dart';
 import 'package:app/src/widgets/gallery_page.dart';
 import 'package:app/src/components/dialog_components.dart';
+import 'package:app/src/utils/color_utils.dart';
+import 'package:image/image.dart' as ImageUtils;
 import 'package:camera/camera.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-
-import '../utils/color_utils.dart';
 
 class ScanPage extends StatefulWidget {
   final CameraDescription camera;
@@ -44,7 +44,7 @@ class ScanPageState extends State<ScanPage> {
   @override
   void initState() {
     super.initState();
-    controller = CameraController(widget.camera, ResolutionPreset.medium);
+    controller = CameraController(widget.camera, ResolutionPreset.max);
     initializeControllerFuture = controller.initialize();
   }
 
@@ -64,27 +64,33 @@ class ScanPageState extends State<ScanPage> {
             future: initializeControllerFuture,
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.done) {
-                return CameraPreview(
-                  controller,
-                  child: Center(
-                    child: CustomPaint(
-                      foregroundPainter: BorderPainter(),
-                      child: Container(
-                        width: 224,
-                        height: 224,
-                        color: Colors.transparent,
-                        child: const Center(
-                            child: SizedBox(
-                          width: 125,
-                          child: Text(
-                            textAlign: TextAlign.center,
-                            'Position affected skin area here',
-                            style: TextStyle(fontSize: 17, color: Colors.white54),
-                          ),
-                        )),
-                      ),
-                    ),
-                  ),
+                return LayoutBuilder(
+                  builder: (BuildContext context, BoxConstraints constraints) {
+                    return Container(
+                      width: constraints.maxWidth,
+                      height: constraints.maxWidth / controller.value.aspectRatio,
+                      child: CameraPreview(controller,
+                          child: Center(
+                            child: CustomPaint(
+                              foregroundPainter: BorderPainter(),
+                              child: Container(
+                                width: 224,
+                                height: 224,
+                                color: Colors.transparent,
+                                child: const Center(
+                                    child: SizedBox(
+                                  width: 125,
+                                  child: Text(
+                                    textAlign: TextAlign.center,
+                                    'Position affected skin area here',
+                                    style: TextStyle(fontSize: 17, color: Colors.white54),
+                                  ),
+                                )),
+                              ),
+                            ),
+                          )),
+                    );
+                  },
                 );
               } else {
                 return const Center(child: CircularProgressIndicator());
@@ -100,17 +106,18 @@ class ScanPageState extends State<ScanPage> {
         Expanded(
             flex: 3,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 30),
+              padding: const EdgeInsets.symmetric(horizontal: 35),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   const Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text('Important notice:', style: TextStyle(fontWeight: FontWeight.w500, fontSize: 22)),
+                      SizedBox(height: 5),
                       Text(
-                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac semper nunc. Mauris est justo, aliquet et ultrices eu, vulputate vel urna. Cras scelerisque semper felis eget mollis.',
+                          'For optimal results, please ensure that the image is taken in a well-lit area and is not blurry. The affected skin area should be within the highlighted area in the image.',
                           style: TextStyle(fontSize: 14)),
                     ],
                   ),
@@ -123,7 +130,7 @@ class ScanPageState extends State<ScanPage> {
                         }), backgroundColor: MaterialStateProperty.resolveWith((states) {
                           return Theme.of(context).colorScheme.primary;
                         }), elevation: MaterialStateProperty.resolveWith((states) {
-                          return 10;
+                          return 5;
                         })),
                         onPressed: () async {
                           try {
@@ -156,18 +163,33 @@ class ScanPageState extends State<ScanPage> {
                           }), backgroundColor: MaterialStateProperty.resolveWith((states) {
                             return Theme.of(context).colorScheme.primary;
                           }), elevation: MaterialStateProperty.resolveWith((states) {
-                            return 10;
+                            return 5;
                           })),
                           onPressed: () async {
                             try {
-                              showProgressionDialog(context: context);
                               await initializeControllerFuture;
+                              await controller.setFlashMode(FlashMode.off);
                               final image = await controller.takePicture();
+                              showProgressionDialog(context: context);
+                              final imageFile = File(image.path);
+                              ImageUtils.Image? decodedImage = ImageUtils.decodeImage(await imageFile.readAsBytes());
+                              int cropSize = (decodedImage!.width * 0.75).round();
+                              cropSize = cropSize < 224 ? 224 : cropSize;
+                              int startX = ((decodedImage.width - cropSize) / 2).round();
+                              int startY = ((decodedImage.height - cropSize) / 2).round();
+                              ImageUtils.Image croppedImage = ImageUtils.copyCrop(decodedImage,
+                                  x: startX, y: startY, width: cropSize, height: cropSize);
+                              imageFile.writeAsBytesSync(ImageUtils.encodePng(croppedImage));
                               final (label, confidence) = await scanImage(image.path);
                               Navigator.of(context, rootNavigator: true).pop();
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => ResultPage(
-                                      result: '$label wth ${(confidence * 100).toStringAsFixed(2)}% certainty')));
+                              if (confidence > 0.85) {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => ResultPage(
+                                        result: '$label wth ${(confidence * 100).toStringAsFixed(2)}% certainty')));
+                              }
+                              else {
+                                showMessageDialog(context: context, message: "The scan wasn't able to detect any of the supported diseases.");
+                              }
                             } on Exception {
                               Navigator.of(context, rootNavigator: true).pop();
                               showMessageDialog(context: context, message: 'Sorry, something went wrong.');
