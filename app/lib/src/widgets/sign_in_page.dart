@@ -4,8 +4,8 @@ import 'package:app/src/widgets/forgot_password_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
-
-import '../utils/color_utils.dart';
+import 'package:app/src/utils/color_utils.dart';
+import 'package:app/src/components/dialog_components.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
@@ -16,39 +16,14 @@ class SignInPage extends StatefulWidget {
 class SignInPageState extends State<SignInPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  void showDialogMessage(String message) {
-    showDialog(
-        context: context,
-        builder: (context) {
-          return Center(
-              child: AlertDialog(
-            actionsAlignment: MainAxisAlignment.end,
-            actions: [
-              TextButton(
-                  onPressed: () {
-                    Navigator.of(context, rootNavigator: true).pop();
-                  },
-                  child: const Text('Close')),
-            ],
-            title: Text(message),
-          ));
-        });
-  }
 
-  Future<void> signInWithPassword() async {
-    showDialog(
-        context: context,
-        builder: (context) {
-          return const Center(child: CircularProgressIndicator());
-        });
-    try {
-      await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: emailController.text, password: passwordController.text);
+  void signInWithPassword() {
+    showProgressionDialog(context: context);
+    FirebaseAuth.instance.signInWithEmailAndPassword(email: emailController.text, password: passwordController.text).then((value) {
       Navigator.of(context, rootNavigator: true).pop();
       if (!FirebaseAuth.instance.currentUser!.emailVerified) {
-        User? user = FirebaseAuth.instance.currentUser;
-        await FirebaseAuth.instance.signOut();
         showDialog(
+            barrierDismissible: false,
             context: context,
             builder: (context) {
               return Center(
@@ -57,14 +32,22 @@ class SignInPageState extends State<SignInPage> {
                 actions: [
                   TextButton(
                       onPressed: () {
+                        FirebaseAuth.instance.signOut();
                         Navigator.of(context, rootNavigator: true).pop();
                       },
                       child: const Text('Close')),
                   TextButton(
-                      onPressed: () async {
-                        await user?.sendEmailVerification();
-                        Navigator.of(context, rootNavigator: true).pop();
-                        showDialogMessage('A verification email has been sent to: ${user?.email}');
+                      onPressed: () {
+                        FirebaseAuth.instance.currentUser!.sendEmailVerification().then((value) {
+                          Navigator.of(context, rootNavigator: true).pop();
+                          showMessageDialog(
+                              context: context,
+                              message: 'A verification email has been sent to: ${FirebaseAuth.instance.currentUser!.email}');
+                          FirebaseAuth.instance.signOut();
+                        }).catchError((exception) {
+                          Navigator.of(context, rootNavigator: true).pop();
+                          showMessageDialog(context: context, message: 'A problem occurred, please try again later.');
+                        });
                       },
                       child: const Text('Resend email')),
                 ],
@@ -72,49 +55,52 @@ class SignInPageState extends State<SignInPage> {
               ));
             });
       }
-    } on FirebaseAuthException catch (exception) {
+    }).catchError((exception) {
       Navigator.of(context, rootNavigator: true).pop();
       switch (exception.code) {
         case 'channel-error':
-          showDialogMessage('Missing credentials, please type both email and password.');
+          showMessageDialog(context: context, message: 'Missing credentials, please type both email and password.');
         case 'invalid-credential':
-          showDialogMessage('Invalid credentials, please check your email and password and try again.');
+          showMessageDialog(context: context, message: 'Invalid credentials, please check your email and password and try again.');
         case 'invalid-email':
-          showDialogMessage('Invalid email, please check your email and try again.');
+          showMessageDialog(context: context, message: 'Invalid email, please check your email and try again.');
         case 'too-many-requests':
-          showDialogMessage('A problem occurred, please try again later.');
+          showMessageDialog(context: context, message: 'A problem occurred, please try again later.');
         default:
-          showDialogMessage('Sorry, an error has occurred.');
+          showMessageDialog(context: context, message: 'Sorry, an error has occurred.');
       }
-    }
+    });
   }
 
-  Future<void> signInWithGoogle() async {
-    try {
-      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-      final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+  void signInWithGoogle() async {
+    final googleUser = await GoogleSignIn().signIn();
+    final googleAuth = await googleUser?.authentication;
+    if (googleAuth != null) {
       final credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth?.accessToken,
-        idToken: googleAuth?.idToken,
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
       );
-      await FirebaseAuth.instance.signInWithCredential(credential);
-    } on Exception {
-      showDialogMessage('Sorry, an error has occurred.');
+      FirebaseAuth.instance.signInWithCredential(credential).then((value) {}).catchError((exception) {
+        showMessageDialog(context: context, message: 'Sorry, an error has occurred.');
+      });
     }
   }
 
-  Future<void> signInWithFacebook() async {
-    try {
-      final LoginResult loginResult = await FacebookAuth.instance.login();
-      final OAuthCredential facebookAuthCredential = FacebookAuthProvider.credential(loginResult.accessToken!.token);
-      await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
-      if (!FirebaseAuth.instance.currentUser!.emailVerified) {
-        await FirebaseAuth.instance.currentUser?.sendEmailVerification();
-        showDialogMessage('A verification email has been sent to: ${FirebaseAuth.instance.currentUser?.email}');
-        await FirebaseAuth.instance.signOut();
-      }
-    } on Exception {
-      showDialogMessage('Sorry, an error has occurred.');
+  void signInWithFacebook() async {
+    final login = await FacebookAuth.instance.login();
+    if (login.accessToken != null) {
+      final credential = FacebookAuthProvider.credential(login.accessToken!.token);
+      FirebaseAuth.instance.signInWithCredential(credential).then((value) {
+        if (!FirebaseAuth.instance.currentUser!.emailVerified) {
+          FirebaseAuth.instance.currentUser?.sendEmailVerification().then((value) {
+            showMessageDialog(
+                context: context, message: 'A verification email has been sent to: ${FirebaseAuth.instance.currentUser?.email}');
+            FirebaseAuth.instance.signOut();
+          });
+        }
+      }).catchError((exception) {
+        showMessageDialog(context: context, message: 'Sorry, an error has occurred.');
+      });
     }
   }
 
@@ -155,8 +141,7 @@ class SignInPageState extends State<SignInPage> {
                   children: [
                     GestureDetector(
                         onTap: () {
-                          Navigator.of(context)
-                              .push(MaterialPageRoute(builder: (context) => const ForgotPasswordPage()));
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ForgotPasswordPage()));
                         },
                         child: Text('Forgot password?',
                             style: TextStyle(

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:app/src/components/dialog_components.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({super.key});
+
   @override
   State<ForgotPasswordPage> createState() => ForgotPasswordPageState();
 }
@@ -10,48 +12,24 @@ class ForgotPasswordPage extends StatefulWidget {
 class ForgotPasswordPageState extends State<ForgotPasswordPage> {
   final TextEditingController emailController = TextEditingController();
 
-  void showDialogMessage(String message) {
-    showDialog(
-        context: context,
-        builder: (context) {
-          return Center(
-              child: AlertDialog(
-            actionsAlignment: MainAxisAlignment.end,
-            actions: [
-              TextButton(
-                  onPressed: () {
-                    Navigator.of(context, rootNavigator: true).pop();
-                  },
-                  child: const Text('Close')),
-            ],
-            title: Text(message),
-          ));
-        });
-  }
-
-  Future<void> confirm() async {
-    showDialog(
-        context: context,
-        builder: (context) {
-          return const Center(child: CircularProgressIndicator());
-        });
-    try {
-      await FirebaseAuth.instance.sendPasswordResetEmail(email: emailController.text);
+  void confirm() {
+    showProgressionDialog(context: context);
+    FirebaseAuth.instance.sendPasswordResetEmail(email: emailController.text).then((value) {
       Navigator.of(context, rootNavigator: true).pop();
-      showDialogMessage('A verification code has been sent to: ${emailController.text}');
-    } on FirebaseAuthException catch (exception) {
+      showMessageDialog(context: context, message: 'A password reset email has been sent to: ${emailController.text}');
+    }).catchError((exception) {
       Navigator.of(context, rootNavigator: true).pop();
       switch (exception.code) {
         case 'channel-error':
-          showDialogMessage('Missing email, please type the email in the text field.');
+          showMessageDialog(context: context, message: 'Missing email, please type the email in the text field.');
         case 'invalid-email':
-          showDialogMessage('Invalid email, please check your email and try again.');
+          showMessageDialog(context: context, message: 'Invalid email, please check your email and try again.');
         case 'too-many-requests':
-          showDialogMessage('A problem occurred, Please try again later.');
+          showMessageDialog(context: context, message: 'A problem occurred, Please try again later.');
         default:
-          showDialogMessage('Sorry, an error has occurred.');
+          showMessageDialog(context: context, message: 'Sorry, an error has occurred.');
       }
-    }
+    });
   }
 
   @override

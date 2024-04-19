@@ -15,7 +15,7 @@ class SignUpPageState extends State<SignUpPage> {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController = TextEditingController();
 
-  Future<void> signUpWithPassword() async {
+  void signUpWithPassword() {
     if (usernameController.text == '' ||
         emailController.text == '' ||
         passwordController.text == '' ||
@@ -25,16 +25,22 @@ class SignUpPageState extends State<SignUpPage> {
       showMessageDialog(context: context, message: 'Passwords do not match.');
     } else {
       showProgressionDialog(context: context);
-      try {
-        await FirebaseAuth.instance
-            .createUserWithEmailAndPassword(email: emailController.text, password: passwordController.text);
+      FirebaseAuth.instance
+          .createUserWithEmailAndPassword(email: emailController.text, password: passwordController.text)
+          .then((value) async {
         await FirebaseAuth.instance.currentUser!.updateDisplayName(usernameController.text);
-        await FirebaseAuth.instance.currentUser?.sendEmailVerification();
-        await FirebaseAuth.instance.signOut();
-        Navigator.of(context, rootNavigator: true).pop();
-        Navigator.pop(context);
-        showMessageDialog(context: context, message: 'A verification email has been sent to: ${emailController.text}');
-      } on FirebaseAuthException catch (exception) {
+        FirebaseAuth.instance.currentUser!.sendEmailVerification().then((value) {
+          Navigator.of(context, rootNavigator: true).pop();
+          Navigator.pop(context);
+          showMessageDialog(
+              context: context, message: 'A verification email has been sent to: ${FirebaseAuth.instance.currentUser!.email}');
+          FirebaseAuth.instance.signOut();
+        }).catchError((exception) {
+          FirebaseAuth.instance.signOut();
+          Navigator.of(context, rootNavigator: true).pop();
+          showMessageDialog(context: context, message: 'A problem occurred, please try again later.');
+        });
+      }).catchError((exception) {
         Navigator.of(context, rootNavigator: true).pop();
         switch (exception.code) {
           case 'weak-password':
@@ -48,82 +54,82 @@ class SignUpPageState extends State<SignUpPage> {
           default:
             showMessageDialog(context: context, message: 'Sorry, something went wrong.');
         }
-      }
+      });
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text('Sign Up')),
-        body: Center(
-            child: SingleChildScrollView(
-              child: Column(
+      appBar: AppBar(title: const Text('Sign Up')),
+      body: Center(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const FlutterLogo(size: 100),
+              const SizedBox(height: 50),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                child: TextField(
+                  controller: usernameController,
+                  decoration: const InputDecoration(hintText: 'Username'),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                child: TextField(
+                  controller: emailController,
+                  decoration: const InputDecoration(hintText: 'Email'),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                child: TextField(
+                  controller: passwordController,
+                  decoration: const InputDecoration(hintText: 'Password'),
+                  obscureText: true,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                child: TextField(
+                  controller: confirmPasswordController,
+                  decoration: const InputDecoration(hintText: 'Confirm password'),
+                  obscureText: true,
+                ),
+              ),
+              const SizedBox(height: 10),
+              Center(
+                  child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                child: TextButton(
+                  style: const ButtonStyle(),
+                  onPressed: signUpWithPassword,
+                  child: const Text('Sign up'),
+                ),
+              )),
+              const SizedBox(height: 20),
+              Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const FlutterLogo(size: 100),
-                  const SizedBox(height: 50),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-                    child: TextField(
-                      controller: usernameController,
-                      decoration: const InputDecoration(hintText: 'Username'),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-                    child: TextField(
-                      controller: emailController,
-                      decoration: const InputDecoration(hintText: 'Email'),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-                    child: TextField(
-                      controller: passwordController,
-                      decoration: const InputDecoration(hintText: 'Password'),
-                      obscureText: true,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-                    child: TextField(
-                      controller: confirmPasswordController,
-                      decoration: const InputDecoration(hintText: 'Confirm password'),
-                      obscureText: true,
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  Center(
-                      child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    child: TextButton(
-                      style: const ButtonStyle(),
-                      onPressed: signUpWithPassword,
-                      child: const Text('Sign up'),
-                    ),
-                  )),
-                  const SizedBox(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text('Have an existing account?'),
-                      const SizedBox(width: 5),
-                      GestureDetector(
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
-                          child: Text('Sign in',
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                color: Theme.of(context).colorScheme.primary,
-                              )))
-                    ],
-                  )
+                  const Text('Have an existing account?'),
+                  const SizedBox(width: 5),
+                  GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Text('Sign in',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            color: Theme.of(context).colorScheme.primary,
+                          )))
                 ],
-              ),
-            ),
+              )
+            ],
           ),
-        );
+        ),
+      ),
+    );
   }
 }

@@ -32,13 +32,13 @@ class _PlansState extends State<Plans> {
       body: ListView(
         children: [
           Padding(
-            padding: EdgeInsets.only(left: 10),
+            padding: const EdgeInsets.only(left: 10),
             child: Text(style: theme.textTheme.titleSmall?.copyWith(color: const Color(colors.mainColor)), 'plans'),
           ),
-          TextPlace(text: 'Enlarging the desease repertoire', description: 'Details'),
-          TextPlace(text: 'Improving accuracy', description: 'Details'),
-          TextPlace(text: 'Adding a space where patients have the ability to communiacte with doctors', description: 'Details'),
-          Padding(
+          const TextPlace(text: 'Enlarging the desease repertoire', description: 'Details'),
+          const TextPlace(text: 'Improving accuracy', description: 'Details'),
+          const TextPlace(text: 'Adding a space where patients have the ability to communiacte with doctors', description: 'Details'),
+          const Padding(
               padding: EdgeInsets.only(top: 440),
               child: BottomNavigation(
                 leftPage: Plans(),

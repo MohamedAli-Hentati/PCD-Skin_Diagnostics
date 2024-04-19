@@ -33,45 +33,45 @@ class _ObjectivesState extends State<Objectives> {
       appBar: AppBar(),
       body: ListView(
         children: [
-          Padding(padding: EdgeInsets.only(left: 10),
+          Padding(padding: const EdgeInsets.only(left: 10),
             child:Text(style:theme.textTheme.titleSmall?.copyWith(color: const Color(colors.mainColor)),'inspiration'),
             
           ),
-          TextPlace(
+          const TextPlace(
               text: 'Skin deseases are becoming more rampant these days.',
               description: 'Description'),
-          TextPlace(
+          const TextPlace(
               text:
                   'Emergency situations without the ability to seek proffessional.  ',
               description: 'Description'),
-          TextPlace(
+          const TextPlace(
               text: 'Unability to afford treatment',
               description: 'Description'),
-          Padding(padding: EdgeInsets.only(left: 10,top:10),
+          Padding(padding: const EdgeInsets.only(left: 10,top:10),
             child:Text(style: theme.textTheme.titleSmall?.copyWith(color: const Color(colors.mainColor)),'objectives'),
             
           ),
-          TextPlace(
+          const TextPlace(
               text:
                   'Integrating AI technologies specifically deep learning to help diagnose skin anomalies',
               description: 'Description'),
-          TextPlace(
+          const TextPlace(
               text:
                   'Asses the feasability of such an application using a smaller sample of pathologies.',
               description: 'Description'),
-          TextPlace(
+          const TextPlace(
               text:
                   'Help by describing suitable in a natural auto-generated manner.',
               description: 'Description'),
-          TextPlace(
+          const TextPlace(
               text:
                   'Provide an app that will be a foundation for online healthcare in tunisia.',
               description: 'Description'),
-          TextPlace(
+          const TextPlace(
               text:
                   'Make the app easily extensible for future upgrades and new features.',
               description: 'Description'),
-        BottomNavigation(leftPage:Plans(), rightPage:Warning() , pageName: 'Objectives',backgroundcolor: Colors.white,)
+        const BottomNavigation(leftPage:Plans(), rightPage:Warning() , pageName: 'Objectives',backgroundcolor: Colors.white,)
         ],
       ),
     );

@@ -123,34 +123,52 @@ class ScanPageState extends State<ScanPage> {
             future: initializeControllerFuture,
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.done) {
-                return LayoutBuilder(
-                  builder: (BuildContext context, BoxConstraints constraints) {
-                    return SizedBox(
-                      width: constraints.maxWidth,
-                      height: constraints.maxWidth / controller.value.aspectRatio,
-                      child: CameraPreview(controller,
-                          child: Center(
-                            child: CustomPaint(
-                              foregroundPainter: BorderPainter(),
-                              child: Container(
-                                width: 224,
-                                height: 224,
-                                color: Colors.transparent,
-                                child: const Center(
-                                    child: SizedBox(
-                                  width: 125,
-                                  child: Text(
-                                    textAlign: TextAlign.center,
-                                    'Position affected skin area here',
-                                    style: TextStyle(fontSize: 17, color: Colors.white54),
-                                  ),
-                                )),
+                if (controller.value.isInitialized) {
+                  return LayoutBuilder(
+                    builder: (BuildContext context, BoxConstraints constraints) {
+                      return SizedBox(
+                        width: constraints.maxWidth,
+                        height: constraints.maxWidth / controller.value.aspectRatio,
+                        child: CameraPreview(controller,
+                            child: Center(
+                              child: CustomPaint(
+                                foregroundPainter: BorderPainter(),
+                                child: Container(
+                                  width: 224,
+                                  height: 224,
+                                  color: Colors.transparent,
+                                  child: const Center(
+                                      child: SizedBox(
+                                    width: 125,
+                                    child: Text(
+                                      textAlign: TextAlign.center,
+                                      'Position affected skin area here',
+                                      style: TextStyle(fontSize: 17, color: Colors.white54),
+                                    ),
+                                  )),
+                                ),
                               ),
-                            ),
-                          )),
-                    );
-                  },
-                );
+                            )),
+                      );
+                    },
+                  );
+                } else {
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.warning_rounded,
+                        size: 25,
+                        color: Colors.grey.shade600,
+                      ),
+                      const SizedBox(height: 5),
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 35),
+                        child: Text('Camera permission not granted'),
+                      )
+                    ],
+                  );
+                }
               } else {
                 return const Center(child: CircularProgressIndicator());
               }

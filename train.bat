@@ -1,2 +1,2 @@
-python -OO train.py
+python train.py
 pause

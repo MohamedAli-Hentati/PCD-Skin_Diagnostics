@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:app/src/widgets/history_page.dart';
 import 'package:app/src/widgets/privacy_page.dart';
-import 'package:app/src/widgets/settings_page.dart';
+import 'package:app/src/widgets/account_page.dart';
 import 'package:app/src/utils/color_utils.dart';
 import 'package:app/src/components/dialog_components.dart';
 import 'package:image_picker/image_picker.dart';
@@ -65,8 +65,7 @@ class ProfilePageState extends State<ProfilePage> {
                                           await deleteUserData();
                                           await FirebaseAuth.instance.currentUser?.delete();
                                           Navigator.pop(context);
-                                          showMessageDialog(
-                                              context: context, message: 'Your account has been deleted.');
+                                          showMessageDialog(context: context, message: 'Your account has been deleted.');
                                         } on Exception {
                                           Navigator.pop(context);
                                           showMessageDialog(context: context, message: 'Wrong password.');
@@ -96,8 +95,7 @@ class ProfilePageState extends State<ProfilePage> {
                       case 'facebook.com':
                         try {
                           final LoginResult loginResult = await FacebookAuth.instance.login();
-                          final OAuthCredential credential =
-                              FacebookAuthProvider.credential(loginResult.accessToken!.token);
+                          final OAuthCredential credential = FacebookAuthProvider.credential(loginResult.accessToken!.token);
                           await FirebaseAuth.instance.currentUser!.reauthenticateWithCredential(credential);
                           await deleteUserData();
                           await FirebaseAuth.instance.currentUser?.delete();
@@ -116,16 +114,28 @@ class ProfilePageState extends State<ProfilePage> {
   }
 
   Future<void> deleteUserData() async {
-    final query = await FirebaseFirestore.instance
-        .collection('history')
-        .where('uid', isEqualTo: FirebaseAuth.instance.currentUser!.uid)
-        .get();
+    final query =
+        await FirebaseFirestore.instance.collection('history').where('uid', isEqualTo: FirebaseAuth.instance.currentUser!.uid).get();
     final listResult = await FirebaseStorage.instance.ref('users/${FirebaseAuth.instance.currentUser!.uid}').listAll();
     for (var item in listResult.items) {
       item.delete();
     }
     for (var document in query.docs) {
       document.reference.delete();
+    }
+  }
+
+  void changePhoto() async {
+    try {
+      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+      final imageStorageRef = FirebaseStorage.instance.ref().child('users/${FirebaseAuth.instance.currentUser!.uid}/profile.png');
+      await imageStorageRef.putFile(File(image!.path));
+      await FirebaseAuth.instance.currentUser!.updatePhotoURL(await imageStorageRef.getDownloadURL());
+      setState(() {
+        profileImage = NetworkImage(FirebaseAuth.instance.currentUser!.photoURL!);
+      });
+    } on Exception {
+      showMessageDialog(context: context, message: 'Sorry, something went wrong.');
     }
   }
 
@@ -172,22 +182,7 @@ class ProfilePageState extends State<ProfilePage> {
                             ),
                             iconSize: 17.5,
                             icon: const Icon(Icons.edit_outlined),
-                            onPressed: () async {
-                              try {
-                                final image = await ImagePicker().pickImage(source: ImageSource.gallery);
-                                final imageStorageRef = FirebaseStorage.instance
-                                    .ref()
-                                    .child('users/${FirebaseAuth.instance.currentUser!.uid}/profile.png');
-                                await imageStorageRef.putFile(File(image!.path));
-                                await FirebaseAuth.instance.currentUser!
-                                    .updatePhotoURL(await imageStorageRef.getDownloadURL());
-                                setState(() {
-                                  profileImage = NetworkImage(FirebaseAuth.instance.currentUser!.photoURL!);
-                                });
-                              } on Exception {
-                                showMessageDialog(context: context, message: 'Sorry, something went wrong.');
-                              }
-                            },
+                            onPressed: changePhoto,
                           ),
                         ),
                       ),
@@ -242,11 +237,11 @@ class ProfilePageState extends State<ProfilePage> {
                     ),
                     child: ListTile(
                         tileColor: darken(Theme.of(context).colorScheme.surface, percentage: 0.010),
-                        leading: const Icon(Icons.shield_outlined),
+                        leading: const Icon(Icons.manage_accounts),
                         trailing: const Icon(Icons.keyboard_arrow_right_outlined),
-                        title: const Text('Privacy'),
+                        title: const Text('Account'),
                         onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const PrivacyPage()));
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const AccountPage()));
                         },
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50),
@@ -282,11 +277,11 @@ class ProfilePageState extends State<ProfilePage> {
                     ),
                     child: ListTile(
                         tileColor: darken(Theme.of(context).colorScheme.surface, percentage: 0.010),
-                        leading: const Icon(Icons.settings),
+                        leading: const Icon(Icons.shield_outlined),
                         trailing: const Icon(Icons.keyboard_arrow_right_outlined),
-                        title: const Text('Settings'),
+                        title: const Text('Privacy'),
                         onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const SettingsPage()));
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const PrivacyPage()));
                         },
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50),
