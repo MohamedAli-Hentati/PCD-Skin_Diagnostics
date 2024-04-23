@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:app/src/widgets/history_page.dart';
 import 'package:app/src/widgets/privacy_page.dart';
 import 'package:app/src/widgets/account_page.dart';
+import 'package:app/src/widgets/chat_bot_page.dart';
 import 'package:app/src/utils/color_utils.dart';
 import 'package:app/src/components/dialog_components.dart';
 import 'package:image_picker/image_picker.dart';
@@ -202,7 +203,9 @@ class ProfilePageState extends State<ProfilePage> {
                       fontWeight: FontWeight.w400,
                     )),
                 ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ChatBotPage()));
+                    },
                     style: ButtonStyle(overlayColor: MaterialStateProperty.resolveWith((states) {
                       return darken(Theme.of(context).colorScheme.primary);
                     }), backgroundColor: MaterialStateProperty.resolveWith((states) {
@@ -212,7 +215,7 @@ class ProfilePageState extends State<ProfilePage> {
                       height: 40,
                       width: 175,
                       child: Center(
-                        child: Text('Get advice from experts',
+                        child: Text('Chat with our skin expert',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 15,

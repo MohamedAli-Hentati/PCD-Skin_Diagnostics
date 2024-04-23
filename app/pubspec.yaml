@@ -33,6 +33,7 @@ dependencies:
 
   path: ^1.9.0
   path_provider: ^2.0.5
+  http: ^1.2.1
   image: ^4.1.7
   camera: ^0.10.0
   image_picker: ^1.0.7
@@ -72,6 +73,7 @@ flutter:
 
   assets:
     - lib/assets/images/
+    - lib/assets/certificates/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
