@@ -34,10 +34,10 @@ class HistoryPage extends StatelessWidget {
               .snapshots(),
           builder: (context, snapshot) {
             if (snapshot.hasError) {
-              return const Center(child: Text('Error loading history'));
+              return const Center(child: Text('Error loading history.'));
             }
             if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-              return const Center(child: Text('No history available'));
+              return const Center(child: Text('No history available.'));
             }
             return ListView.builder(
               itemCount: snapshot.data!.docs.length,
