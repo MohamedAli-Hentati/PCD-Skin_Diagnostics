@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:app/src/widgets/history_page.dart';
 import 'package:app/src/widgets/privacy_page.dart';
-import 'package:app/src/widgets/account_page.dart';
+import 'package:app/src/widgets/settings_page.dart';
 import 'package:app/src/widgets/chat_bot_page.dart';
 import 'package:app/src/utils/color_utils.dart';
 import 'package:app/src/components/dialog_components.dart';
@@ -115,15 +115,17 @@ class ProfilePageState extends State<ProfilePage> {
   }
 
   Future<void> deleteUserData() async {
-    final query =
+    final historyQuery =
         await FirebaseFirestore.instance.collection('history').where('uid', isEqualTo: FirebaseAuth.instance.currentUser!.uid).get();
+    final userDocument = FirebaseFirestore.instance.collection('users').doc(FirebaseAuth.instance.currentUser!.uid);
     final listResult = await FirebaseStorage.instance.ref('users/${FirebaseAuth.instance.currentUser!.uid}').listAll();
     for (var item in listResult.items) {
       item.delete();
     }
-    for (var document in query.docs) {
+    for (var document in historyQuery.docs) {
       document.reference.delete();
     }
+    userDocument.delete();
   }
 
   void changePhoto() async {
@@ -242,9 +244,11 @@ class ProfilePageState extends State<ProfilePage> {
                         tileColor: darken(Theme.of(context).colorScheme.surface, percentage: 0.010),
                         leading: const Icon(Icons.manage_accounts),
                         trailing: const Icon(Icons.keyboard_arrow_right_outlined),
-                        title: const Text('Account'),
+                        title: const Text('Settings'),
                         onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const AccountPage()));
+                          Navigator.of(context)
+                              .push(MaterialPageRoute(builder: (context) => const SettingsPage()))
+                              .then((value) => setState(() {}));
                         },
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50),
