@@ -48,12 +48,21 @@ class ConversationsManager:
             return True
         else:
             return False
-    def generate_response(self, uid: str) -> TextIteratorStreamer | None:
+    def generate_response(self, uid: str, age: str = 'Not set', gender: str = 'Not set', skin_tone: str = 'Not set', skin_type: str = 'Not set') -> TextIteratorStreamer | None:
         if self.user_has_conversation(uid):
             conversation = self.get_conversation(uid)
             if len(conversation.messages) == 0 or conversation.messages[-1]['role'] == 'user':
-                system_message = '''
-                You are a chatbot in a mobile skin care/dermatology mobile application, You are not allowed to talk about anything other than dermatology/skin related topics.
+                system_message = f'''
+                You are a assistant that helps users with there skin concerns.
+                You are not allowed to talk about anything other than dermatology/skin related topics.
+                You can use the following information to help the user if needed, Please note that some of the below information may not always be set:
+
+                Age: {age}
+                Gender: {gender}
+                Skin tone: {skin_tone}
+                Skin type: {skin_type}
+            
+                You are allowed to mention this personal information only if the user alludes to it or if it will help provide more information to the user about there issue.
                 '''
                 message = {'role': 'system', 'content': system_message}
                 conversation_copy = deepcopy(conversation)
@@ -197,7 +206,11 @@ def main():
             if uid == None:
                 return error_html('Unauthorized Access', 'Provided token is unauthorized.'), 400
             else:
-                streamer = manager.generate_response(uid)
+                age = request.headers.get('age', 'Not set')
+                gender = request.headers.get('gender', 'Not set')
+                skin_tone = request.headers.get('skin-tone', 'Not set')
+                skin_type = request.headers.get('skin-type', 'Not set')
+                streamer = manager.generate_response(uid, age, gender, skin_tone, skin_type)
                 if streamer == None:
                     return error_html('Bad Request', 'Cannot generate text.', 400), 400
                 else:

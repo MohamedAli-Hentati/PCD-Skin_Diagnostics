@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:app/src/utils/color_utils.dart';
 
 class ChatBotPage extends StatefulWidget {
@@ -75,8 +76,25 @@ class ChatBotPageState extends State<ChatBotPage> {
   Future<void> generateResponse() async {
     try {
       final token = await FirebaseAuth.instance.currentUser!.getIdToken();
+      final document = FirebaseFirestore.instance.collection('users').doc(FirebaseAuth.instance.currentUser!.uid);
+      String age = 'Not set';
+      String gender = 'Not set';
+      String skinTone = 'Not set';
+      String skinType = 'Not set';
+      final documentSnapshot = await document.get();
+      if (documentSnapshot.exists) {
+        Map<String, dynamic> data = documentSnapshot.data()!;
+        age = data['age'] ?? 'Not set';
+        gender = data['gender'] ?? 'Not set';
+        skinTone = data['skin_tone'] ?? 'Not set';
+        skinType = data['skin_type'] ?? 'Not set';
+      }
       final request = await client.getUrl(Uri.parse('https://skindiagnostics.ddns.net/chatbot/generateResponse'));
       request.headers.set('token', token!);
+      request.headers.set('age', age);
+      request.headers.set('gender', gender);
+      request.headers.set('skin-tone', skinTone);
+      request.headers.set('skin-type', skinType);
       final response = await request.close();
       if (response.statusCode == 200) {
         conversation.add({'role': 'assistant', 'content': ''});
