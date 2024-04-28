@@ -50,8 +50,8 @@ class MainActivity: FlutterActivity() {
                     val imagePath = call.arguments as String
                     val image: Bitmap = BitmapFactory.decodeFile(imagePath).scale(224, 224)
                     val model: Module = LiteModuleLoader.load(assetFilePath(this, "model.ptl"))
-                    val normMean: FloatArray = floatArrayOf(0.66386014F, 0.4962325F, 0.42691633F)
-                    val normStd: FloatArray = floatArrayOf(0.18904826F, 0.1738958F, 0.17939915F)
+                    val normMean: FloatArray = floatArrayOf(0.6617725F, 0.49528646F, 0.42680266F)
+                    val normStd: FloatArray = floatArrayOf(0.19104528F, 0.17559084F, 0.18125527F)
                     val inputTensor: Tensor = TensorImageUtils.bitmapToFloat32Tensor(image, normMean, normStd, MemoryFormat.CHANNELS_LAST)
                     val outputTensor: Tensor = model.forward(IValue.from(inputTensor)).toTensor()
                     val scores: FloatArray = outputTensor.dataAsFloatArray

@@ -288,7 +288,7 @@ class ProfilePageState extends State<ProfilePage> {
                         trailing: const Icon(Icons.keyboard_arrow_right_outlined),
                         title: const Text('Privacy'),
                         onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const PrivacyPage()));
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => PrivacyPage()));
                         },
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50),

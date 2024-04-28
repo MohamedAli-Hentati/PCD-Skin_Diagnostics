@@ -22,7 +22,7 @@ from sklearn.metrics import confusion_matrix
 device = torch.device('cuda')
 
 # this is a multiplier for various variables
-multiplier = 0.125
+multiplier = 2
 
 # get the current time
 startup_time = datetime.datetime.now().strftime('%Y-%m-%d-%H-%M')
@@ -193,7 +193,7 @@ if __name__ == "__main__":
         total_acc_val.append(acc_val)
         if acc_val > best_val_acc:
             best_val_acc = acc_val
-            if best_val_acc > 0.87:
+            if best_val_acc > 0.88:
                 torch.save(model, f'models/model_{startup_time}_{int(best_val_acc * 100)}.pth')
             print('******************************************************************************************************************')
             print(f'best record: [epoch {epoch}], [val loss {loss_val}], [val acc {acc_val}]')
