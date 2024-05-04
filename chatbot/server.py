@@ -52,6 +52,8 @@ class ConversationsManager:
         if self.user_has_conversation(uid):
             conversation = self.get_conversation(uid)
             if len(conversation.messages) == 0 or conversation.messages[-1]['role'] == 'user':
+
+                # Injecting system message
                 system_message = f'''
                 You are a assistant that helps users with there skin concerns.
                 You are not allowed to talk about anything other than dermatology/skin related topics.
@@ -63,10 +65,12 @@ class ConversationsManager:
                 Skin type: {skin_type}
             
                 You are allowed to mention this personal information only if the user alludes to it or if it will help provide more information to the user about there issue.
+                Try to keep the responses as brief as possible if you can.
                 '''
                 message = {'role': 'system', 'content': system_message}
                 conversation_copy = deepcopy(conversation)
                 conversation_copy.messages.insert(0, message)
+
                 streamer = TextIteratorStreamer(self.tokenizer, skip_prompt=True)
                 chatbot = pipeline(
                     task='conversational',
