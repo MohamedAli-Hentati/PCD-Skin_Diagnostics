@@ -78,7 +78,7 @@ class ScanPageState extends State<ScanPage> {
       final imagePath = image.path;
       final imageFile = File(imagePath);
       image_utils.Image? decodedImage = image_utils.decodeImage(await imageFile.readAsBytes());
-      int cropSize = (decodedImage!.width * 0.75).round();
+      int cropSize = (decodedImage!.width * 0.70).round();
       cropSize = cropSize < 224 ? 224 : cropSize;
       int startX = ((decodedImage.width - cropSize) / 2).round();
       int startY = ((decodedImage.height - cropSize) / 2).round();
