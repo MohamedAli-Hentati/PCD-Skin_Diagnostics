@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "792812960447",
+    "project_id": "skin-diagnostics-application",
+    "storage_bucket": "skin-diagnostics-application.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:792812960447:android:519ed9b4278b696824a40a",
+        "android_client_info": {
+          "package_name": "com.example.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9w67dUASXbdRzHGahtjBsHDXIeMtzOy0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

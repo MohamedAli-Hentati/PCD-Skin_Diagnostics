@@ -1,0 +1,697 @@
+,filename,label,label_id,path
+0,95c2deba9f2b97f6f482f0be1c69c0c0.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/95c2deba9f2b97f6f482f0be1c69c0c0.png
+1,308e7cdcdc007ac3ef9204877c5ee5b8.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/308e7cdcdc007ac3ef9204877c5ee5b8.png
+2,c53a3a3579ff35ef08c86b65bcb5085f.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/c53a3a3579ff35ef08c86b65bcb5085f.png
+3,2f330a206b1b7c37b1d82dfd04e25e04.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/2f330a206b1b7c37b1d82dfd04e25e04.png
+4,f354a14d35f89e6e4ec26c136ec1c492.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/f354a14d35f89e6e4ec26c136ec1c492.png
+5,93c3ccc320820c1ea641dc6244f03109.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/93c3ccc320820c1ea641dc6244f03109.png
+6,53bddb0f2480edb1d67d4064a87e95b9.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/53bddb0f2480edb1d67d4064a87e95b9.png
+7,3b0a85962bfea9a937d4619ef7e3ea37.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/3b0a85962bfea9a937d4619ef7e3ea37.png
+8,06c312978164d6cc204751b5d7bea2f8.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/06c312978164d6cc204751b5d7bea2f8.png
+9,4b64778ad3a274af138c1a4a269d0e69.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/4b64778ad3a274af138c1a4a269d0e69.png
+10,9209a4be6a83500ae0c536cc16386284.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/9209a4be6a83500ae0c536cc16386284.png
+11,59241d9803c66789aa206f5928818736.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/59241d9803c66789aa206f5928818736.png
+12,874c068761a094896dc6a19678bfb2cb.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/874c068761a094896dc6a19678bfb2cb.png
+13,df36e9e73a06b3a37cc7bca56f6181b6.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/df36e9e73a06b3a37cc7bca56f6181b6.png
+14,ddae49c6b9f879444bfcdd1e6abd8325.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/ddae49c6b9f879444bfcdd1e6abd8325.png
+15,ff27aa2fa61a28227ed8e2866eb9cbd1.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/ff27aa2fa61a28227ed8e2866eb9cbd1.png
+16,9854018b441b4afc8205dd75312a39ba.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/9854018b441b4afc8205dd75312a39ba.png
+17,35bee723cd774e9d0a4653a6316b8881.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/35bee723cd774e9d0a4653a6316b8881.png
+18,ac82b001c4a7158056790b014728b5e9.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/ac82b001c4a7158056790b014728b5e9.png
+19,44501b66878c664dcc464ac40ba90211.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/44501b66878c664dcc464ac40ba90211.png
+20,426ec16fd5a64a6cc9b528e6c31e22e9.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/426ec16fd5a64a6cc9b528e6c31e22e9.png
+21,2dbfde719030684dfeb4475ada20ef66.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/2dbfde719030684dfeb4475ada20ef66.png
+22,2db363302f9ab9feaf27e91c64328fcc.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/2db363302f9ab9feaf27e91c64328fcc.png
+23,fb324416230e80e7a13756a60ac4aef4.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/fb324416230e80e7a13756a60ac4aef4.png
+24,a97cc079f492831a53993ed4999496b3.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/a97cc079f492831a53993ed4999496b3.png
+25,688ac2ba9aff76f589c14be2813f9d5f.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/688ac2ba9aff76f589c14be2813f9d5f.png
+26,6fbf42c93073d3b18c3a5df584110122.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/6fbf42c93073d3b18c3a5df584110122.png
+27,80e4d074aeeb8662bdd7a50455dc0fa1.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/80e4d074aeeb8662bdd7a50455dc0fa1.png
+28,e9ad55d2f13c5dbada7b02cb369c7849.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/e9ad55d2f13c5dbada7b02cb369c7849.png
+29,3a94ec88b1b1ef09ff93f7d5f619d879.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/3a94ec88b1b1ef09ff93f7d5f619d879.png
+30,1f8ce7c9eee7929c5f18fa64134f0551.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/1f8ce7c9eee7929c5f18fa64134f0551.png
+31,70b99a1005a08821fd9b9c48d7e8e698.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/70b99a1005a08821fd9b9c48d7e8e698.png
+32,4c731419c06a0d56f81cb03929783d38.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/4c731419c06a0d56f81cb03929783d38.png
+33,13135f44ed77ea527b70db862a83bd61.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/13135f44ed77ea527b70db862a83bd61.png
+34,518264d189db5695195a516892b7a3f0.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/518264d189db5695195a516892b7a3f0.png
+35,f132b8b7e3f95246a327640f3d078703.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/f132b8b7e3f95246a327640f3d078703.png
+36,b822f042c5ff575ac4f2d49684f8eff8.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/b822f042c5ff575ac4f2d49684f8eff8.png
+37,5e7d0cf1d8901eea8361b2be45a6fec2.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/5e7d0cf1d8901eea8361b2be45a6fec2.png
+38,d99347980b79b48f1dcd7e086c6f25d0.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/d99347980b79b48f1dcd7e086c6f25d0.png
+39,8d0d9724e46caa4b82829e70e672fd1f.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/8d0d9724e46caa4b82829e70e672fd1f.png
+40,256e6c4d067fa70695b78b3467ac9475.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/256e6c4d067fa70695b78b3467ac9475.png
+41,4f528bf1928eb2aeb6fea903ef744a55.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/4f528bf1928eb2aeb6fea903ef744a55.png
+42,22bcca7d579abf5c2c121c98aa01a4c7.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/22bcca7d579abf5c2c121c98aa01a4c7.png
+43,a4df5fa2bab38ee98922e0fbc586b93f.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/a4df5fa2bab38ee98922e0fbc586b93f.png
+44,f3eaf2eec333043953f8e6bf884cd19e.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/f3eaf2eec333043953f8e6bf884cd19e.png
+45,3875c968bfb44ad137180f3b944132c2.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/3875c968bfb44ad137180f3b944132c2.png
+46,20ae00ff7ebdbc67170b2dc89b68320c.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/20ae00ff7ebdbc67170b2dc89b68320c.png
+47,ee9728f1e771a1922abe13af66282b41.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/ee9728f1e771a1922abe13af66282b41.png
+48,794572175ce2487d073bcbd2d62f2743.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/794572175ce2487d073bcbd2d62f2743.png
+49,0e802991cd0257f69f62adedb41152f8.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/0e802991cd0257f69f62adedb41152f8.png
+50,371c578b2b298f59e97b620924576ff9.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/371c578b2b298f59e97b620924576ff9.png
+51,46d0b60ab14b134341ad87bae08e4755.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/46d0b60ab14b134341ad87bae08e4755.png
+52,b25a950afd3f1513eaeb37c2ad0a0644.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/b25a950afd3f1513eaeb37c2ad0a0644.png
+53,6dc0052dc53452af658b73877b0bb896.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/6dc0052dc53452af658b73877b0bb896.png
+54,09df23048c17d2d5d298ea991a762a7b.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/09df23048c17d2d5d298ea991a762a7b.png
+55,570bb039a6f13ce828d8a1551623a513.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/570bb039a6f13ce828d8a1551623a513.png
+56,d5a30a99501070bab4b511db29762a61.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/d5a30a99501070bab4b511db29762a61.png
+57,d2506151428601cd8566330c781f82e0.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/d2506151428601cd8566330c781f82e0.png
+58,af9d45b023176c21ca2981915e033219.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/af9d45b023176c21ca2981915e033219.png
+59,dec2d1ae044897a3eae71fae8a9bc154.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/dec2d1ae044897a3eae71fae8a9bc154.png
+60,30fd701054b889dcde3c3632585fd523.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/30fd701054b889dcde3c3632585fd523.png
+61,c5ebb84482a21015073cebc37b31f515.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/c5ebb84482a21015073cebc37b31f515.png
+62,34508b823d8b99cfb60ca9f0adc51f3b.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/34508b823d8b99cfb60ca9f0adc51f3b.png
+63,5423e2d3ad68054e7b51e27e146fddca.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/5423e2d3ad68054e7b51e27e146fddca.png
+64,594bd0aa05674c607c1fb89a4bfd877f.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/594bd0aa05674c607c1fb89a4bfd877f.png
+65,524aaebd1cc57cbc543f8f1c499615d4.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/524aaebd1cc57cbc543f8f1c499615d4.png
+66,658e06cda94514a21bb7610f49f525cb.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/658e06cda94514a21bb7610f49f525cb.png
+67,d70a1677a855b45e2049e3f08f47f153.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/d70a1677a855b45e2049e3f08f47f153.png
+68,bba3db5954f7975d59a37347222d954d.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/bba3db5954f7975d59a37347222d954d.png
+69,21a8b19f40009c5473c80977bf9efbf4.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/21a8b19f40009c5473c80977bf9efbf4.png
+70,1c5adfdbc1c9bda0bc57c328a0ed4b35.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/1c5adfdbc1c9bda0bc57c328a0ed4b35.png
+71,e3e180ecaeadef19fd487caab7655316.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/e3e180ecaeadef19fd487caab7655316.png
+72,c44f442003cee331175ba5eb38b9a900.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/c44f442003cee331175ba5eb38b9a900.png
+73,9d83cf9b9cc4a03580de63b62ea2a8f0.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/9d83cf9b9cc4a03580de63b62ea2a8f0.png
+74,804c20da98db71680bd8d6ed0299fcac.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/804c20da98db71680bd8d6ed0299fcac.png
+75,6bc3cb3a8500f1fb22684028b720a032.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/6bc3cb3a8500f1fb22684028b720a032.png
+76,8f00177862cb143ca7effe4d6f57a104.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/8f00177862cb143ca7effe4d6f57a104.png
+77,9a5f998ab51a9b43f16b21b25aaf96a8.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/9a5f998ab51a9b43f16b21b25aaf96a8.png
+78,28afda98cfe6e58e76e1e011b7424f7c.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/28afda98cfe6e58e76e1e011b7424f7c.png
+79,6ed58ed2e4c8b378493cd5766f7bad56.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/6ed58ed2e4c8b378493cd5766f7bad56.png
+80,190822f2e75490299428db99d2f34486.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/190822f2e75490299428db99d2f34486.png
+81,6a727240423e70d739921e7ca293cbdc.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/6a727240423e70d739921e7ca293cbdc.png
+82,8017d1da313f196c232fe842131d4b80.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/8017d1da313f196c232fe842131d4b80.png
+83,421307b71f4e267df9fdec5a5c91c67e.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/421307b71f4e267df9fdec5a5c91c67e.png
+84,27f0e7a7365483f98d68f0e2f4dd057e.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/27f0e7a7365483f98d68f0e2f4dd057e.png
+85,63c66f12f7358540ad83f37f109c2a83.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/63c66f12f7358540ad83f37f109c2a83.png
+86,7bf58f12471c122fec431fdfd4777e6f.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/7bf58f12471c122fec431fdfd4777e6f.png
+87,8c39f641d7cc2d5df257143a854b28ad.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/8c39f641d7cc2d5df257143a854b28ad.png
+88,88e49623b7d05cee8a59abc21d4a2aac.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/88e49623b7d05cee8a59abc21d4a2aac.png
+89,64ad852dc5e267ec279e02f7ec0b7307.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/64ad852dc5e267ec279e02f7ec0b7307.png
+90,0dc6885fd880372bd54476d13f0753b1.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/0dc6885fd880372bd54476d13f0753b1.png
+91,82375585ff47e3738a54447e43b613f2.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/82375585ff47e3738a54447e43b613f2.png
+92,6323e7bf168cb3f170902b24cd05e8c4.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/6323e7bf168cb3f170902b24cd05e8c4.png
+93,16c089e04436faa844be84aba9d0179a.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/16c089e04436faa844be84aba9d0179a.png
+94,435c04a5d308c88a98d5d1acee8cd175.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/435c04a5d308c88a98d5d1acee8cd175.png
+95,6472c26e82d307a0929503604f91bcac.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/6472c26e82d307a0929503604f91bcac.png
+96,6eab97097e17ebb49078b6f45c9f185a.png,basal cell carcinoma,0,./dataset/basal cell carcinoma/6eab97097e17ebb49078b6f45c9f185a.png
+97,a60800f82f6a2588e2cf624ad64f2db1.png,melanoma,1,./dataset/melanoma/a60800f82f6a2588e2cf624ad64f2db1.png
+98,205b5516eeb31b7866acd6c0265be43b.jpg,melanoma,1,./dataset/melanoma/205b5516eeb31b7866acd6c0265be43b.jpg
+99,6fb83ea46951495cb3e1fe5f49e80685.png,melanoma,1,./dataset/melanoma/6fb83ea46951495cb3e1fe5f49e80685.png
+100,81c007db8cc1bc57cb08bcc00dda653b.png,melanoma,1,./dataset/melanoma/81c007db8cc1bc57cb08bcc00dda653b.png
+101,bb2e052ba0951cf787b9e831ab2a5b10.png,melanoma,1,./dataset/melanoma/bb2e052ba0951cf787b9e831ab2a5b10.png
+102,6eaa9ead852d9b382e53a87c714ff2c0.jpg,melanoma,1,./dataset/melanoma/6eaa9ead852d9b382e53a87c714ff2c0.jpg
+103,43a1b2de58b03b9f70cbdf2cc6ecf21d.jpg,melanoma,1,./dataset/melanoma/43a1b2de58b03b9f70cbdf2cc6ecf21d.jpg
+104,ced259fc30f7aa0563532e83c880df70.png,melanoma,1,./dataset/melanoma/ced259fc30f7aa0563532e83c880df70.png
+105,fb55698a573ab26dc7cf5a03387939a0.png,melanoma,1,./dataset/melanoma/fb55698a573ab26dc7cf5a03387939a0.png
+106,284fabb7a3554e38ca1b60e116a512b5.jpg,melanoma,1,./dataset/melanoma/284fabb7a3554e38ca1b60e116a512b5.jpg
+107,97daccbe6d587b298b2949cf1b0a3f21.png,melanoma,1,./dataset/melanoma/97daccbe6d587b298b2949cf1b0a3f21.png
+108,3b051ebd4812b9d3d4e3c1b7b6d5bcfa.jpg,melanoma,1,./dataset/melanoma/3b051ebd4812b9d3d4e3c1b7b6d5bcfa.jpg
+109,ada18724a43831db99512cf39a174d0a.png,melanoma,1,./dataset/melanoma/ada18724a43831db99512cf39a174d0a.png
+110,d13e9416a0204d2e004f93eb5f853448.png,melanoma,1,./dataset/melanoma/d13e9416a0204d2e004f93eb5f853448.png
+111,47ae0164d37b5c26a524d8b33132fcb5.png,melanoma,1,./dataset/melanoma/47ae0164d37b5c26a524d8b33132fcb5.png
+112,f8c55aaa45605b81a8476917c673da06.png,melanoma,1,./dataset/melanoma/f8c55aaa45605b81a8476917c673da06.png
+113,f1bbc01de2a04b49d2893a34814b095f.png,melanoma,1,./dataset/melanoma/f1bbc01de2a04b49d2893a34814b095f.png
+114,e40fe04e0ce0f75574f2f4df2394b2c6.jpg,melanoma,1,./dataset/melanoma/e40fe04e0ce0f75574f2f4df2394b2c6.jpg
+115,852b1cbfb924539f2aa31a036ea6b565.png,melanoma,1,./dataset/melanoma/852b1cbfb924539f2aa31a036ea6b565.png
+116,99084de9786349f8aa925dafc92d6644.jpg,melanoma,1,./dataset/melanoma/99084de9786349f8aa925dafc92d6644.jpg
+117,23e8224f282743090996c614b7a6dfca.png,melanoma,1,./dataset/melanoma/23e8224f282743090996c614b7a6dfca.png
+118,b75d1a302ae3ec412297ae45ff14bc02.png,melanoma,1,./dataset/melanoma/b75d1a302ae3ec412297ae45ff14bc02.png
+119,c8577189886a92c78840de2fc41478b3.png,melanoma,1,./dataset/melanoma/c8577189886a92c78840de2fc41478b3.png
+120,b3f3184299ca9bfdeef77075c9b7b711.jpg,melanoma,1,./dataset/melanoma/b3f3184299ca9bfdeef77075c9b7b711.jpg
+121,6fa6ae0bad00e7e57a1b5cf633127be7.jpg,melanoma,1,./dataset/melanoma/6fa6ae0bad00e7e57a1b5cf633127be7.jpg
+122,2456d3506de75a0051e0beaefb468248.png,melanoma,1,./dataset/melanoma/2456d3506de75a0051e0beaefb468248.png
+123,04619369ecec27c92b5f782adfd21b05.png,melanoma,1,./dataset/melanoma/04619369ecec27c92b5f782adfd21b05.png
+124,2e9026dc8e4b4256aaad236b808de767.png,melanoma,1,./dataset/melanoma/2e9026dc8e4b4256aaad236b808de767.png
+125,a51617e00dfdf9febbdef2b0741ee82d.png,melanoma,1,./dataset/melanoma/a51617e00dfdf9febbdef2b0741ee82d.png
+126,f1bdfe975f053e9b464b14f555db1aec.png,melanoma,1,./dataset/melanoma/f1bdfe975f053e9b464b14f555db1aec.png
+127,becab807bbe933d1a5e84f378dfc083f.png,melanoma,1,./dataset/melanoma/becab807bbe933d1a5e84f378dfc083f.png
+128,ecd97fd36f39e9fd52f09f50c3dc59b5.png,melanoma,1,./dataset/melanoma/ecd97fd36f39e9fd52f09f50c3dc59b5.png
+129,9ee17127331be5b1c1f2bdea846ee60f.png,melanoma,1,./dataset/melanoma/9ee17127331be5b1c1f2bdea846ee60f.png
+130,df17d9052c095d5b0593a3b9dd306d75.png,melanoma,1,./dataset/melanoma/df17d9052c095d5b0593a3b9dd306d75.png
+131,c758a8ba4a4583f8a1074cefbe391c4d.png,melanoma,1,./dataset/melanoma/c758a8ba4a4583f8a1074cefbe391c4d.png
+132,53864308430c13059e693c155749a6d1.png,melanoma,1,./dataset/melanoma/53864308430c13059e693c155749a6d1.png
+133,21988edf56792632bf60230be54b4ecb.png,melanoma,1,./dataset/melanoma/21988edf56792632bf60230be54b4ecb.png
+134,20cc2e089e50034c164fb3e49bad142f.png,melanoma,1,./dataset/melanoma/20cc2e089e50034c164fb3e49bad142f.png
+135,9695951a2cb28eb40557aa22e201b9c4.png,melanoma,1,./dataset/melanoma/9695951a2cb28eb40557aa22e201b9c4.png
+136,6cf10bfb15d43652310bd5ce509069a9.png,melanoma,1,./dataset/melanoma/6cf10bfb15d43652310bd5ce509069a9.png
+137,8ea314195479001aaa5ce386c9f45433.png,melanoma,1,./dataset/melanoma/8ea314195479001aaa5ce386c9f45433.png
+138,c8a6962325692dfdd5db9428d46bfdb0.png,melanoma,1,./dataset/melanoma/c8a6962325692dfdd5db9428d46bfdb0.png
+139,d23cca6abc6d4e9aa6e1dfe1dc404300.jpg,melanoma,1,./dataset/melanoma/d23cca6abc6d4e9aa6e1dfe1dc404300.jpg
+140,045b1d751bdafb3c8126c61c5caf270d.png,melanoma,1,./dataset/melanoma/045b1d751bdafb3c8126c61c5caf270d.png
+141,ca4a01cbad0ead292ba9b53d1b641022.jpg,melanoma,1,./dataset/melanoma/ca4a01cbad0ead292ba9b53d1b641022.jpg
+142,b903521a3aaf40c830a762c3805de49e.jpg,melanoma,1,./dataset/melanoma/b903521a3aaf40c830a762c3805de49e.jpg
+143,fc3ca958b3933279a3332912b89a63ed.jpg,melanoma,1,./dataset/melanoma/fc3ca958b3933279a3332912b89a63ed.jpg
+144,24b2a5101eff26a366c4000b251cff12.jpg,melanoma,1,./dataset/melanoma/24b2a5101eff26a366c4000b251cff12.jpg
+145,978377b26df858e1f19cb156468aa7c0.jpg,melanoma,1,./dataset/melanoma/978377b26df858e1f19cb156468aa7c0.jpg
+146,ded46818eb3e6871c2d54bbb3c5cd282.png,melanoma,1,./dataset/melanoma/ded46818eb3e6871c2d54bbb3c5cd282.png
+147,bf9c6746cdefc076e4eda3b1c9d959df.png,melanoma,1,./dataset/melanoma/bf9c6746cdefc076e4eda3b1c9d959df.png
+148,74f27c9555cdce364f29c915ea263b7e.jpg,melanoma,1,./dataset/melanoma/74f27c9555cdce364f29c915ea263b7e.jpg
+149,88c8c110ade2657fbe1c840dd2494511.png,melanoma,1,./dataset/melanoma/88c8c110ade2657fbe1c840dd2494511.png
+150,56d25adf46b9b0c60ad3e90992c5302d.png,melanoma,1,./dataset/melanoma/56d25adf46b9b0c60ad3e90992c5302d.png
+151,a8ffa90c01aaf037a5a965209eafef6f.png,melanoma,1,./dataset/melanoma/a8ffa90c01aaf037a5a965209eafef6f.png
+152,dc7c80c0e4d68a27a3fba932cda2c2f3.jpg,melanoma,1,./dataset/melanoma/dc7c80c0e4d68a27a3fba932cda2c2f3.jpg
+153,68528c33db3fc238d183b5d2c14d6f75.png,melanoma,1,./dataset/melanoma/68528c33db3fc238d183b5d2c14d6f75.png
+154,30a80ea4b7679c08066f82d832a9fbf3.jpg,melanoma,1,./dataset/melanoma/30a80ea4b7679c08066f82d832a9fbf3.jpg
+155,74e9c27efd60a074b6b4d7e40f61c270.png,melanoma,1,./dataset/melanoma/74e9c27efd60a074b6b4d7e40f61c270.png
+156,7fd141e0b81e5573612d46472ec9fe52.png,melanoma,1,./dataset/melanoma/7fd141e0b81e5573612d46472ec9fe52.png
+157,1225748569e2495256edb1f615dab952.png,melanoma,1,./dataset/melanoma/1225748569e2495256edb1f615dab952.png
+158,8ff8f192700d30bc422f1378ca8db4f9.jpg,melanoma,1,./dataset/melanoma/8ff8f192700d30bc422f1378ca8db4f9.jpg
+159,003c9d4e8f83f78a0ce0e9b9d9e11c14.jpg,melanoma,1,./dataset/melanoma/003c9d4e8f83f78a0ce0e9b9d9e11c14.jpg
+160,a012732fd2caf22e3168ea643b0df97e.png,melanoma,1,./dataset/melanoma/a012732fd2caf22e3168ea643b0df97e.png
+161,454e68bf5705eabf0f4d28fc1dbd77be.png,melanoma,1,./dataset/melanoma/454e68bf5705eabf0f4d28fc1dbd77be.png
+162,2004c88f0aba56122257c4f71e67c719.png,melanoma,1,./dataset/melanoma/2004c88f0aba56122257c4f71e67c719.png
+163,58bd4e92a6439a4883988e1548dce3a7.jpg,melanoma,1,./dataset/melanoma/58bd4e92a6439a4883988e1548dce3a7.jpg
+164,ddece07b9706e4129f910eb8976ed633.png,melanoma,1,./dataset/melanoma/ddece07b9706e4129f910eb8976ed633.png
+165,3e79b0695698f58d3d40482c2aef87a9.png,melanoma,1,./dataset/melanoma/3e79b0695698f58d3d40482c2aef87a9.png
+166,91d6732b457f027781036f59854d37e0.jpg,melanoma,1,./dataset/melanoma/91d6732b457f027781036f59854d37e0.jpg
+167,cb7085277de61ca9601240e2c242f902.png,melanoma,1,./dataset/melanoma/cb7085277de61ca9601240e2c242f902.png
+168,37ef6efc7b2498d4a693e3da285fe940.png,melanoma,1,./dataset/melanoma/37ef6efc7b2498d4a693e3da285fe940.png
+169,943a5ffcd4da3122732edad290533470.png,melanoma,1,./dataset/melanoma/943a5ffcd4da3122732edad290533470.png
+170,07618c5469dbbeff040edf4e748d96e8.jpg,melanoma,1,./dataset/melanoma/07618c5469dbbeff040edf4e748d96e8.jpg
+171,d472bc42b20552fc6800ef5128e57259.jpg,melanoma,1,./dataset/melanoma/d472bc42b20552fc6800ef5128e57259.jpg
+172,f728b8ad950fa5a36cd26cbdf9651179.png,melanoma,1,./dataset/melanoma/f728b8ad950fa5a36cd26cbdf9651179.png
+173,59987085d01b140ce512082866095ddd.png,melanoma,1,./dataset/melanoma/59987085d01b140ce512082866095ddd.png
+174,c707b1bf6e959f1a1e35a1ad9af8aab6.png,melanoma,1,./dataset/melanoma/c707b1bf6e959f1a1e35a1ad9af8aab6.png
+175,45d9f092d34f86fc3baf381c53684af1.jpg,melanoma,1,./dataset/melanoma/45d9f092d34f86fc3baf381c53684af1.jpg
+176,a4bd02ffa70ff94c6c0d4e8f3c412b81.png,melanoma,1,./dataset/melanoma/a4bd02ffa70ff94c6c0d4e8f3c412b81.png
+177,6244875c69bc45123b6945343dd820c9.jpg,melanoma,1,./dataset/melanoma/6244875c69bc45123b6945343dd820c9.jpg
+178,fab4ccfe80780b02c35451533bceb848.png,melanoma,1,./dataset/melanoma/fab4ccfe80780b02c35451533bceb848.png
+179,61d154372af30ec62e3919c8b2ecf50d.jpg,melanoma,1,./dataset/melanoma/61d154372af30ec62e3919c8b2ecf50d.jpg
+180,e6247183a2fc69e8ea89dddc6f60f904.png,melanoma,1,./dataset/melanoma/e6247183a2fc69e8ea89dddc6f60f904.png
+181,6eb241282698d3a3b24f8a5427f1bbbf.png,melanoma,1,./dataset/melanoma/6eb241282698d3a3b24f8a5427f1bbbf.png
+182,467b2ac03723ec804ecb709da4a5bb16.png,melanoma,1,./dataset/melanoma/467b2ac03723ec804ecb709da4a5bb16.png
+183,68623ff99e2d99707211ae16ac655ebf.png,melanoma,1,./dataset/melanoma/68623ff99e2d99707211ae16ac655ebf.png
+184,a07d58a0a2d13823ee977d0f2c399450.png,melanoma,1,./dataset/melanoma/a07d58a0a2d13823ee977d0f2c399450.png
+185,70ba5002b51233df0079db6a26a8aa0b.png,melanoma,1,./dataset/melanoma/70ba5002b51233df0079db6a26a8aa0b.png
+186,81b0350293a823c91b3ddaecd991a94a.jpg,melanoma,1,./dataset/melanoma/81b0350293a823c91b3ddaecd991a94a.jpg
+187,ecdcd89dda8fa5b30706532fb49f315c.png,melanoma,1,./dataset/melanoma/ecdcd89dda8fa5b30706532fb49f315c.png
+188,647f463f577a6a823c7648beaf25eb2b.jpg,melanoma,1,./dataset/melanoma/647f463f577a6a823c7648beaf25eb2b.jpg
+189,218fe53ea5e692f3b1f0d6a44829b330.png,melanoma,1,./dataset/melanoma/218fe53ea5e692f3b1f0d6a44829b330.png
+190,9dddb4f46c7883720f29110982de7110.png,melanoma,1,./dataset/melanoma/9dddb4f46c7883720f29110982de7110.png
+191,46a52b0203c2e2e10adcfdb6dd3d30a0.png,melanoma,1,./dataset/melanoma/46a52b0203c2e2e10adcfdb6dd3d30a0.png
+192,6d8516757a40c46b8f1e8639d72b8199.jpg,melanoma,1,./dataset/melanoma/6d8516757a40c46b8f1e8639d72b8199.jpg
+193,3d4d0c73ac1ac6178f9d78d1acff3a58.png,acne,2,./dataset/acne/3d4d0c73ac1ac6178f9d78d1acff3a58.png
+194,07a62c58c366377b9692b688e04d4f76.png,acne,2,./dataset/acne/07a62c58c366377b9692b688e04d4f76.png
+195,dfa49c875f33b88d91c2f4e9008fe763.png,acne,2,./dataset/acne/dfa49c875f33b88d91c2f4e9008fe763.png
+196,0e436455350857205e0d53a36b3acf67.png,acne,2,./dataset/acne/0e436455350857205e0d53a36b3acf67.png
+197,784407f590b259c9edb1270d0aa907d3.png,acne,2,./dataset/acne/784407f590b259c9edb1270d0aa907d3.png
+198,901035ab44440230bec2af7a0857ab37.png,acne,2,./dataset/acne/901035ab44440230bec2af7a0857ab37.png
+199,c4574bacab317bc7ec8d0691c1a17f17.png,acne,2,./dataset/acne/c4574bacab317bc7ec8d0691c1a17f17.png
+200,9dccb89ae8b15e7b9063318022608d70.png,acne,2,./dataset/acne/9dccb89ae8b15e7b9063318022608d70.png
+201,29b551f8ae4b694e43409123a8601dfa.png,acne,2,./dataset/acne/29b551f8ae4b694e43409123a8601dfa.png
+202,faf0a7869859569ca04155f81005c11f.png,acne,2,./dataset/acne/faf0a7869859569ca04155f81005c11f.png
+203,1b30b27a7fdd32f127605d702e29792b.png,acne,2,./dataset/acne/1b30b27a7fdd32f127605d702e29792b.png
+204,6b6381ebe706b646414c6afc0116eade.png,acne,2,./dataset/acne/6b6381ebe706b646414c6afc0116eade.png
+205,61666c0ec14deb9728144948debffd74.png,acne,2,./dataset/acne/61666c0ec14deb9728144948debffd74.png
+206,c70e5f1716961baec5db3785db9d8839.png,acne,2,./dataset/acne/c70e5f1716961baec5db3785db9d8839.png
+207,23090f6816110dc218e3e12d8fe5286f.png,acne,2,./dataset/acne/23090f6816110dc218e3e12d8fe5286f.png
+208,df0ed6870bf8db16ed254f729585db11.png,acne,2,./dataset/acne/df0ed6870bf8db16ed254f729585db11.png
+209,2e048fd5a7c53c8d731cb4ec4cf1b85d.png,acne,2,./dataset/acne/2e048fd5a7c53c8d731cb4ec4cf1b85d.png
+210,5373271ca9fbe299b26648fdac3e8bed.png,acne,2,./dataset/acne/5373271ca9fbe299b26648fdac3e8bed.png
+211,8da1461c443aec674f75fada576ef037.png,acne,2,./dataset/acne/8da1461c443aec674f75fada576ef037.png
+212,57f50c50b5bba1b0ba2ad18641004486.png,acne,2,./dataset/acne/57f50c50b5bba1b0ba2ad18641004486.png
+213,e9d651ccb43094dc0574a31426b18901.png,acne,2,./dataset/acne/e9d651ccb43094dc0574a31426b18901.png
+214,cff57f580c3e942c1d4fe32771503888.png,acne,2,./dataset/acne/cff57f580c3e942c1d4fe32771503888.png
+215,38475c3b08e55f3c7a3813893b40e244.png,acne,2,./dataset/acne/38475c3b08e55f3c7a3813893b40e244.png
+216,e05c59f6b34de41abd2c7587c41db077.png,acne,2,./dataset/acne/e05c59f6b34de41abd2c7587c41db077.png
+217,7a959183168ea039a889fc622afe2d41.png,acne,2,./dataset/acne/7a959183168ea039a889fc622afe2d41.png
+218,74df53d12210f742427d83c8d4192094.png,acne,2,./dataset/acne/74df53d12210f742427d83c8d4192094.png
+219,2ed5843cc88e0bf7c199a2cf811acec9.png,acne,2,./dataset/acne/2ed5843cc88e0bf7c199a2cf811acec9.png
+220,72e9246c83fe4ce50d2d99018043ccc2.png,acne,2,./dataset/acne/72e9246c83fe4ce50d2d99018043ccc2.png
+221,500b17fa4c188bf65033fbdfc9e9f12b.png,acne,2,./dataset/acne/500b17fa4c188bf65033fbdfc9e9f12b.png
+222,e560c04dcde1fbcc3aa87c8cfab5aca1.png,acne,2,./dataset/acne/e560c04dcde1fbcc3aa87c8cfab5aca1.png
+223,c26cfe58bbd48bbdc2542d2a0fe3fbf0.png,acne,2,./dataset/acne/c26cfe58bbd48bbdc2542d2a0fe3fbf0.png
+224,b938805637e6bdfb73919aca286be836.png,acne,2,./dataset/acne/b938805637e6bdfb73919aca286be836.png
+225,3b3da93bdb3448afd0570afea24eae41.png,acne,2,./dataset/acne/3b3da93bdb3448afd0570afea24eae41.png
+226,62c9e3126c690939ea356694a047d23b.png,acne,2,./dataset/acne/62c9e3126c690939ea356694a047d23b.png
+227,5c13812f7dcf446deec84ea4237d9f8c.png,acne,2,./dataset/acne/5c13812f7dcf446deec84ea4237d9f8c.png
+228,c6f2fe32142130478a489128f83d6b1a.png,acne,2,./dataset/acne/c6f2fe32142130478a489128f83d6b1a.png
+229,bbbeccecd0d1e4d645cd9f376c1c3f3f.png,acne,2,./dataset/acne/bbbeccecd0d1e4d645cd9f376c1c3f3f.png
+230,35b51cae36de10b1e84c78170df29487.png,acne,2,./dataset/acne/35b51cae36de10b1e84c78170df29487.png
+231,d12842849f045456af8aa6b2b0956c55.png,acne,2,./dataset/acne/d12842849f045456af8aa6b2b0956c55.png
+232,0413727ba8089031523f7028d24a64da.png,acne,2,./dataset/acne/0413727ba8089031523f7028d24a64da.png
+233,15f72d09beb3cc1d689b496aecac3120.png,acne,2,./dataset/acne/15f72d09beb3cc1d689b496aecac3120.png
+234,fafba0d05a3c55d3247e43459cbb0558.png,acne,2,./dataset/acne/fafba0d05a3c55d3247e43459cbb0558.png
+235,811f74634ec6dd7022aa04e4968fea38.png,acne,2,./dataset/acne/811f74634ec6dd7022aa04e4968fea38.png
+236,9fa0afba0466d63c370ab72aa0f9bb5c.png,acne,2,./dataset/acne/9fa0afba0466d63c370ab72aa0f9bb5c.png
+237,fa05231d6810429965cb5bb4a92e46da.png,acne,2,./dataset/acne/fa05231d6810429965cb5bb4a92e46da.png
+238,60f80cdf721287c40568fee2751bfc3e.png,acne,2,./dataset/acne/60f80cdf721287c40568fee2751bfc3e.png
+239,4735dff622753bd02c22a764a9281846.png,acne,2,./dataset/acne/4735dff622753bd02c22a764a9281846.png
+240,76e0c1c6f1279c4f61527c16fc921e2b.png,acne,2,./dataset/acne/76e0c1c6f1279c4f61527c16fc921e2b.png
+241,fcfa4606363fae53e23c877f2b47837d.png,acne,2,./dataset/acne/fcfa4606363fae53e23c877f2b47837d.png
+242,5786bf6bfe56a93795a9888d834e002c.png,acne,2,./dataset/acne/5786bf6bfe56a93795a9888d834e002c.png
+243,69b01fc8a537bc8c99ea976cc32bdc69.png,acne,2,./dataset/acne/69b01fc8a537bc8c99ea976cc32bdc69.png
+244,1b4a976408d991b41614265a43bc9f6c.png,acne,2,./dataset/acne/1b4a976408d991b41614265a43bc9f6c.png
+245,0cff6f3c9bb267f68c77740fc9c58587.png,acne,2,./dataset/acne/0cff6f3c9bb267f68c77740fc9c58587.png
+246,7b368ac2a6689e254c02884b9d589a7c.png,acne,2,./dataset/acne/7b368ac2a6689e254c02884b9d589a7c.png
+247,993dbe0a3d2d4ee0306b181bd6e86121.png,acne,2,./dataset/acne/993dbe0a3d2d4ee0306b181bd6e86121.png
+248,c57a17f09208e0f9ca95b5280897c79a.png,acne,2,./dataset/acne/c57a17f09208e0f9ca95b5280897c79a.png
+249,a9fcbfc827c0c4e9c59f4cd83f2e85c0.png,acne,2,./dataset/acne/a9fcbfc827c0c4e9c59f4cd83f2e85c0.png
+250,45aebbd5b3741b10da7939e5424f70e4.png,acne,2,./dataset/acne/45aebbd5b3741b10da7939e5424f70e4.png
+251,d0e9ac56955419e31091053f44d8d152.png,acne,2,./dataset/acne/d0e9ac56955419e31091053f44d8d152.png
+252,2d49855dfa4ecb5ce88095c78bbfe5c8.png,acne,2,./dataset/acne/2d49855dfa4ecb5ce88095c78bbfe5c8.png
+253,f5d90ff7e670fa17a58c43eeb33d4b6a.png,acne,2,./dataset/acne/f5d90ff7e670fa17a58c43eeb33d4b6a.png
+254,dd458e1b9a1f498d87991da0e95800b0.png,acne,2,./dataset/acne/dd458e1b9a1f498d87991da0e95800b0.png
+255,d52aa6cd7060c450bb6dc9b091a8cd6a.png,acne,2,./dataset/acne/d52aa6cd7060c450bb6dc9b091a8cd6a.png
+256,e7cc160e240268d7ef2ff7cb8c28343d.png,acne,2,./dataset/acne/e7cc160e240268d7ef2ff7cb8c28343d.png
+257,3aa3fc1e6eb7733febaa611c85375ca5.png,acne,2,./dataset/acne/3aa3fc1e6eb7733febaa611c85375ca5.png
+258,fd14286c22b23ef54155d425c5967eed.png,acne,2,./dataset/acne/fd14286c22b23ef54155d425c5967eed.png
+259,473426948d599b6b88b1f49b43a1f583.png,acne,2,./dataset/acne/473426948d599b6b88b1f49b43a1f583.png
+260,dd93fd24793795b2ead2131453c95356.png,acne,2,./dataset/acne/dd93fd24793795b2ead2131453c95356.png
+261,acdf328693f459eb8323e0a88beb01c7.png,acne,2,./dataset/acne/acdf328693f459eb8323e0a88beb01c7.png
+262,0fb5b28ae94cfbebfe16209c00fb5a80.png,acne,2,./dataset/acne/0fb5b28ae94cfbebfe16209c00fb5a80.png
+263,3c83e78f36f0dd1cbbd4e6e23a73d5c1.png,acne,2,./dataset/acne/3c83e78f36f0dd1cbbd4e6e23a73d5c1.png
+264,610238a9511e0242eac20a58568dff9b.png,acne,2,./dataset/acne/610238a9511e0242eac20a58568dff9b.png
+265,cc949475b87e6e9e1e2fe331f4ca03dc.png,acne,2,./dataset/acne/cc949475b87e6e9e1e2fe331f4ca03dc.png
+266,c0d8acd9fcfc2d99c4c2c58ea1372328.png,acne,2,./dataset/acne/c0d8acd9fcfc2d99c4c2c58ea1372328.png
+267,d595d3c8bd3c2043fa5dd7dc5da1a9a1.png,acne,2,./dataset/acne/d595d3c8bd3c2043fa5dd7dc5da1a9a1.png
+268,e1276fb12f0d0c5d8e7ba76c64d82146.png,acne,2,./dataset/acne/e1276fb12f0d0c5d8e7ba76c64d82146.png
+269,1d44e5f1ac4de2ff6981137fd9f65708.png,acne,2,./dataset/acne/1d44e5f1ac4de2ff6981137fd9f65708.png
+270,e9e812fe9ff694c7dbc9091afea6cfcb.png,acne,2,./dataset/acne/e9e812fe9ff694c7dbc9091afea6cfcb.png
+271,32913f9aa4f774c75ef2d2b3c391ae9f.png,acne,2,./dataset/acne/32913f9aa4f774c75ef2d2b3c391ae9f.png
+272,0a98804e701f5766d72c441398df4755.png,acne,2,./dataset/acne/0a98804e701f5766d72c441398df4755.png
+273,999bac02deb0f5724a1c8439ada457ee.png,acne,2,./dataset/acne/999bac02deb0f5724a1c8439ada457ee.png
+274,3230b6596c0a08c1acac77347937012c.png,acne,2,./dataset/acne/3230b6596c0a08c1acac77347937012c.png
+275,6994c19ffa1bd15fa8608740eee0081c.png,acne,2,./dataset/acne/6994c19ffa1bd15fa8608740eee0081c.png
+276,9d0a9eb2a7892cdaa8beb1226df10c01.png,acne,2,./dataset/acne/9d0a9eb2a7892cdaa8beb1226df10c01.png
+277,d08d2ffc6fadc4d899904d9a63089ca2.png,acne,2,./dataset/acne/d08d2ffc6fadc4d899904d9a63089ca2.png
+278,993c2ed511a88ea5fb1cbfe46c1737f8.png,folliculitis,3,./dataset/folliculitis/993c2ed511a88ea5fb1cbfe46c1737f8.png
+279,6b868b0b74caec29ab51cc950d2179ea.png,folliculitis,3,./dataset/folliculitis/6b868b0b74caec29ab51cc950d2179ea.png
+280,b038031ca3676636d80212f1325ddca1.png,folliculitis,3,./dataset/folliculitis/b038031ca3676636d80212f1325ddca1.png
+281,de0c150c77e00bccf242ee21f20281b1.jpg,folliculitis,3,./dataset/folliculitis/de0c150c77e00bccf242ee21f20281b1.jpg
+282,11bee91943e3e14af9a21326fc13ad64.png,folliculitis,3,./dataset/folliculitis/11bee91943e3e14af9a21326fc13ad64.png
+283,dfa5cf8e04438ae816328d48e190865d.png,folliculitis,3,./dataset/folliculitis/dfa5cf8e04438ae816328d48e190865d.png
+284,810dcad4fee9b9fb05d60855a3339981.png,folliculitis,3,./dataset/folliculitis/810dcad4fee9b9fb05d60855a3339981.png
+285,953361f789a5e3e20e8fe084474d1a76.png,folliculitis,3,./dataset/folliculitis/953361f789a5e3e20e8fe084474d1a76.png
+286,20135a88216aad60c409dc97dde06e73.png,folliculitis,3,./dataset/folliculitis/20135a88216aad60c409dc97dde06e73.png
+287,5c4d1adaec204a398b8be4a40d2440fe.png,folliculitis,3,./dataset/folliculitis/5c4d1adaec204a398b8be4a40d2440fe.png
+288,0d4fe1d80c6ba4ea06e5c2f90b093f22.png,folliculitis,3,./dataset/folliculitis/0d4fe1d80c6ba4ea06e5c2f90b093f22.png
+289,0f6dd3314858e27dcc8d8fc8c53c9d36.png,folliculitis,3,./dataset/folliculitis/0f6dd3314858e27dcc8d8fc8c53c9d36.png
+290,dbd4abbb8056a7ce8fd8703bdeeb2a37.png,folliculitis,3,./dataset/folliculitis/dbd4abbb8056a7ce8fd8703bdeeb2a37.png
+291,bc587919dfbc90bfa504ec2a338cc3ff.png,folliculitis,3,./dataset/folliculitis/bc587919dfbc90bfa504ec2a338cc3ff.png
+292,63fd5d71c4d396a45dc3150b0a86bc61.png,folliculitis,3,./dataset/folliculitis/63fd5d71c4d396a45dc3150b0a86bc61.png
+293,eac4a3ef188d89ba3e376553ee926b01.png,folliculitis,3,./dataset/folliculitis/eac4a3ef188d89ba3e376553ee926b01.png
+294,66a4c312027be32485642a2d0232ac4a.png,folliculitis,3,./dataset/folliculitis/66a4c312027be32485642a2d0232ac4a.png
+295,72c70306aace54ba95d9e65eae05f7eb.png,folliculitis,3,./dataset/folliculitis/72c70306aace54ba95d9e65eae05f7eb.png
+296,845b50ca1e0f340ebb08c5e2086dfdee.png,folliculitis,3,./dataset/folliculitis/845b50ca1e0f340ebb08c5e2086dfdee.png
+297,440c76bec9163f0bc54558895df44d3e.png,folliculitis,3,./dataset/folliculitis/440c76bec9163f0bc54558895df44d3e.png
+298,0f240c2ca67cbaa98f8b0ea5230ecd6d.png,folliculitis,3,./dataset/folliculitis/0f240c2ca67cbaa98f8b0ea5230ecd6d.png
+299,8be854d00d6e54d410792133c33e79df.png,folliculitis,3,./dataset/folliculitis/8be854d00d6e54d410792133c33e79df.png
+300,b01a47a7fa02f5069b2c26634671664f.png,folliculitis,3,./dataset/folliculitis/b01a47a7fa02f5069b2c26634671664f.png
+301,728f4e10dbcbb4fb8cded661c3ec72e4.png,folliculitis,3,./dataset/folliculitis/728f4e10dbcbb4fb8cded661c3ec72e4.png
+302,d82402e38ff9ae1ba49111a4e257a0c7.png,folliculitis,3,./dataset/folliculitis/d82402e38ff9ae1ba49111a4e257a0c7.png
+303,86942c44aa1bf357cc2e8861d02a0c30.png,folliculitis,3,./dataset/folliculitis/86942c44aa1bf357cc2e8861d02a0c30.png
+304,46245bf9601f5b8bbb24c4262f3c11d6.png,folliculitis,3,./dataset/folliculitis/46245bf9601f5b8bbb24c4262f3c11d6.png
+305,586784bf3a5445902046f3123ec59e6a.png,folliculitis,3,./dataset/folliculitis/586784bf3a5445902046f3123ec59e6a.png
+306,a33e3fab82e0ba212be3d29b82902561.png,folliculitis,3,./dataset/folliculitis/a33e3fab82e0ba212be3d29b82902561.png
+307,bb669c6222879253ff4d274a083c4fbe.png,folliculitis,3,./dataset/folliculitis/bb669c6222879253ff4d274a083c4fbe.png
+308,b23d901efb7acf55c549a4c666cd37f5.jpg,folliculitis,3,./dataset/folliculitis/b23d901efb7acf55c549a4c666cd37f5.jpg
+309,86f719f98544f4df7cf2cbff3962bf86.png,folliculitis,3,./dataset/folliculitis/86f719f98544f4df7cf2cbff3962bf86.png
+310,40b50c1b1c3a3253d51c4369a6e6eb17.png,folliculitis,3,./dataset/folliculitis/40b50c1b1c3a3253d51c4369a6e6eb17.png
+311,36c5f98c02e4b1460f07c6ba8d7d3717.png,folliculitis,3,./dataset/folliculitis/36c5f98c02e4b1460f07c6ba8d7d3717.png
+312,4887ea3e8c00ede0becfc9398b7629a8.png,folliculitis,3,./dataset/folliculitis/4887ea3e8c00ede0becfc9398b7629a8.png
+313,3ac3d3c0d8f47f96cdb81e6182d41857.png,folliculitis,3,./dataset/folliculitis/3ac3d3c0d8f47f96cdb81e6182d41857.png
+314,911bd88b5ba3cd4c2852795adc819e37.png,folliculitis,3,./dataset/folliculitis/911bd88b5ba3cd4c2852795adc819e37.png
+315,951559d1b2d52080c2bd4323a7bf58bf.png,folliculitis,3,./dataset/folliculitis/951559d1b2d52080c2bd4323a7bf58bf.png
+316,0f0677bfec94241971d0ecf98900b7ba.png,folliculitis,3,./dataset/folliculitis/0f0677bfec94241971d0ecf98900b7ba.png
+317,3c4903173b7b1a7c309a1af110685216.png,folliculitis,3,./dataset/folliculitis/3c4903173b7b1a7c309a1af110685216.png
+318,838a5a4225a0f680dd1272acdc609f2f.png,folliculitis,3,./dataset/folliculitis/838a5a4225a0f680dd1272acdc609f2f.png
+319,d04ce86b818b31edf84e54444ec97295.png,folliculitis,3,./dataset/folliculitis/d04ce86b818b31edf84e54444ec97295.png
+320,33f6ba9badcccedc1238ae3c14c336ba.png,folliculitis,3,./dataset/folliculitis/33f6ba9badcccedc1238ae3c14c336ba.png
+321,92ef6631905073aa5190f7d0f675772a.png,folliculitis,3,./dataset/folliculitis/92ef6631905073aa5190f7d0f675772a.png
+322,2cd328777af9ee59c90b18bec2be72e3.png,folliculitis,3,./dataset/folliculitis/2cd328777af9ee59c90b18bec2be72e3.png
+323,edf3ebb3f6a18cc37d0b69b4cc3613c6.png,folliculitis,3,./dataset/folliculitis/edf3ebb3f6a18cc37d0b69b4cc3613c6.png
+324,fc8889251884b4e84fdd1232f0dbf45c.png,folliculitis,3,./dataset/folliculitis/fc8889251884b4e84fdd1232f0dbf45c.png
+325,d76b9ccfd947608f57a56716834921a5.png,folliculitis,3,./dataset/folliculitis/d76b9ccfd947608f57a56716834921a5.png
+326,59f6d6ced35b6841a6dec4d52e1dba69.png,folliculitis,3,./dataset/folliculitis/59f6d6ced35b6841a6dec4d52e1dba69.png
+327,6aa93a628cac31ac1e35f0871a2868db.png,folliculitis,3,./dataset/folliculitis/6aa93a628cac31ac1e35f0871a2868db.png
+328,4b2ccdb5f8427d3ee3773a3151cd7d45.png,folliculitis,3,./dataset/folliculitis/4b2ccdb5f8427d3ee3773a3151cd7d45.png
+329,cc9f5bb6c07dc73c4be775e3bfa07bf0.png,folliculitis,3,./dataset/folliculitis/cc9f5bb6c07dc73c4be775e3bfa07bf0.png
+330,6fa6459b12325e1c5ad7749b38dfdff0.png,folliculitis,3,./dataset/folliculitis/6fa6459b12325e1c5ad7749b38dfdff0.png
+331,afe7b75c9e38100b4c06443cc8942b38.png,folliculitis,3,./dataset/folliculitis/afe7b75c9e38100b4c06443cc8942b38.png
+332,f30760f5e3d298f3d1958127fa1045dd.png,folliculitis,3,./dataset/folliculitis/f30760f5e3d298f3d1958127fa1045dd.png
+333,9b162ec23812aa7bd0b5a193efe07664.png,folliculitis,3,./dataset/folliculitis/9b162ec23812aa7bd0b5a193efe07664.png
+334,719c7887e69d70b74941405e4876d459.png,folliculitis,3,./dataset/folliculitis/719c7887e69d70b74941405e4876d459.png
+335,a40fb61acc29b50d34decdd09e89e634.png,folliculitis,3,./dataset/folliculitis/a40fb61acc29b50d34decdd09e89e634.png
+336,4dc0d844641fbfc69516e9ec2f37e7fc.png,folliculitis,3,./dataset/folliculitis/4dc0d844641fbfc69516e9ec2f37e7fc.png
+337,569b53ef050a6fc5874b08e1328124b6.png,folliculitis,3,./dataset/folliculitis/569b53ef050a6fc5874b08e1328124b6.png
+338,c17a51bda5072f0586072b51a17af2a1.png,folliculitis,3,./dataset/folliculitis/c17a51bda5072f0586072b51a17af2a1.png
+339,e0d0f5c66cb4941f3b9b8491b8e77c26.png,folliculitis,3,./dataset/folliculitis/e0d0f5c66cb4941f3b9b8491b8e77c26.png
+340,953e8df24bcff6e0b7161dd615fb122a.png,folliculitis,3,./dataset/folliculitis/953e8df24bcff6e0b7161dd615fb122a.png
+341,a8538a3b3f7a2d9413cad996acc6228c.png,folliculitis,3,./dataset/folliculitis/a8538a3b3f7a2d9413cad996acc6228c.png
+342,eed543de0f33f829c39afad0aedf5ce4.png,folliculitis,3,./dataset/folliculitis/eed543de0f33f829c39afad0aedf5ce4.png
+343,5742792430bcbf050b243a0b7539c239.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/5742792430bcbf050b243a0b7539c239.png
+344,c7af9f9eee15b4b718d122b9a04b349e.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/c7af9f9eee15b4b718d122b9a04b349e.png
+345,d0e61eed5e208dc480c23df4489ec2aa.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/d0e61eed5e208dc480c23df4489ec2aa.png
+346,f17c46846b36b3669e22777ae9447a78.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/f17c46846b36b3669e22777ae9447a78.png
+347,28106a52d5f759fe609f64b2fc68ec49.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/28106a52d5f759fe609f64b2fc68ec49.png
+348,c2d12e4d2a5a9718328baad6bd1d8c7f.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/c2d12e4d2a5a9718328baad6bd1d8c7f.png
+349,f051566cb83cf5d6c864a40973c274d2.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/f051566cb83cf5d6c864a40973c274d2.png
+350,1b3dd0f8dbe3018b27eb6dc17392ead7.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/1b3dd0f8dbe3018b27eb6dc17392ead7.png
+351,b1686c99dd9ddc153e2c52c6868e2772.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/b1686c99dd9ddc153e2c52c6868e2772.png
+352,74192e6458473914f3e9528966237afc.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/74192e6458473914f3e9528966237afc.png
+353,20b4c7c1d420852d98ec10d4aa14061d.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/20b4c7c1d420852d98ec10d4aa14061d.png
+354,1c654da9ab9746f34fbcef5fab5d390a.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/1c654da9ab9746f34fbcef5fab5d390a.png
+355,31285f22608a8615dff5f7fd03fe63be.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/31285f22608a8615dff5f7fd03fe63be.png
+356,52d7ca6669807c2f566ec961b688b1ab.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/52d7ca6669807c2f566ec961b688b1ab.png
+357,1c7b7ae207c7b4546d9c4a3c524504e1.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/1c7b7ae207c7b4546d9c4a3c524504e1.png
+358,5f038b5170c03a843c45f08af2741874.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/5f038b5170c03a843c45f08af2741874.png
+359,56aec30a42a17e5e947dfb4aec25fd0e.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/56aec30a42a17e5e947dfb4aec25fd0e.png
+360,bc99d06f90d0223b837a4492e07a0076.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/bc99d06f90d0223b837a4492e07a0076.png
+361,a04201512e6d4c2fe6483c4fe2555c49.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/a04201512e6d4c2fe6483c4fe2555c49.png
+362,0ff64bf6395871996c8daa54332e4d1e.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/0ff64bf6395871996c8daa54332e4d1e.png
+363,d2d9b074d9825e5ba5b6af0d47734bef.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/d2d9b074d9825e5ba5b6af0d47734bef.png
+364,324aca3793bba66f7c8ba6eea67c42e6.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/324aca3793bba66f7c8ba6eea67c42e6.png
+365,3df2358722a50dacaa06a9cf470dd735.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/3df2358722a50dacaa06a9cf470dd735.png
+366,78c9b7626445f3ade59c6fe2e424db4d.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/78c9b7626445f3ade59c6fe2e424db4d.png
+367,112b0dd6d2465e26f61e3a9310485e90.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/112b0dd6d2465e26f61e3a9310485e90.png
+368,21b0a2a4955d4bd170c70b35027d41b7.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/21b0a2a4955d4bd170c70b35027d41b7.png
+369,62e71114a36b457763e9c5f5d6a5627b.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/62e71114a36b457763e9c5f5d6a5627b.png
+370,af1bb4aacc6a61042d668f02b9628db8.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/af1bb4aacc6a61042d668f02b9628db8.png
+371,a986f2ddd73c946c75f6bce65b196fb5.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/a986f2ddd73c946c75f6bce65b196fb5.png
+372,d23d06b99070a3fc794f8624d681a123.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/d23d06b99070a3fc794f8624d681a123.png
+373,828de70db20d1d3ce45e48c75ea8d17b.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/828de70db20d1d3ce45e48c75ea8d17b.png
+374,1a218a79e6b4105478b198e1311cf109.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/1a218a79e6b4105478b198e1311cf109.png
+375,9238559c66a9eb608af34de0f16ff037.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/9238559c66a9eb608af34de0f16ff037.png
+376,aa52eecd529a0385b8fe6a253a015412.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/aa52eecd529a0385b8fe6a253a015412.png
+377,1b81b6086fddd01aa36cdc454a7836b3.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/1b81b6086fddd01aa36cdc454a7836b3.png
+378,d2e244fb1fb0afbe5436bf8c4a53c167.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/d2e244fb1fb0afbe5436bf8c4a53c167.png
+379,defef45b3b181684b2deb5648aefbbb5.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/defef45b3b181684b2deb5648aefbbb5.png
+380,cb9d579cc81fee407e675e812c758ce0.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/cb9d579cc81fee407e675e812c758ce0.png
+381,e5aedcd2d03c6e76f4d42847a77e4144.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/e5aedcd2d03c6e76f4d42847a77e4144.png
+382,870804fdd7458d64fc692c8aeacfe4b6.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/870804fdd7458d64fc692c8aeacfe4b6.png
+383,39b6fda45ef6cb09e8fad6a5a00e4d72.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/39b6fda45ef6cb09e8fad6a5a00e4d72.png
+384,82ed5ba884e20bf8bf71dd6848758756.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/82ed5ba884e20bf8bf71dd6848758756.png
+385,92165da09e7b52565bea626eac259225.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/92165da09e7b52565bea626eac259225.png
+386,839227622c0d01584ad3732c155a2d37.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/839227622c0d01584ad3732c155a2d37.png
+387,baa6715bd8da31f78664d013e3b3bebc.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/baa6715bd8da31f78664d013e3b3bebc.png
+388,f347366ab65188676f45c3c79fe73b73.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/f347366ab65188676f45c3c79fe73b73.png
+389,7813ae26dcc64adb8109b659eb3a1964.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/7813ae26dcc64adb8109b659eb3a1964.png
+390,8650778577cec41150e4efc88789c529.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/8650778577cec41150e4efc88789c529.png
+391,0949817f7c3587d5c10f87c4f68d1229.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/0949817f7c3587d5c10f87c4f68d1229.png
+392,d085ea1d4e0e7827c18f5e562d5235dc.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/d085ea1d4e0e7827c18f5e562d5235dc.png
+393,dd9d3d55923fae0aaabb2c93259e7938.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/dd9d3d55923fae0aaabb2c93259e7938.png
+394,f2a353e0e8d89f0624c273f4af48b912.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/f2a353e0e8d89f0624c273f4af48b912.png
+395,a7d0b2c1076be24688faa59d0435307b.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/a7d0b2c1076be24688faa59d0435307b.png
+396,306a7fb4588baf4744f0f9da5548f6b0.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/306a7fb4588baf4744f0f9da5548f6b0.png
+397,4a23754af2cc0d04759cf9d0800f9420.png,pityriasis rubra pilaris,4,./dataset/pityriasis rubra pilaris/4a23754af2cc0d04759cf9d0800f9420.png
+398,0e539304dcb700d132400c34f44d21b7.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/0e539304dcb700d132400c34f44d21b7.png
+399,4e90f3cc9051c8bcc7ee07f25e169134.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/4e90f3cc9051c8bcc7ee07f25e169134.png
+400,5cf02fd520a612685135af490fa1996f.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/5cf02fd520a612685135af490fa1996f.png
+401,d355c68d7a408adefaac774c6ff660d9.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/d355c68d7a408adefaac774c6ff660d9.png
+402,82b2b5a2e690dfaa715fea051bc24846.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/82b2b5a2e690dfaa715fea051bc24846.png
+403,d7c15764c5a698f47809c97f8836d442.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/d7c15764c5a698f47809c97f8836d442.png
+404,84e466bb6cfd0812bf7c0ccb26132202.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/84e466bb6cfd0812bf7c0ccb26132202.png
+405,14d2333c46a7f94b0b64c6ed0547dd75.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/14d2333c46a7f94b0b64c6ed0547dd75.png
+406,99c09906cd9631d6ff648f680ce3c7a2.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/99c09906cd9631d6ff648f680ce3c7a2.png
+407,16f3f152b2a7e9d550615d6f70f2bf38.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/16f3f152b2a7e9d550615d6f70f2bf38.png
+408,6e620c3a29ad45715a16799d26589be3.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/6e620c3a29ad45715a16799d26589be3.png
+409,3354d6e561d84457af0adddab4686b31.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/3354d6e561d84457af0adddab4686b31.png
+410,a9789ebba82857c54345e95b0f1a5694.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/a9789ebba82857c54345e95b0f1a5694.png
+411,1e2d76fc8e520ef0289dd7b52aad2120.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/1e2d76fc8e520ef0289dd7b52aad2120.png
+412,550749c351ebf42acc3ec74f9f9a6de4.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/550749c351ebf42acc3ec74f9f9a6de4.png
+413,427ead6a4a387f589cde427f04168e32.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/427ead6a4a387f589cde427f04168e32.png
+414,9356818506b1d550379e01897aa9f811.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/9356818506b1d550379e01897aa9f811.png
+415,24c7a58c0e60303086d0f5f89b121ae4.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/24c7a58c0e60303086d0f5f89b121ae4.png
+416,528442cac3214e5f4785f78b1fcad0cc.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/528442cac3214e5f4785f78b1fcad0cc.png
+417,c40432238e3ce04f39d1d23f13527c67.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/c40432238e3ce04f39d1d23f13527c67.png
+418,a036718d77f4a4339b2aaf15e2087fe0.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/a036718d77f4a4339b2aaf15e2087fe0.png
+419,25d0d3d0859700a1fccdf9e8c6524146.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/25d0d3d0859700a1fccdf9e8c6524146.png
+420,afa20ef60268a59dc941d8de20af6abd.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/afa20ef60268a59dc941d8de20af6abd.png
+421,08a183312614facc181ff92c032dc8b0.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/08a183312614facc181ff92c032dc8b0.png
+422,73850da74e36edc89fc7536763f22b4d.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/73850da74e36edc89fc7536763f22b4d.png
+423,c06d5028c6dd652a0e6ce830d64d6ea5.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/c06d5028c6dd652a0e6ce830d64d6ea5.png
+424,4f6a5613c13cc3956c17aef8248afca4.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/4f6a5613c13cc3956c17aef8248afca4.png
+425,b7ff367d07ee32101f5188a34cc142ab.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/b7ff367d07ee32101f5188a34cc142ab.png
+426,d49dcd533ce96009933b2174b77bec85.jpg,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/d49dcd533ce96009933b2174b77bec85.jpg
+427,4cdf3362d0ed7447f98b1a44f0746ab4.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/4cdf3362d0ed7447f98b1a44f0746ab4.png
+428,1aec33dc780057f576a8064deffe9cc8.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/1aec33dc780057f576a8064deffe9cc8.png
+429,e312cf10362d1252a9aae58af536a673.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/e312cf10362d1252a9aae58af536a673.png
+430,8b545da3675c0f8fa30fff4b2c75c4f6.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/8b545da3675c0f8fa30fff4b2c75c4f6.png
+431,31c42f79bb918fe1d8ef35b553e7d8cf.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/31c42f79bb918fe1d8ef35b553e7d8cf.png
+432,4e650d081d0829b235247711d43e636a.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/4e650d081d0829b235247711d43e636a.png
+433,42ca868d015f5b088e3bfbd28db1621f.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/42ca868d015f5b088e3bfbd28db1621f.png
+434,35a2730a6f269c43886986627bf04e21.jpg,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/35a2730a6f269c43886986627bf04e21.jpg
+435,5741346ea1f285de99f7a0fafaf84005.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/5741346ea1f285de99f7a0fafaf84005.png
+436,3e6b4ab56597dce5f196f82b752c43b2.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/3e6b4ab56597dce5f196f82b752c43b2.png
+437,83ce49e83a31bca8220080e97bbe7dca.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/83ce49e83a31bca8220080e97bbe7dca.png
+438,567224dca06e7f3fa5ec45ee4745a4e1.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/567224dca06e7f3fa5ec45ee4745a4e1.png
+439,eec8c53d191fee6417cfcd4f12d415d3.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/eec8c53d191fee6417cfcd4f12d415d3.png
+440,9a2685b99d2db77c7297891d1c5b2dae.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/9a2685b99d2db77c7297891d1c5b2dae.png
+441,b280c5c8428278067af5a0d07409f6c6.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/b280c5c8428278067af5a0d07409f6c6.png
+442,5b552fb15839338227880aaac895128a.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/5b552fb15839338227880aaac895128a.png
+443,fb7c18fe1b5696c01c4e7f1874bc80b6.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/fb7c18fe1b5696c01c4e7f1874bc80b6.png
+444,82f57c180f4a89b2fcce489bf47a2074.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/82f57c180f4a89b2fcce489bf47a2074.png
+445,53f7dbf331f5eee075a7ad7d14eb6733.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/53f7dbf331f5eee075a7ad7d14eb6733.png
+446,afe41fae78805d3c1eefe5fdeb5ecba8.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/afe41fae78805d3c1eefe5fdeb5ecba8.png
+447,a3a0ffe406386ff29eb7a6cebc3c4985.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/a3a0ffe406386ff29eb7a6cebc3c4985.png
+448,71f2c726e38b6856536cc3bd62984b45.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/71f2c726e38b6856536cc3bd62984b45.png
+449,40a8a67e6d6ade17c43beb1d20dbef84.png,squamous cell carcinoma,5,./dataset/squamous cell carcinoma/40a8a67e6d6ade17c43beb1d20dbef84.png
+450,f124a27e7d7c1d1a4fcd971547ed9847.jpg,erythema multiforme,6,./dataset/erythema multiforme/f124a27e7d7c1d1a4fcd971547ed9847.jpg
+451,1553e5bf3eebb44f21f61a088ac7bbd8.jpg,erythema multiforme,6,./dataset/erythema multiforme/1553e5bf3eebb44f21f61a088ac7bbd8.jpg
+452,0daad5330e727d00d886fe6b914665e7.jpg,erythema multiforme,6,./dataset/erythema multiforme/0daad5330e727d00d886fe6b914665e7.jpg
+453,1222dd7e733779be6bb92b4c80066de3.jpg,erythema multiforme,6,./dataset/erythema multiforme/1222dd7e733779be6bb92b4c80066de3.jpg
+454,9fbbb6fad5bdbf9476be1ec573a49ff5.jpg,erythema multiforme,6,./dataset/erythema multiforme/9fbbb6fad5bdbf9476be1ec573a49ff5.jpg
+455,9d7e82e32a6f96c8a7ebb5cd23d57836.jpg,erythema multiforme,6,./dataset/erythema multiforme/9d7e82e32a6f96c8a7ebb5cd23d57836.jpg
+456,0803a4e75d7f983febd58edef7753a1d.jpg,erythema multiforme,6,./dataset/erythema multiforme/0803a4e75d7f983febd58edef7753a1d.jpg
+457,104e40453c911455fd8648a05999a6d8.jpg,erythema multiforme,6,./dataset/erythema multiforme/104e40453c911455fd8648a05999a6d8.jpg
+458,bb08399bf38442641d2d24b15390de44.jpg,erythema multiforme,6,./dataset/erythema multiforme/bb08399bf38442641d2d24b15390de44.jpg
+459,5a6c39dfd83728900385c8bc4548152e.jpg,erythema multiforme,6,./dataset/erythema multiforme/5a6c39dfd83728900385c8bc4548152e.jpg
+460,5726300986684b65568ea879ff73be14.jpg,erythema multiforme,6,./dataset/erythema multiforme/5726300986684b65568ea879ff73be14.jpg
+461,e8c8a916a93fcb2c546b8d01ccb8e33c.jpg,erythema multiforme,6,./dataset/erythema multiforme/e8c8a916a93fcb2c546b8d01ccb8e33c.jpg
+462,9852a1622448eb12983132a1d5ae7f57.jpg,erythema multiforme,6,./dataset/erythema multiforme/9852a1622448eb12983132a1d5ae7f57.jpg
+463,e30dd009427a7319ed7368bcbd69dc9d.jpg,erythema multiforme,6,./dataset/erythema multiforme/e30dd009427a7319ed7368bcbd69dc9d.jpg
+464,82605d3e7d952537049a1c32c57d510f.jpg,erythema multiforme,6,./dataset/erythema multiforme/82605d3e7d952537049a1c32c57d510f.jpg
+465,e89ad6a20db6bbc5bac4049eb17bb0d5.jpg,erythema multiforme,6,./dataset/erythema multiforme/e89ad6a20db6bbc5bac4049eb17bb0d5.jpg
+466,8af7cc71509afdcbf3282ee1683cc3f0.jpg,erythema multiforme,6,./dataset/erythema multiforme/8af7cc71509afdcbf3282ee1683cc3f0.jpg
+467,887488e71ba45d2e0d45a30dd4e70f3c.jpg,erythema multiforme,6,./dataset/erythema multiforme/887488e71ba45d2e0d45a30dd4e70f3c.jpg
+468,26baa633dc1ea13cdcb12f4b7dd7a282.jpg,erythema multiforme,6,./dataset/erythema multiforme/26baa633dc1ea13cdcb12f4b7dd7a282.jpg
+469,b3ce9d9d122db072fdf3245521263c06.jpg,erythema multiforme,6,./dataset/erythema multiforme/b3ce9d9d122db072fdf3245521263c06.jpg
+470,6dd6c482edca275a7bbfd9c1026d57f6.jpg,erythema multiforme,6,./dataset/erythema multiforme/6dd6c482edca275a7bbfd9c1026d57f6.jpg
+471,861bf164e332111c17ea45d731798616.jpg,erythema multiforme,6,./dataset/erythema multiforme/861bf164e332111c17ea45d731798616.jpg
+472,eadbd6d9581acd45d9dd373c6ef7997f.jpg,erythema multiforme,6,./dataset/erythema multiforme/eadbd6d9581acd45d9dd373c6ef7997f.jpg
+473,d414818dce9eaf6f4da9b5dfa98f3b12.jpg,erythema multiforme,6,./dataset/erythema multiforme/d414818dce9eaf6f4da9b5dfa98f3b12.jpg
+474,c178882f709c71c77af65f6ced1e9d23.jpg,erythema multiforme,6,./dataset/erythema multiforme/c178882f709c71c77af65f6ced1e9d23.jpg
+475,59c799d5b10ad1763d6b95956539c710.jpg,erythema multiforme,6,./dataset/erythema multiforme/59c799d5b10ad1763d6b95956539c710.jpg
+476,a6731e0a572e059e44b6f5ead92fba43.jpg,erythema multiforme,6,./dataset/erythema multiforme/a6731e0a572e059e44b6f5ead92fba43.jpg
+477,e66a221422ffa37f41bd41f15a478b1f.jpg,erythema multiforme,6,./dataset/erythema multiforme/e66a221422ffa37f41bd41f15a478b1f.jpg
+478,769e0205103b04fa78228d65e199bdeb.jpg,erythema multiforme,6,./dataset/erythema multiforme/769e0205103b04fa78228d65e199bdeb.jpg
+479,3c50e04afe17f3b7fd3142b83d82a3a9.jpg,erythema multiforme,6,./dataset/erythema multiforme/3c50e04afe17f3b7fd3142b83d82a3a9.jpg
+480,9afa7ce22d08a12cca5143fcb86068f5.jpg,erythema multiforme,6,./dataset/erythema multiforme/9afa7ce22d08a12cca5143fcb86068f5.jpg
+481,0ec449baae35bac12d6b64814a20a9b3.jpg,erythema multiforme,6,./dataset/erythema multiforme/0ec449baae35bac12d6b64814a20a9b3.jpg
+482,9ae7d4b8f838a3a95286f24be7823306.jpg,erythema multiforme,6,./dataset/erythema multiforme/9ae7d4b8f838a3a95286f24be7823306.jpg
+483,809a81311e73ed49d892e2bd42b10fd9.jpg,erythema multiforme,6,./dataset/erythema multiforme/809a81311e73ed49d892e2bd42b10fd9.jpg
+484,a4bf808d84bb31ab4494cb50b86caf28.jpg,erythema multiforme,6,./dataset/erythema multiforme/a4bf808d84bb31ab4494cb50b86caf28.jpg
+485,c12b5adb0d491caa9bcc8acad430f530.jpg,erythema multiforme,6,./dataset/erythema multiforme/c12b5adb0d491caa9bcc8acad430f530.jpg
+486,3bc7a8535ccad06ccba8dd044c834788.jpg,erythema multiforme,6,./dataset/erythema multiforme/3bc7a8535ccad06ccba8dd044c834788.jpg
+487,86600d30bd19f29b5fb5b57f99486252.jpg,erythema multiforme,6,./dataset/erythema multiforme/86600d30bd19f29b5fb5b57f99486252.jpg
+488,c9248d561d44ef1081ff7d886c3eaf80.jpg,erythema multiforme,6,./dataset/erythema multiforme/c9248d561d44ef1081ff7d886c3eaf80.jpg
+489,941476360184e845339026ecc380d091.jpg,erythema multiforme,6,./dataset/erythema multiforme/941476360184e845339026ecc380d091.jpg
+490,cc721a1eb83c779afae519d27b7848e6.jpg,erythema multiforme,6,./dataset/erythema multiforme/cc721a1eb83c779afae519d27b7848e6.jpg
+491,d0a8e6a0dd20361213b60bf1a546566b.jpg,erythema multiforme,6,./dataset/erythema multiforme/d0a8e6a0dd20361213b60bf1a546566b.jpg
+492,7bef07ba2bc44358d09869aad7ca4de9.jpg,erythema multiforme,6,./dataset/erythema multiforme/7bef07ba2bc44358d09869aad7ca4de9.jpg
+493,857054d90680d16f729b80a8ccb306fd.jpg,erythema multiforme,6,./dataset/erythema multiforme/857054d90680d16f729b80a8ccb306fd.jpg
+494,fb0b1b1688e25b80a95bb42d8ddee2c9.jpg,erythema multiforme,6,./dataset/erythema multiforme/fb0b1b1688e25b80a95bb42d8ddee2c9.jpg
+495,53d48d3c63c77d0552e0e2f1d8a72f75.jpg,erythema multiforme,6,./dataset/erythema multiforme/53d48d3c63c77d0552e0e2f1d8a72f75.jpg
+496,5454a92e7917af825479fb57dc273a3d.jpg,erythema multiforme,6,./dataset/erythema multiforme/5454a92e7917af825479fb57dc273a3d.jpg
+497,af54a18beac7227ec41312a5d4fcddf9.jpg,erythema multiforme,6,./dataset/erythema multiforme/af54a18beac7227ec41312a5d4fcddf9.jpg
+498,7af2d92e52fc9c17b952e8bbdd53ee61.png,porokeratosis actinic,7,./dataset/porokeratosis actinic/7af2d92e52fc9c17b952e8bbdd53ee61.png
+499,2dfbfb0d7468ff9aa4d7c70bcf4a84c7.png,porokeratosis actinic,7,./dataset/porokeratosis actinic/2dfbfb0d7468ff9aa4d7c70bcf4a84c7.png
+500,1092acf28a8180d8dad85e634a9bddca.png,porokeratosis actinic,7,./dataset/porokeratosis actinic/1092acf28a8180d8dad85e634a9bddca.png
+501,91d9bacd7c1bd47d5d52079842dbbc43.png,porokeratosis actinic,7,./dataset/porokeratosis actinic/91d9bacd7c1bd47d5d52079842dbbc43.png
+502,457d826700dd1b23a848b1885d41bd67.png,porokeratosis actinic,7,./dataset/porokeratosis actinic/457d826700dd1b23a848b1885d41bd67.png
+503,dace9bdc930a19b89e9ba6891526e7af.png,porokeratosis actinic,7,./dataset/porokeratosis actinic/dace9bdc930a19b89e9ba6891526e7af.png
+504,9b2fe3b3de504d9bb0a092d87e09df30.png,porokeratosis actinic,7,./dataset/porokeratosis actinic/9b2fe3b3de504d9bb0a092d87e09df30.png
+505,5807f27e6324eb4884a8ede5aa1cc9ba.png,porokeratosis actinic,7,./dataset/porokeratosis actinic/5807f27e6324eb4884a8ede5aa1cc9ba.png
+506,eacd4872fc1a9795b060d5575ad5b8d1.png,porokeratosis actinic,7,./dataset/porokeratosis actinic/eacd4872fc1a9795b060d5575ad5b8d1.png
+507,6803521d9bc13a16bebf67e5f542d9be.png,porokeratosis actinic,7,./dataset/porokeratosis actinic/6803521d9bc13a16bebf67e5f542d9be.png
+508,db23f9569e48847986a56b9f015cab17.png,porokeratosis actinic,7,./dataset/porokeratosis actinic/db23f9569e48847986a56b9f015cab17.png
+509,541a4587e879063cf33f0aeae690ee62.png,porokeratosis actinic,7,./dataset/porokeratosis actinic/541a4587e879063cf33f0aeae690ee62.png
+510,63fa1657ec59b3543186533ea4b04c03.png,porokeratosis actinic,7,./dataset/porokeratosis actinic/63fa1657ec59b3543186533ea4b04c03.png
+511,c996308d0e96ee68ce1353c7a4810a31.png,porokeratosis actinic,7,./dataset/porokeratosis actinic/c996308d0e96ee68ce1353c7a4810a31.png
+512,5fb6e34e0898bdd2bd736c7db0d2a0f0.png,porokeratosis actinic,7,./dataset/porokeratosis actinic/5fb6e34e0898bdd2bd736c7db0d2a0f0.png
+513,7b9136b93d147a484a1470a77169aee0.png,porokeratosis actinic,7,./dataset/porokeratosis actinic/7b9136b93d147a484a1470a77169aee0.png
+514,be587c766f7442b22f0ff8b35c717a2c.png,porokeratosis actinic,7,./dataset/porokeratosis actinic/be587c766f7442b22f0ff8b35c717a2c.png
+515,55a7d73326822f306a9c804a05c4e3ca.png,porokeratosis actinic,7,./dataset/porokeratosis actinic/55a7d73326822f306a9c804a05c4e3ca.png
+516,705a7638cbb13d0d7b36887f9ef20625.png,porokeratosis actinic,7,./dataset/porokeratosis actinic/705a7638cbb13d0d7b36887f9ef20625.png
+517,d4c50e54ff437793a0e27cc60416dfbf.png,porokeratosis actinic,7,./dataset/porokeratosis actinic/d4c50e54ff437793a0e27cc60416dfbf.png
+518,e7b64e348cdf955f7910cbd044ddaf31.png,porokeratosis actinic,7,./dataset/porokeratosis actinic/e7b64e348cdf955f7910cbd044ddaf31.png
+519,23315f67b17b14d1b3c17ea6c157b258.png,porokeratosis actinic,7,./dataset/porokeratosis actinic/23315f67b17b14d1b3c17ea6c157b258.png
+520,104f094844042867d1f83accc940645c.png,porokeratosis actinic,7,./dataset/porokeratosis actinic/104f094844042867d1f83accc940645c.png
+521,3eac623ea306c5c93bca78712a80d88b.png,porokeratosis actinic,7,./dataset/porokeratosis actinic/3eac623ea306c5c93bca78712a80d88b.png
+522,a7b369363d6ef8a79b56bdb8629214f9.png,porokeratosis actinic,7,./dataset/porokeratosis actinic/a7b369363d6ef8a79b56bdb8629214f9.png
+523,495130692b7ed3c7f9397d9c76e225e3.png,porokeratosis actinic,7,./dataset/porokeratosis actinic/495130692b7ed3c7f9397d9c76e225e3.png
+524,d9480e888a1caa8f33fb117b24424eeb.png,porokeratosis actinic,7,./dataset/porokeratosis actinic/d9480e888a1caa8f33fb117b24424eeb.png
+525,f863f6606d818f85b97dcec69a269bbb.png,porokeratosis actinic,7,./dataset/porokeratosis actinic/f863f6606d818f85b97dcec69a269bbb.png
+526,72df197c4d2328ff1191aaace64ea8e7.png,porokeratosis actinic,7,./dataset/porokeratosis actinic/72df197c4d2328ff1191aaace64ea8e7.png
+527,fefef7382f3fdab7506fac1238c8b81c.png,porokeratosis actinic,7,./dataset/porokeratosis actinic/fefef7382f3fdab7506fac1238c8b81c.png
+528,09ea1633ac8b4551f06b7d1f1346a921.png,porokeratosis actinic,7,./dataset/porokeratosis actinic/09ea1633ac8b4551f06b7d1f1346a921.png
+529,b78caa3aa59d46b632ea17237b3eac54.png,porokeratosis actinic,7,./dataset/porokeratosis actinic/b78caa3aa59d46b632ea17237b3eac54.png
+530,c3aa1c21ff0bb61356d49b1006381e90.png,porokeratosis actinic,7,./dataset/porokeratosis actinic/c3aa1c21ff0bb61356d49b1006381e90.png
+531,b5cdd8e7f426849930f8f8de833979cc.png,porokeratosis actinic,7,./dataset/porokeratosis actinic/b5cdd8e7f426849930f8f8de833979cc.png
+532,aca7d6f50977c69e54dd0113c886edce.png,porokeratosis actinic,7,./dataset/porokeratosis actinic/aca7d6f50977c69e54dd0113c886edce.png
+533,fa16733be6f59f72acb41027742cb796.png,porokeratosis actinic,7,./dataset/porokeratosis actinic/fa16733be6f59f72acb41027742cb796.png
+534,04b696bbd93e3304705a27e8f9ffb92a.png,porokeratosis actinic,7,./dataset/porokeratosis actinic/04b696bbd93e3304705a27e8f9ffb92a.png
+535,40d4f276c5b579edd61b54be922ee610.png,porokeratosis actinic,7,./dataset/porokeratosis actinic/40d4f276c5b579edd61b54be922ee610.png
+536,51cb9bbee77971c0d206f550c152c799.png,porokeratosis actinic,7,./dataset/porokeratosis actinic/51cb9bbee77971c0d206f550c152c799.png
+537,bd9e71da00c67268e4fda4c56c0361c1.png,porokeratosis actinic,7,./dataset/porokeratosis actinic/bd9e71da00c67268e4fda4c56c0361c1.png
+538,59f836f94168551a1a24e73352d68ae3.png,porokeratosis actinic,7,./dataset/porokeratosis actinic/59f836f94168551a1a24e73352d68ae3.png
+539,a74e91f8dc756c38598e07cd0e53e0f1.png,porokeratosis actinic,7,./dataset/porokeratosis actinic/a74e91f8dc756c38598e07cd0e53e0f1.png
+540,29413388de918b245c097fdc4ac9d900.png,pityriasis rosea,8,./dataset/pityriasis rosea/29413388de918b245c097fdc4ac9d900.png
+541,9ae1313f14620e576f082dd265404f06.png,pityriasis rosea,8,./dataset/pityriasis rosea/9ae1313f14620e576f082dd265404f06.png
+542,fe2ec633b212b6d8f60ca1bcf5843bfe.png,pityriasis rosea,8,./dataset/pityriasis rosea/fe2ec633b212b6d8f60ca1bcf5843bfe.png
+543,79d92707c826b744744bfbb679961f54.png,pityriasis rosea,8,./dataset/pityriasis rosea/79d92707c826b744744bfbb679961f54.png
+544,3528bdf5ec916ec66302dff722e9a6c8.png,pityriasis rosea,8,./dataset/pityriasis rosea/3528bdf5ec916ec66302dff722e9a6c8.png
+545,9ff5ab8a227dcbd737d6ef92aaf77cfe.png,pityriasis rosea,8,./dataset/pityriasis rosea/9ff5ab8a227dcbd737d6ef92aaf77cfe.png
+546,ec9bff51e6bc26b4000700621268b1f9.png,pityriasis rosea,8,./dataset/pityriasis rosea/ec9bff51e6bc26b4000700621268b1f9.png
+547,45b299fd1208f8c0421004739af3fb5b.png,pityriasis rosea,8,./dataset/pityriasis rosea/45b299fd1208f8c0421004739af3fb5b.png
+548,9faf6f4f2c3b97ca408c3e98891bfbed.png,pityriasis rosea,8,./dataset/pityriasis rosea/9faf6f4f2c3b97ca408c3e98891bfbed.png
+549,8ddc481d9eddbbabe47303733fc9a2d9.png,pityriasis rosea,8,./dataset/pityriasis rosea/8ddc481d9eddbbabe47303733fc9a2d9.png
+550,754da9973fa09c455d59c66b6bfa8ad6.png,pityriasis rosea,8,./dataset/pityriasis rosea/754da9973fa09c455d59c66b6bfa8ad6.png
+551,151966ef80f25698a377df4ed52044ad.png,pityriasis rosea,8,./dataset/pityriasis rosea/151966ef80f25698a377df4ed52044ad.png
+552,9143f8bebf6d2090dc39fbb4ffb28bda.png,pityriasis rosea,8,./dataset/pityriasis rosea/9143f8bebf6d2090dc39fbb4ffb28bda.png
+553,3999b169853321865de306f9adb91f11.png,pityriasis rosea,8,./dataset/pityriasis rosea/3999b169853321865de306f9adb91f11.png
+554,0fa21e79da60710ae829e7cc4b69b734.png,pityriasis rosea,8,./dataset/pityriasis rosea/0fa21e79da60710ae829e7cc4b69b734.png
+555,28dac4a63a280810e4711ab336364322.png,pityriasis rosea,8,./dataset/pityriasis rosea/28dac4a63a280810e4711ab336364322.png
+556,9c59a26373a06154e47d22a5537d23fb.png,pityriasis rosea,8,./dataset/pityriasis rosea/9c59a26373a06154e47d22a5537d23fb.png
+557,79443cec61e396aca27674247f76f2f3.png,pityriasis rosea,8,./dataset/pityriasis rosea/79443cec61e396aca27674247f76f2f3.png
+558,9b8317bd2dfe223e095c9ae459c4127e.png,pityriasis rosea,8,./dataset/pityriasis rosea/9b8317bd2dfe223e095c9ae459c4127e.png
+559,491e10ecce9f3146a1569d49b392167c.png,pityriasis rosea,8,./dataset/pityriasis rosea/491e10ecce9f3146a1569d49b392167c.png
+560,d4c9342d435e001ce0e892e0b1b5f75a.png,pityriasis rosea,8,./dataset/pityriasis rosea/d4c9342d435e001ce0e892e0b1b5f75a.png
+561,e4909a22e58126fde89c47528db9199b.png,pityriasis rosea,8,./dataset/pityriasis rosea/e4909a22e58126fde89c47528db9199b.png
+562,e3752e3d9bad42309c82f35057fc6c35.png,pityriasis rosea,8,./dataset/pityriasis rosea/e3752e3d9bad42309c82f35057fc6c35.png
+563,9008cfe177a16a46d551e04299c653d4.png,pityriasis rosea,8,./dataset/pityriasis rosea/9008cfe177a16a46d551e04299c653d4.png
+564,604c0993b64c1506b9f8de9b3dd2a0ae.png,pityriasis rosea,8,./dataset/pityriasis rosea/604c0993b64c1506b9f8de9b3dd2a0ae.png
+565,173de6dd81d8f22b2e92edafa95061e7.png,pityriasis rosea,8,./dataset/pityriasis rosea/173de6dd81d8f22b2e92edafa95061e7.png
+566,9fdc1b6cbd53425309eebafbd3c4ec55.png,pityriasis rosea,8,./dataset/pityriasis rosea/9fdc1b6cbd53425309eebafbd3c4ec55.png
+567,ea12d1a7d149f709c46c9a59102cbe58.png,pityriasis rosea,8,./dataset/pityriasis rosea/ea12d1a7d149f709c46c9a59102cbe58.png
+568,c8f5461efdcdc1bacbd60e046cec02d1.png,pityriasis rosea,8,./dataset/pityriasis rosea/c8f5461efdcdc1bacbd60e046cec02d1.png
+569,899cac4c1da0df3e87fa8f420984f66f.png,pityriasis rosea,8,./dataset/pityriasis rosea/899cac4c1da0df3e87fa8f420984f66f.png
+570,0a69292e4f5f6d266f7d9aca3acbf4e0.png,pityriasis rosea,8,./dataset/pityriasis rosea/0a69292e4f5f6d266f7d9aca3acbf4e0.png
+571,df2f9b3048cf44bc23cac31ff00f4bbb.png,pityriasis rosea,8,./dataset/pityriasis rosea/df2f9b3048cf44bc23cac31ff00f4bbb.png
+572,33ebf654ac16c7fb8366a5c868e68b60.png,pityriasis rosea,8,./dataset/pityriasis rosea/33ebf654ac16c7fb8366a5c868e68b60.png
+573,3d722c6411e777de5e2e81b8fb7f9fc3.png,pityriasis rosea,8,./dataset/pityriasis rosea/3d722c6411e777de5e2e81b8fb7f9fc3.png
+574,ecc17b8ea73148ec2f9194b0f84fbfbf.png,pityriasis rosea,8,./dataset/pityriasis rosea/ecc17b8ea73148ec2f9194b0f84fbfbf.png
+575,48286648b219559498573ab53d83558b.png,pityriasis rosea,8,./dataset/pityriasis rosea/48286648b219559498573ab53d83558b.png
+576,3909108ec1422767bb46f28f96ed8ded.png,pityriasis rosea,8,./dataset/pityriasis rosea/3909108ec1422767bb46f28f96ed8ded.png
+577,0f02445f98cf1f8c15392989839ffc5b.png,pityriasis rosea,8,./dataset/pityriasis rosea/0f02445f98cf1f8c15392989839ffc5b.png
+578,1a76673c1ac7dce0a5171c3108b98ab8.png,pityriasis rosea,8,./dataset/pityriasis rosea/1a76673c1ac7dce0a5171c3108b98ab8.png
+579,6829f163f57d7b0d99900cb2df6055d8.png,pityriasis rosea,8,./dataset/pityriasis rosea/6829f163f57d7b0d99900cb2df6055d8.png
+580,aedc70dfb816e7a924323e8e98d14c2a.png,pityriasis rosea,8,./dataset/pityriasis rosea/aedc70dfb816e7a924323e8e98d14c2a.png
+581,50204de5e3887762e8caa1953cb87aa9.png,pityriasis rosea,8,./dataset/pityriasis rosea/50204de5e3887762e8caa1953cb87aa9.png
+582,8c5eb790121b8b90f5a7601f15bb11a4.png,hailey hailey disease,9,./dataset/hailey hailey disease/8c5eb790121b8b90f5a7601f15bb11a4.png
+583,b64c3ee662fc3eb7a81120b1aa541b71.png,hailey hailey disease,9,./dataset/hailey hailey disease/b64c3ee662fc3eb7a81120b1aa541b71.png
+584,4428b53ae2b5a1b89b55e4a6e54c8e07.png,hailey hailey disease,9,./dataset/hailey hailey disease/4428b53ae2b5a1b89b55e4a6e54c8e07.png
+585,9aac0c94ecf3b0840cb5f225fcfcd1ad.png,hailey hailey disease,9,./dataset/hailey hailey disease/9aac0c94ecf3b0840cb5f225fcfcd1ad.png
+586,569bfe10f2bbc0512d0800aad788da83.png,hailey hailey disease,9,./dataset/hailey hailey disease/569bfe10f2bbc0512d0800aad788da83.png
+587,eec31f4500b132c1bbbe9ce76bbe287c.png,hailey hailey disease,9,./dataset/hailey hailey disease/eec31f4500b132c1bbbe9ce76bbe287c.png
+588,46680b652bc41d52cb086d65576351f9.png,hailey hailey disease,9,./dataset/hailey hailey disease/46680b652bc41d52cb086d65576351f9.png
+589,dcc3b36fe44d4ca36cd67f135b252429.png,hailey hailey disease,9,./dataset/hailey hailey disease/dcc3b36fe44d4ca36cd67f135b252429.png
+590,6dc72ba0ec6540166cd567760e7c416d.png,hailey hailey disease,9,./dataset/hailey hailey disease/6dc72ba0ec6540166cd567760e7c416d.png
+591,06485f95f9148e3bf9b5bfb5ebff5d31.png,hailey hailey disease,9,./dataset/hailey hailey disease/06485f95f9148e3bf9b5bfb5ebff5d31.png
+592,fbeb40eaa1d07fcd98d9495d089051ae.png,hailey hailey disease,9,./dataset/hailey hailey disease/fbeb40eaa1d07fcd98d9495d089051ae.png
+593,dc6c16e5875ca30050cd5bb4417e1ba7.png,hailey hailey disease,9,./dataset/hailey hailey disease/dc6c16e5875ca30050cd5bb4417e1ba7.png
+594,aa3cdab85e92f451bdcb67638f922afa.png,hailey hailey disease,9,./dataset/hailey hailey disease/aa3cdab85e92f451bdcb67638f922afa.png
+595,496fff13cf46402dcadfe172e8a6276e.png,hailey hailey disease,9,./dataset/hailey hailey disease/496fff13cf46402dcadfe172e8a6276e.png
+596,7ca7b4f43008d9d065fd7add8a9daade.png,hailey hailey disease,9,./dataset/hailey hailey disease/7ca7b4f43008d9d065fd7add8a9daade.png
+597,0477c68e5d16b825ce05d13b641e0c2d.png,hailey hailey disease,9,./dataset/hailey hailey disease/0477c68e5d16b825ce05d13b641e0c2d.png
+598,91217488e71f06653d91ee97ad174c88.png,hailey hailey disease,9,./dataset/hailey hailey disease/91217488e71f06653d91ee97ad174c88.png
+599,293874e938d851e177901b7b603abe14.png,hailey hailey disease,9,./dataset/hailey hailey disease/293874e938d851e177901b7b603abe14.png
+600,a876c7c12f4670679892e018a430368f.png,hailey hailey disease,9,./dataset/hailey hailey disease/a876c7c12f4670679892e018a430368f.png
+601,b118b2da658d3ff191a557fc47cb472b.png,hailey hailey disease,9,./dataset/hailey hailey disease/b118b2da658d3ff191a557fc47cb472b.png
+602,ceb8390f38f925eb94a13f881ddf73b6.png,hailey hailey disease,9,./dataset/hailey hailey disease/ceb8390f38f925eb94a13f881ddf73b6.png
+603,14b6f279e494f09e831e9a7e5a6e389a.png,hailey hailey disease,9,./dataset/hailey hailey disease/14b6f279e494f09e831e9a7e5a6e389a.png
+604,a4c3f9bf168c7c4330a60079d67bc201.png,hailey hailey disease,9,./dataset/hailey hailey disease/a4c3f9bf168c7c4330a60079d67bc201.png
+605,e20ae60a7dcda1865c738690caa16d25.png,hailey hailey disease,9,./dataset/hailey hailey disease/e20ae60a7dcda1865c738690caa16d25.png
+606,f224e592fe598770e63d832b5d5df2fb.png,hailey hailey disease,9,./dataset/hailey hailey disease/f224e592fe598770e63d832b5d5df2fb.png
+607,4340fe3a465e71f3ad1374bdd90e976c.png,hailey hailey disease,9,./dataset/hailey hailey disease/4340fe3a465e71f3ad1374bdd90e976c.png
+608,0c171d1183b5bf724ce8bf49f8ec26bc.png,hailey hailey disease,9,./dataset/hailey hailey disease/0c171d1183b5bf724ce8bf49f8ec26bc.png
+609,a95db5c270c224188fdb1692b5e269b2.png,hailey hailey disease,9,./dataset/hailey hailey disease/a95db5c270c224188fdb1692b5e269b2.png
+610,3b15f418f995b711b11965458bd3334e.png,hailey hailey disease,9,./dataset/hailey hailey disease/3b15f418f995b711b11965458bd3334e.png
+611,16231bd8487949482ab73382276749a4.png,hailey hailey disease,9,./dataset/hailey hailey disease/16231bd8487949482ab73382276749a4.png
+612,2d8eedfc06dbc98a20b7dc757d3fc166.png,hailey hailey disease,9,./dataset/hailey hailey disease/2d8eedfc06dbc98a20b7dc757d3fc166.png
+613,1e7defe8ccb543b1dab80d5c60afd8f8.png,hailey hailey disease,9,./dataset/hailey hailey disease/1e7defe8ccb543b1dab80d5c60afd8f8.png
+614,9b518b58085822ad40df1ff8bd7d04f3.png,hailey hailey disease,9,./dataset/hailey hailey disease/9b518b58085822ad40df1ff8bd7d04f3.png
+615,4d3334f055ce3ef8a2432f1b40bfc6e8.png,hailey hailey disease,9,./dataset/hailey hailey disease/4d3334f055ce3ef8a2432f1b40bfc6e8.png
+616,e506c4621e1a027fccafa60a573273d6.png,hailey hailey disease,9,./dataset/hailey hailey disease/e506c4621e1a027fccafa60a573273d6.png
+617,9112c0585bb5389f229017fc54be429c.png,hailey hailey disease,9,./dataset/hailey hailey disease/9112c0585bb5389f229017fc54be429c.png
+618,fd6417beceacc0ca03b420fd39f40392.png,hailey hailey disease,9,./dataset/hailey hailey disease/fd6417beceacc0ca03b420fd39f40392.png
+619,3d0b84fcf22339dc7c40a442426bea76.png,hailey hailey disease,9,./dataset/hailey hailey disease/3d0b84fcf22339dc7c40a442426bea76.png
+620,280d90eaef5ebc2c7dcd341ab0aa6ec5.png,hailey hailey disease,9,./dataset/hailey hailey disease/280d90eaef5ebc2c7dcd341ab0aa6ec5.png
+621,3e5945da0e2b7788b79b0dfb42986b1a.png,hailey hailey disease,9,./dataset/hailey hailey disease/3e5945da0e2b7788b79b0dfb42986b1a.png
+622,5f6caae3eaa5c98cfca4921fc830fe0e.png,hailey hailey disease,9,./dataset/hailey hailey disease/5f6caae3eaa5c98cfca4921fc830fe0e.png
+623,9b6d535d95142a87f61077ee717181cf.png,granuloma annulare,10,./dataset/granuloma annulare/9b6d535d95142a87f61077ee717181cf.png
+624,08316bb7f1783d728d09d4c1a37a5f81.png,granuloma annulare,10,./dataset/granuloma annulare/08316bb7f1783d728d09d4c1a37a5f81.png
+625,60db3d585a160a2ba8d06c0271055d60.png,granuloma annulare,10,./dataset/granuloma annulare/60db3d585a160a2ba8d06c0271055d60.png
+626,0c7b64342387d294d8f790014182ccab.png,granuloma annulare,10,./dataset/granuloma annulare/0c7b64342387d294d8f790014182ccab.png
+627,cff8ebb2f03fb1499effdd8b30f752f2.jpg,granuloma annulare,10,./dataset/granuloma annulare/cff8ebb2f03fb1499effdd8b30f752f2.jpg
+628,471459be084ef0bab58ecedf9fe2416d.png,granuloma annulare,10,./dataset/granuloma annulare/471459be084ef0bab58ecedf9fe2416d.png
+629,d17617ec0dc9960e2c5f9d5c023bd18a.jpg,granuloma annulare,10,./dataset/granuloma annulare/d17617ec0dc9960e2c5f9d5c023bd18a.jpg
+630,c05599e1c7495086523244a185efbf1f.jpg,granuloma annulare,10,./dataset/granuloma annulare/c05599e1c7495086523244a185efbf1f.jpg
+631,aeba41c3b73197cfe597b06547a95ef7.png,granuloma annulare,10,./dataset/granuloma annulare/aeba41c3b73197cfe597b06547a95ef7.png
+632,7a81b46d5d689461ae623e7a46b06802.png,granuloma annulare,10,./dataset/granuloma annulare/7a81b46d5d689461ae623e7a46b06802.png
+633,a7aa6149905bd27f9ff817f6c5e87490.png,granuloma annulare,10,./dataset/granuloma annulare/a7aa6149905bd27f9ff817f6c5e87490.png
+634,5d3a87998f10c7072288c8377567b19a.png,granuloma annulare,10,./dataset/granuloma annulare/5d3a87998f10c7072288c8377567b19a.png
+635,36a3d5a1611ebe1286e5a4926f7c2ee5.png,granuloma annulare,10,./dataset/granuloma annulare/36a3d5a1611ebe1286e5a4926f7c2ee5.png
+636,c49360e6b6e97fc6cca25b8f0a0b7808.png,granuloma annulare,10,./dataset/granuloma annulare/c49360e6b6e97fc6cca25b8f0a0b7808.png
+637,cd80c8ea47543ad253379bd42866b3f1.png,granuloma annulare,10,./dataset/granuloma annulare/cd80c8ea47543ad253379bd42866b3f1.png
+638,0e4384306309ae6e9a37f46d65d63608.png,granuloma annulare,10,./dataset/granuloma annulare/0e4384306309ae6e9a37f46d65d63608.png
+639,24994267d61c6f7c3448b86ae37f02b5.png,granuloma annulare,10,./dataset/granuloma annulare/24994267d61c6f7c3448b86ae37f02b5.png
+640,969c09a0d17a32d1e5dbed8ed326313e.png,granuloma annulare,10,./dataset/granuloma annulare/969c09a0d17a32d1e5dbed8ed326313e.png
+641,0c6695335edb59409519761fe3c3cfbb.png,granuloma annulare,10,./dataset/granuloma annulare/0c6695335edb59409519761fe3c3cfbb.png
+642,f81b527a92d48be65d929ffd6ff86459.png,granuloma annulare,10,./dataset/granuloma annulare/f81b527a92d48be65d929ffd6ff86459.png
+643,3fbd4f99436c8efd6625d5c5bb777625.png,granuloma annulare,10,./dataset/granuloma annulare/3fbd4f99436c8efd6625d5c5bb777625.png
+644,06a115489fe38fb1549115b8aa5b96d4.png,granuloma annulare,10,./dataset/granuloma annulare/06a115489fe38fb1549115b8aa5b96d4.png
+645,9dc73230c77ab5c58dc1f11caef39ea2.png,granuloma annulare,10,./dataset/granuloma annulare/9dc73230c77ab5c58dc1f11caef39ea2.png
+646,01f5cb3a7730891e5dfdb56ae55667bb.png,granuloma annulare,10,./dataset/granuloma annulare/01f5cb3a7730891e5dfdb56ae55667bb.png
+647,9bcff4ba8acb7913082d22a7a9e8d8db.png,granuloma annulare,10,./dataset/granuloma annulare/9bcff4ba8acb7913082d22a7a9e8d8db.png
+648,6e5138620cd1a4cefab313a107bba366.png,granuloma annulare,10,./dataset/granuloma annulare/6e5138620cd1a4cefab313a107bba366.png
+649,f250b8e1704ee133a677d57edc7a9e1b.png,granuloma annulare,10,./dataset/granuloma annulare/f250b8e1704ee133a677d57edc7a9e1b.png
+650,2a3f29cc2a15cc97ab8c71141ab95739.png,granuloma annulare,10,./dataset/granuloma annulare/2a3f29cc2a15cc97ab8c71141ab95739.png
+651,f2680da552ddbd59c8a78b07866ab341.png,granuloma annulare,10,./dataset/granuloma annulare/f2680da552ddbd59c8a78b07866ab341.png
+652,f5822bcca6db799f2f19cde3b430df26.png,granuloma annulare,10,./dataset/granuloma annulare/f5822bcca6db799f2f19cde3b430df26.png
+653,a99ac841aa15a9f613b8010b49f150a0.png,granuloma annulare,10,./dataset/granuloma annulare/a99ac841aa15a9f613b8010b49f150a0.png
+654,21a68938eb5004fbe6b6c96c428b85f1.png,granuloma annulare,10,./dataset/granuloma annulare/21a68938eb5004fbe6b6c96c428b85f1.png
+655,550e93fbb435f88e5f9c0889247a3c06.png,granuloma annulare,10,./dataset/granuloma annulare/550e93fbb435f88e5f9c0889247a3c06.png
+656,f338752205cf9e69103c71990765b1ed.png,granuloma annulare,10,./dataset/granuloma annulare/f338752205cf9e69103c71990765b1ed.png
+657,3e0d70a05f7b18bbf0a1422d7f6ddce0.png,granuloma annulare,10,./dataset/granuloma annulare/3e0d70a05f7b18bbf0a1422d7f6ddce0.png
+658,800997e26cf65990ab32c61b662e4315.png,granuloma annulare,10,./dataset/granuloma annulare/800997e26cf65990ab32c61b662e4315.png
+659,ba104660fb700b9a3bcd06dd9f997342.png,granuloma annulare,10,./dataset/granuloma annulare/ba104660fb700b9a3bcd06dd9f997342.png
+660,82bc1dadfe17e001df1398deb9cd13df.jpg,granuloma annulare,10,./dataset/granuloma annulare/82bc1dadfe17e001df1398deb9cd13df.jpg
+661,a7facf08d3340405e813cfa159a5dc80.png,granuloma annulare,10,./dataset/granuloma annulare/a7facf08d3340405e813cfa159a5dc80.png
+662,fb4615c67058e52e3dde1268328608fb.png,prurigo nodularis,11,./dataset/prurigo nodularis/fb4615c67058e52e3dde1268328608fb.png
+663,3834f2b1138b376486087b355da6dbad.png,prurigo nodularis,11,./dataset/prurigo nodularis/3834f2b1138b376486087b355da6dbad.png
+664,a5835042f19548325acc05bc374b429c.png,prurigo nodularis,11,./dataset/prurigo nodularis/a5835042f19548325acc05bc374b429c.png
+665,bfd0304ace1dab0fee63b32c1e5af32b.png,prurigo nodularis,11,./dataset/prurigo nodularis/bfd0304ace1dab0fee63b32c1e5af32b.png
+666,67f3fd31b44095d4a74fbe9a08f47ff2.png,prurigo nodularis,11,./dataset/prurigo nodularis/67f3fd31b44095d4a74fbe9a08f47ff2.png
+667,b35a83634f0bb702b820a38c4b644ea0.png,prurigo nodularis,11,./dataset/prurigo nodularis/b35a83634f0bb702b820a38c4b644ea0.png
+668,304cf2c33fda67a6bc6c67bb9dc8ba4c.png,prurigo nodularis,11,./dataset/prurigo nodularis/304cf2c33fda67a6bc6c67bb9dc8ba4c.png
+669,d4503411ed629b1252df949d73aa92ff.png,prurigo nodularis,11,./dataset/prurigo nodularis/d4503411ed629b1252df949d73aa92ff.png
+670,4304199921ec391c01cbd147cc2e59a8.png,prurigo nodularis,11,./dataset/prurigo nodularis/4304199921ec391c01cbd147cc2e59a8.png
+671,bb4f6bd8661b8f0a52ccaef5f2fc5b56.png,prurigo nodularis,11,./dataset/prurigo nodularis/bb4f6bd8661b8f0a52ccaef5f2fc5b56.png
+672,1ccb08e821f643e145b41348753f0e95.png,prurigo nodularis,11,./dataset/prurigo nodularis/1ccb08e821f643e145b41348753f0e95.png
+673,1a4fdeead0b5690e36ea85c57e1e87c5.png,prurigo nodularis,11,./dataset/prurigo nodularis/1a4fdeead0b5690e36ea85c57e1e87c5.png
+674,d9ab8fcd164e9b1bd86e7757364d9e3a.png,prurigo nodularis,11,./dataset/prurigo nodularis/d9ab8fcd164e9b1bd86e7757364d9e3a.png
+675,8f44517c09114d1befa501acd9e57040.png,prurigo nodularis,11,./dataset/prurigo nodularis/8f44517c09114d1befa501acd9e57040.png
+676,e143b985396e204b2d07ba210c0cdf2c.png,prurigo nodularis,11,./dataset/prurigo nodularis/e143b985396e204b2d07ba210c0cdf2c.png
+677,43545a1cc35c9591485ebc5535cf6793.png,prurigo nodularis,11,./dataset/prurigo nodularis/43545a1cc35c9591485ebc5535cf6793.png
+678,64a2c06c717efdd527e83c760e89b5f3.png,prurigo nodularis,11,./dataset/prurigo nodularis/64a2c06c717efdd527e83c760e89b5f3.png
+679,edce9bab731228e8240e613dd6e5e2ee.png,prurigo nodularis,11,./dataset/prurigo nodularis/edce9bab731228e8240e613dd6e5e2ee.png
+680,9e04114cdc878efb72211714ec160c37.png,prurigo nodularis,11,./dataset/prurigo nodularis/9e04114cdc878efb72211714ec160c37.png
+681,08c46504b106874177f9ea49b6c40f5a.png,prurigo nodularis,11,./dataset/prurigo nodularis/08c46504b106874177f9ea49b6c40f5a.png
+682,840b8808cf651f0b3d55fa184c6a093f.png,prurigo nodularis,11,./dataset/prurigo nodularis/840b8808cf651f0b3d55fa184c6a093f.png
+683,1781d19d2d93b74fdf0af1bc261cc8a0.png,prurigo nodularis,11,./dataset/prurigo nodularis/1781d19d2d93b74fdf0af1bc261cc8a0.png
+684,f97dec4b9c3931da0c790e5fbdf953d5.png,prurigo nodularis,11,./dataset/prurigo nodularis/f97dec4b9c3931da0c790e5fbdf953d5.png
+685,f4ada601e53f65b80352f220c883982b.png,prurigo nodularis,11,./dataset/prurigo nodularis/f4ada601e53f65b80352f220c883982b.png
+686,41169ebef5fa15937f0eefb98d81339c.png,prurigo nodularis,11,./dataset/prurigo nodularis/41169ebef5fa15937f0eefb98d81339c.png
+687,756b24ca24f44a02a098370acdc3ab16.png,prurigo nodularis,11,./dataset/prurigo nodularis/756b24ca24f44a02a098370acdc3ab16.png
+688,6a67334786785135b8acaeac2deaf861.png,prurigo nodularis,11,./dataset/prurigo nodularis/6a67334786785135b8acaeac2deaf861.png
+689,59abbc43a0b675da04d0d95bda08f061.png,prurigo nodularis,11,./dataset/prurigo nodularis/59abbc43a0b675da04d0d95bda08f061.png
+690,a4c98b8bdf349df8335ac8b8657c68ea.png,prurigo nodularis,11,./dataset/prurigo nodularis/a4c98b8bdf349df8335ac8b8657c68ea.png
+691,4fc089d377be60a907e2d3a7b7e0d81e.png,prurigo nodularis,11,./dataset/prurigo nodularis/4fc089d377be60a907e2d3a7b7e0d81e.png
+692,7b2b5501ec0dabe214df1b83c76a2f45.png,prurigo nodularis,11,./dataset/prurigo nodularis/7b2b5501ec0dabe214df1b83c76a2f45.png
+693,16cdd6326e6e7f35c91147f0a282330e.png,prurigo nodularis,11,./dataset/prurigo nodularis/16cdd6326e6e7f35c91147f0a282330e.png
+694,dfa220a1804134e4e98fc54e088965e7.png,prurigo nodularis,11,./dataset/prurigo nodularis/dfa220a1804134e4e98fc54e088965e7.png
+695,a2ced0e21e0c6bc98b5553f08829c186.png,prurigo nodularis,11,./dataset/prurigo nodularis/a2ced0e21e0c6bc98b5553f08829c186.png
