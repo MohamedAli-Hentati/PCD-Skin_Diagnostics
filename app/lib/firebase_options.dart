@@ -50,7 +50,7 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCSE22D8Z_Ne0J7hQtktdLHxqL0nzeA420',
+    apiKey: '',
     appId: '1:792812960447:web:84edc2c55de3aa3c24a40a',
     messagingSenderId: '792812960447',
     projectId: 'skin-diagnostics-application',
@@ -60,7 +60,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyD9w67dUASXbdRzHGahtjBsHDXIeMtzOy0',
+    apiKey: '',
     appId: '1:792812960447:android:519ed9b4278b696824a40a',
     messagingSenderId: '792812960447',
     projectId: 'skin-diagnostics-application',
