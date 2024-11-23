@@ -1,8 +1,8 @@
 {
   "type": "service_account",
   "project_id": "skin-diagnostics-application",
-  "private_key_id": "2d0a9763d9b469af8c547f7bab036da06367ad7d",
-  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCmLa46VIzMQxbA\nePGfNw0Bv0iCvWzdnGh03rQ9G+9yWNpAtmE4asZ4bJjsL6gctXngDzp60pg4od6u\nYd2CqgPRNBtpyRXKZntJtoIpFOUFueuTQnbtWxMeVx7P47OPmPITT3Xvga4Y5Iq7\nSGG0JqHYT3CBQUoCjE/GkaJt0VYeVCaP/v22ukY2zomLgM1PpCb3DixR7z1Dreef\nmwQwbQOLJLx9yGj1/yZsYoEJFMpR16C7TbmDQMa/8SWBmMHBBQGl0ojueJ1/Ei92\nlV2QH1bChFc9yonj8IGwJfWGj1czE5byxapUdQRXZR0O1dubtWv7F+N4/uIevgJL\nRAYvInxxAgMBAAECggEACXxEXH5Uq8N36imdJR49Jv3g/jF2JC+C2N+YwH+L4JDe\nIwvQqynmb/DxnlMEELYdIaMiOT40bnsdh6z8ugd0AKjYQxFgJeBJUPD9fKnS1CED\nfNwyMfndCAInYezDOZhHLRSqjIQa82nML2+CFYiPpsC2ER1bGPUjB+2/10Pihgg7\nsjuoPgZTGBz0mNzfYVqPA4NJd0uFqBvrRo3GgwkUfsIqm7jj+8xUIpYlyjQFhk1h\nBx3aAWzuPhQdaWPwDKElC9A1sYRTbrBGsOfU0x5U6jVgUYjul5aOAPQHxWgnZihi\nHoKi0whT5jAIdV/RzpyG234Unrd28zGGqyusrcklrwKBgQDcsgihm73VM5c+zWrE\nglCEeIlo17pYPVb+7T5WuIcqq3IHhm50K0pDZAKIcBMtmnBvXMDHjJ5CF41UqbW0\nmTpnbr4v1kcos25REmBF53gvzu/Gcr0vScXZ1NdSjSEcqz7YrmtO7wqoOfLX0C/0\ntTVMJkPmACcCVh0WYG6Aka3mvwKBgQDAww4V0pzUwmIAz+Ry4crprApzZIONJYde\nO+BlpgEvNtxHOoT22tAVHup6e+9NSb6JoGpDe8cHEcbLdaBGf5z00xdkk24UrdKm\nzJoS4h2HeY3Yh4lNSlnnLiq9M0MslTx1cBCVywG0yBRkVNvQxEiRy53W+vzIagJH\nPYkr3d0YzwKBgENBbifx0lQauMjGyPbBz8/O+/EbbQpfBxgBLLI44dg7DzED4r08\nRBFtdOgnX3DSU9lcJtOpIsF5c/SNE3bKC2Zh9UuWvXDF3aSPOQ+UjqfjJGcRqF20\n2bqchlH9+E1IUoqt/L29Uz4ZCsyCAVtNrcRbFO4OtdSccZjUIljEDH75AoGAEE/x\nXzNlhjO063CsWnR1IXUnpUA6SbWFURosES4NJ5uy5Gw1WFaICWGGYjsesyGseCUV\nGQTegOCmPA2GNLET7Tv33NEFHcbf7rGd0D9GVHKa6Fn/6oSCOygTAdPWuW0foqiL\nHsIBMPVFlIAB4hbaNUxP3SN8RNGDw9eXRhkOXs0CgYEAs08NMyjav0SY5u819YjW\nh2g4yU/vx3GZV98sSoAPytOBr1dOyJaiNPR5HPxpTmHOhstVB729OFZI2C4GmoZ5\n0ljFmQ3YA5M3ig7/alX4iYsyH8UQX64eyrj0tbIHAzcmvfcgWc2nFSii7VgZMcSY\nh0PUeR/jL/pfsfSo0gsRll4=\n-----END PRIVATE KEY-----\n",
+  "private_key_id": "",
+  "private_key": "",
   "client_email": "firebase-adminsdk-5h4ev@skin-diagnostics-application.iam.gserviceaccount.com",
   "client_id": "107215286334103142470",
   "auth_uri": "https://accounts.google.com/o/oauth2/auth",
